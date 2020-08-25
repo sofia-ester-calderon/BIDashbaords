@@ -1,4 +1,4 @@
-# BIDashbaords
+# BIDashboards
 react-native app to view metabase dashboards
 
 ## Languages
