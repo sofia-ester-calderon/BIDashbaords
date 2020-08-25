@@ -3,3 +3,17 @@ react-native app to view metabase dashboards
 
 ## Languages
 react-native
+
+## Getting started
+1. make sure you have the `react-native-cli` installed (`npm install –g react-native-cli`)
+1. run `npm install`
+1. run `npm start`
+
+### run Android app
+1. open Android project (in the `/android` directory) in Android Studio
+1. wait for the `gradle sync` and `gradle build` to finish (takes a few minutes)
+1. run project in virtual device
+
+### run iOS app
+1. open the XCode project (in the `/ios` directory) in XCode
+1. run project in virtual device
