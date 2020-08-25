@@ -6,7 +6,7 @@ react-native
 
 ## Getting started
 
-## Preliminary steps
+### Preliminary steps
 1. make sure you have the `react-native-cli` installed (`npm install –g react-native-cli`)
 1. run `npm install`
 1. run `npm start`
