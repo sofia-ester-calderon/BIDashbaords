@@ -1,0 +1,336 @@
+[
+  {
+    "category": "Ventas",
+    "subcategory": "Operaciones Bodega",
+    "access": ["Administrator", "Gerencia", "Ventas"],
+    "kpis": [
+      {
+        "kpi": "KPI - Entregas completadas",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Entregas no completadas",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "OdA no completadas",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "OdA no entregadas",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Traslados no completados",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Ventas",
+    "subcategory": "Operaciones Facturacion",
+    "access": ["Administrator", "Gerencia", "Ventas"],
+    "kpis": [
+      {
+        "kpi": "KPI - OdV no completadas",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - OdV en proceso",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - OdV incompletas de facturacion",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Facturas de venta completadas",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Facturas de venta no completadas",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Numero de OdV",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Ventas",
+    "subcategory": "Ventas General",
+    "access": ["Administrator", "Gerencia", "Ventas"],
+    "kpis": [
+      {
+        "kpi": "Facturacion neta por mes",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion neta por linea",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion neta por vendedores",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion neta por vendedor y linea",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion, costo y margen de ganancia (%) por mes",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion, costo y margen de ganancia (%) por vendedor",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion, costo y margen de ganancia (%) por linea",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion, costo y margen de ganancia (monto) por mes",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion, costo y margen de ganancia (monto) por vendedor",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion, costo y margen de ganancia (monto) por linea",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Ventas",
+    "subcategory": "Ventas Acumuladas",
+    "access": ["Administrator", "Gerencia", "Ventas"],
+    "kpis": [
+      {
+        "kpi": "Facturacion neta por mes acumulada",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion neta por vendedor y mes acumulada",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion neta por linea y mes acumulada",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion neta por cliente y mes acumulada",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion, costo y margen de ganancia (monto) por mes acumulada",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion, costo y margen de ganancia (monto) por linea y mes acumulada",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "Facturacion, costo y margen de ganancia (monto) por vendedor y mes acumulada",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Compras",
+    "subcategory": "Operaciones Bodega",
+    "access": ["Administrator", "Gerencia", "Compras"],
+    "kpis": [
+      {
+        "kpi": "KPI - recibos no completados",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - OdC incompletas de recibo de material",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Compras",
+    "subcategory": "Operaciones Facturacion",
+    "access": ["Administrator", "Gerencia", "Compras"],
+    "kpis": [
+      {
+        "kpi": "KPI - OdC incompletas de facturacion",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - FdC no completadas",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Gastos de retaceo no distribuidos",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - OdC no cerradas",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Tesoreria",
+    "subcategory": "Tesoreria Operaciones",
+    "access": ["Administrator", "Gerencia"],
+    "kpis": [
+      {
+        "kpi": "KPI - Seleccion de pagos no pagados",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Pagos planeados no pagados",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Pagos no asignados",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Seleccion de pagos no completados",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Pagos no completados",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Contabilidad",
+    "subcategory": "Contabilidad Operaciones",
+    "access": ["Administrator", "Gerencia", "Ventas"],
+    "kpis": [
+      {
+        "kpi": "KPI - Contabilidad documentos no procesados",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Finanzas",
+    "subcategory": "Finanzas Rendimiento",
+    "access": ["Administrator", "Gerencia"],
+    "kpis": [
+      {
+        "kpi": "KPI - EBIT margin",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Net profit margin",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Return on non-current assets",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Finanzas",
+    "subcategory": "Finanzas Eficiencia",
+    "access": ["Administrator", "Gerencia"],
+    "kpis": [
+      {
+        "kpi": "KPI - Cost efficiency ratio",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Working capital ratio",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Inventory turnonver",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Labour asset turnonver",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Finanzas",
+    "subcategory": "Finanzas Riesgo",
+    "access": ["Administrator", "Gerencia"],
+    "kpis": [
+      {
+        "kpi": "KPI - Interest gearing",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  },
+  {
+    "category": "Finanzas",
+    "subcategory": "Finanzas Liquidez",
+    "access": ["Administrator", "Gerencia"],
+    "kpis": [
+      {
+        "kpi": "KPI - Current asset ratio",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      },
+      {
+        "kpi": "KPI - Cash exhaustion ratio",
+        "METABASE_SITE_URL": "http://10.8.2.1:3000",
+        "METABASE_SECRET_KEY": "xxxxx"
+      }
+    ]
+  }
+]
