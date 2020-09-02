@@ -1,25 +1,15 @@
-import React from 'react';
-import {StyleSheet, Text, SafeAreaView} from 'react-native';
+import * as React from 'react';
 
-import {WebView} from 'react-native-webview';
+import DrawerMenu from './components/menu/DrawerMenu';
+import NavBar from './components/menu/NavBar';
 
-class App extends React.Component {
-  render() {
-    return (
-      <SafeAreaView style={styles.conatiner}>
-        <Text numberOfLines={5}>
-          Here you can view your metabase dashbaords!
-        </Text>
-        <WebView source={{uri: 'https://www.google.com'}} />
-      </SafeAreaView>
-    );
-  }
+function App() {
+  return (
+    <>
+      <NavBar />
+      <DrawerMenu />
+    </>
+  );
 }
-
-const styles = StyleSheet.create({
-  conatiner: {
-    flex: 1,
-  },
-});
 
 export default App;
