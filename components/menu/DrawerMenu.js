@@ -1,18 +1,31 @@
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import Example2 from '../test/Example2';
-import Example1 from '../test/Example1';
 import {navigationRef} from './RootNavigation';
-
-const Drawer = createDrawerNavigator();
+import ViewerContainer from '../dashboards/ViewerContainer';
+import data from '../../data/data';
+import Login from '../login/Login';
 
 const DrawerMenu = () => {
+  const [categories, setCategories] = useState([]);
+  const Drawer = createDrawerNavigator();
+
+  useEffect(() => {
+    setCategories(data.getCategories);
+  }, []);
+
   return (
     <NavigationContainer ref={navigationRef}>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Example1" component={Example1} />
-        <Drawer.Screen name="Example2" component={Example2} />
+      <Drawer.Navigator initialRouteName="Login">
+        <Drawer.Screen name="Login" component={Login} />
+        {categories.map((category) => (
+          <Drawer.Screen
+            key={category}
+            name={category}
+            component={ViewerContainer}
+            initialParams={{category}}
+          />
+        ))}
       </Drawer.Navigator>
     </NavigationContainer>
   );

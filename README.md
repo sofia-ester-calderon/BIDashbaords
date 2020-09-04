@@ -22,4 +22,5 @@ react-native
 
 ### Run iOS app
 
-1. run `react-native run-ios`
+1. navigate to the `ios` directory and run `pod install`
+1. run `react-native run-ios` in the root directory

@@ -1,6 +1,8 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import PropTypes from 'prop-types';
 
 import {WebView} from 'react-native-webview';
 
@@ -10,13 +12,18 @@ const styles = StyleSheet.create({
   },
 });
 
-const Example1 = () => {
+const KpiViewer = ({kpi}) => {
   return (
     <SafeAreaView style={styles.conatiner}>
-      <Text numberOfLines={5}>Here you can view your metabase dashbaords! - EXAMPLE 1</Text>
+      <Text>{kpi.kpi}</Text>
+      <Text>Metabase url: {kpi.METABASE_SITE_URL}</Text>
       <WebView source={{uri: 'https://www.google.com'}} />
     </SafeAreaView>
   );
 };
 
-export default Example1;
+KpiViewer.propTypes = {
+  kpi: PropTypes.object.isRequired,
+};
+
+export default KpiViewer;
