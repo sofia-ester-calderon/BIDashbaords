@@ -1,3 +1,4 @@
+import {it, expect} from '@jest/globals';
 import data from './data';
 
 it('should return all categories', () => {
