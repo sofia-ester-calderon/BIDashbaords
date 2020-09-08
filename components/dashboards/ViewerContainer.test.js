@@ -97,7 +97,7 @@ describe('given the dashboard navigator is used', () => {
 
     getByText('OdA no entregadas');
   });
-  it('should show the subcategories Back to Subcategories is pressed', async () => {
+  it('should show the subcategories when Back to Subcategories is pressed', async () => {
     const {getByText, queryByText} = renderViewerContainer();
     fireEvent.press(getByText('Operaciones Bodega'));
     fireEvent.press(getByText('Back to Subcategories'));

@@ -4,7 +4,7 @@ import {PropTypes} from 'prop-types';
 import KpiViewer from './kpis/KpiViewer';
 import data from '../../data/data';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
-import DashboardNavigator from './DashboardNavigator';
+import DashboardNavigator from './navigator/DashboardNavigator';
 
 const ViewerContainer = ({route}) => {
   const [category, setCategory] = useState();
