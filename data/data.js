@@ -1,4 +1,5 @@
 const kpis = require('./kpis.json');
+const users = require('./users.json');
 
 const getCategories = () => {
   const set = new Set();
@@ -14,6 +15,15 @@ const getKpiOfSubCategory = (category, subCategory) => {
   return kpis.find((kpi) => kpi.category === category && kpi.subcategory === subCategory);
 };
 
-const data = {getCategories, getSubcategories, getKpiOfSubCategory};
+const loginUser = (username, password) => {
+  return users.find((user) => user.username === username && user.password === password);
+};
+
+const data = {
+  getCategories,
+  getSubcategories,
+  getKpiOfSubCategory,
+  loginUser,
+};
 
 export default data;
