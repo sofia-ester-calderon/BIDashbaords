@@ -18,7 +18,10 @@ react-native
 1. make sure `npm start` is running - otherwise the `gradle build` will fail
 1. open Android project (in the `/android` directory) in Android Studio
 1. wait for the `gradle sync` and `gradle build` to finish (takes a few minutes)
+1. run `react-native start`
 1. run project in virtual device
+
+Alternatively, you could simply run `react-native run-android` but we have faced some issues with this command
 
 ### Run iOS app
 
