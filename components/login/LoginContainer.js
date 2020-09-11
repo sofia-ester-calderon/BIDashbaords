@@ -1,8 +1,13 @@
+/* eslint-disable react/forbid-prop-types */
 import React, {useState} from 'react';
+import {PropTypes} from 'prop-types';
 import LoginForm from './loginForm/LoginForm';
 import data from '../../data/data';
+import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
-const LoginContainer = () => {
+const LoginContainer = ({navigation}) => {
+  const [userPermissions, loginUser] = useUserPermissions();
+
   const [loginDetails, setLoginDetails] = useState({username: '', password: ''});
   const [errors, setErrors] = useState({username: null, password: null});
 
@@ -25,7 +30,8 @@ const LoginContainer = () => {
     if (isFormValid()) {
       const loggedInUser = data.loginUser(loginDetails.username, loginDetails.password);
       if (loggedInUser) {
-        console.log('user logged in', loggedInUser.role);
+        loginUser(loggedInUser);
+        navigation.navigate('Home');
       } else {
         const formErrors = {};
         formErrors.username = 'Invalid credentials';
@@ -43,6 +49,10 @@ const LoginContainer = () => {
       errors={errors}
     />
   );
+};
+
+LoginContainer.propTypes = {
+  navigation: PropTypes.object.isRequired,
 };
 
 export default LoginContainer;

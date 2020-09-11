@@ -1,21 +1,21 @@
 [
   {
-    "username": "xxxxx",
+    "username": "user1",
     "password": "yyyyy",
     "role": "Administrator"
   },
   {
-    "username": "xxxxx",
+    "username": "user2",
     "password": "yyyyy",
     "role": "Gerencia"
   },
   {
-    "username": "xxxxx",
+    "username": "user3",
     "password": "yyyyy",
     "role": "Ventas"
   },
   {
-    "username": "xxxxx",
+    "username": "user4",
     "password": "yyyyy",
     "role": "Compras"
   }
