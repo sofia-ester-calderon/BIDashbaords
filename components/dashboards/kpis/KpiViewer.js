@@ -3,10 +3,9 @@ import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
+import jwt from 'react-native-pure-jwt';
 
 import {WebView} from 'react-native-webview';
-
-const jwt = require('jsonwebtoken');
 
 const styles = StyleSheet.create({
   conatiner: {
@@ -21,7 +20,11 @@ const KpiViewer = ({kpi}) => {
     exp: Math.round(Date.now() / 1000) + 10 * 60,
   };
 
-  const token = jwt.sign(payload, kpi.METABASE_SECRET_KEY);
+  const token = jwt.sign(payload, kpi.METABASE_SECRET_KEY, {
+    alg: 'HS256',
+  });
+
+  console.log(token);
 
   return (
     <SafeAreaView style={styles.conatiner}>
