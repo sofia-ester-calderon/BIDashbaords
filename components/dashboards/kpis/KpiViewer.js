@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 
 import {WebView} from 'react-native-webview';
 
+const jwt = require('jsonwebtoken');
+
 const styles = StyleSheet.create({
   conatiner: {
     flex: 1,
@@ -13,11 +15,23 @@ const styles = StyleSheet.create({
 });
 
 const KpiViewer = ({kpi}) => {
+  const payload = {
+    resource: {question: 20},
+    params: {},
+    exp: Math.round(Date.now() / 1000) + 10 * 60,
+  };
+
+  const token = jwt.sign(payload, kpi.METABASE_SECRET_KEY);
+
   return (
     <SafeAreaView style={styles.conatiner}>
       <Text>{kpi.kpi}</Text>
       <Text>Metabase url: {kpi.METABASE_SITE_URL}</Text>
-      <WebView source={{uri: 'https://www.google.com'}} />
+      <WebView
+        source={{
+          uri: `${kpi.METABASE_SITE_URL}/embed/question/${token}`,
+        }}
+      />
     </SafeAreaView>
   );
 };
