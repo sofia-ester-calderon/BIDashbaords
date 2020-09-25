@@ -1,5 +1,12 @@
 import React from 'react';
-import {Alert, Image, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Alert,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import * as Navigation from './RootNavigation';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
@@ -19,22 +26,30 @@ const NavBar = () => {
   return (
     <View style={{backgroundColor: '#6200ee'}}>
       <TouchableOpacity
-        style={{flexDirection: 'row'}}
+        style={styles.HeaderStyle}
         activeOpacity={0.4}
         onPress={handleOnPress}>
         <Image
           source={require('../assets/logo_shw.jpg')}
-          style={{
-            margin: 4,
-            height: 35,
-            width: 25,
-            resizeMode: 'stretch',
-          }}
+          style={styles.ImageIconStyle}
         />
-        <Text style={{color: '#ffffff', fontSize: 18}}>Open Menu</Text>
+        <Text style={styles.TextStyle}>Open Menu</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  HeaderStyle: {flexDirection: 'row'},
+
+  ImageIconStyle: {
+    margin: 4,
+    height: 25,
+    width: 18,
+    resizeMode: 'stretch',
+  },
+
+  TextStyle: {color: '#ffffff', fontSize: 18},
+});
 
 export default NavBar;
