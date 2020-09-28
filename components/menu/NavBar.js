@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  Alert,
-  Image,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Alert, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import * as Navigation from './RootNavigation';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
@@ -24,18 +18,12 @@ const NavBar = () => {
   };
 
   return (
-    <View style={{backgroundColor: '#6200ee'}}>
-      <TouchableOpacity
-        style={styles.HeaderStyle}
-        activeOpacity={0.4}
-        onPress={handleOnPress}>
-        <Image
-          source={require('../assets/logo_shw.jpg')}
-          style={styles.ImageIconStyle}
-        />
+    <SafeAreaView style={{backgroundColor: '#6200ee'}}>
+      <TouchableOpacity style={styles.HeaderStyle} activeOpacity={0.4} onPress={handleOnPress}>
+        <Image source={require('../assets/logo_shw.jpg')} style={styles.ImageIconStyle} />
         <Text style={styles.TextStyle}>Open Menu</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
