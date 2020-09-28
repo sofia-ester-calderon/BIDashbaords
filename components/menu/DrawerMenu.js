@@ -34,8 +34,8 @@ const DrawerMenu = () => {
   };
 
   useEffect(() => {
-    setCategories(data.getCategories);
-  }, []);
+    setCategories(data.getCategories(userPermissions.role));
+  }, [userPermissions.role]);
 
   useEffect(() => {
     console.log('got new userPermissions', userPermissions);

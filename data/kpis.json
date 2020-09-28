@@ -246,7 +246,7 @@
   {
     "category": "Contabilidad",
     "subcategory": "Contabilidad Operaciones",
-    "access": ["Administrator", "Gerencia", "Ventas"],
+    "access": ["Administrator", "Gerencia", "Ventas", "Contabilidad"],
     "kpis": [
       {
         "kpi": "KPI - Contabilidad documentos no procesados",
@@ -258,7 +258,7 @@
   {
     "category": "Finanzas",
     "subcategory": "Finanzas Rendimiento",
-    "access": ["Administrator", "Gerencia"],
+    "access": ["Administrator", "Gerencia", "Contabilidad"],
     "kpis": [
       {
         "kpi": "KPI - EBIT margin",
@@ -280,7 +280,7 @@
   {
     "category": "Finanzas",
     "subcategory": "Finanzas Eficiencia",
-    "access": ["Administrator", "Gerencia"],
+    "access": ["Administrator", "Gerencia", "Contabilidad"],
     "kpis": [
       {
         "kpi": "KPI - Cost efficiency ratio",
@@ -307,7 +307,7 @@
   {
     "category": "Finanzas",
     "subcategory": "Finanzas Riesgo",
-    "access": ["Administrator", "Gerencia"],
+    "access": ["Administrator", "Gerencia", "Contabilidad"],
     "kpis": [
       {
         "kpi": "KPI - Interest gearing",
@@ -319,7 +319,7 @@
   {
     "category": "Finanzas",
     "subcategory": "Finanzas Liquidez",
-    "access": ["Administrator", "Gerencia"],
+    "access": ["Administrator", "Gerencia", "Contabilidad"],
     "kpis": [
       {
         "kpi": "KPI - Current asset ratio",

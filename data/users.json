@@ -18,5 +18,10 @@
     "username": "user4",
     "password": "yyyyy",
     "role": "Compras"
+  },
+  {
+    "username": "user5",
+    "password": "yyyyy",
+    "role": "Contabilidad"
   }
 ]
