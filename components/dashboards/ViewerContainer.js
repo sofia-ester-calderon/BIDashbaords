@@ -21,7 +21,7 @@ const ViewerContainer = ({route}) => {
       return () => {
         // Do something when the screen is unfocused
       };
-    }, [])
+    }, []),
   );
 
   useEffect(() => {
@@ -29,9 +29,9 @@ const ViewerContainer = ({route}) => {
   }, [category]);
 
   const handleChooseSubCategory = (subCategory) => {
-    const kpis = data.getKpiOfSubCategory(category, subCategory);
-    setKpisOfSubcategory(kpis);
-    setDisplayKpi(kpis.kpis[0]);
+    const dashboard = data.getDashboardOfSubCategory(category, subCategory);
+    setKpisOfSubcategory(dashboard);
+    setDisplayKpi(dashboard.kpis[0]);
     setShowCategories(false);
   };
 
