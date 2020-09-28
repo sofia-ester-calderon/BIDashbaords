@@ -6,7 +6,7 @@ import data from '../../data/data';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
 const LoginContainer = ({navigation}) => {
-  const [userPermissions, loginUser] = useUserPermissions();
+  const [userPermissions, userFunctions] = useUserPermissions();
 
   const [loginDetails, setLoginDetails] = useState({
     username: '',
@@ -23,22 +23,17 @@ const LoginContainer = ({navigation}) => {
 
   const isFormValid = () => {
     const formErrors = {};
-    if (loginDetails.username === '')
-      formErrors.username = 'Please enter a username';
-    if (loginDetails.password === '')
-      formErrors.password = 'Please enter a password';
+    if (loginDetails.username === '') formErrors.username = 'Please enter a username';
+    if (loginDetails.password === '') formErrors.password = 'Please enter a password';
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
 
   const handleLogin = () => {
     if (isFormValid()) {
-      const loggedInUser = data.loginUser(
-        loginDetails.username,
-        loginDetails.password,
-      );
+      const loggedInUser = data.loginUser(loginDetails.username, loginDetails.password);
       if (loggedInUser) {
-        loginUser(loggedInUser);
+        userFunctions.loginUser(loggedInUser);
         navigation.navigate('Home');
         handleLoginDetailsChanged('', 'username');
         handleLoginDetailsChanged('', 'password');

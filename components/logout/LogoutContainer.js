@@ -5,10 +5,10 @@ import LogoutForm from './logoutForm/LogoutForm';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
 const LogoutContainer = ({navigation}) => {
-  const [userPermissions, loginUser] = useUserPermissions();
+  const [userPermissions, userFunctions] = useUserPermissions();
+
   const handleLogout = () => {
-    userPermissions.loggedIn = false;
-    userPermissions.role = '';
+    userFunctions.logoutUser();
     navigation.navigate('Login');
   };
 
