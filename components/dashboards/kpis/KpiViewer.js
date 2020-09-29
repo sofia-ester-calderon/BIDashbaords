@@ -1,22 +1,56 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {Text, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
 
 import {WebView} from 'react-native-webview';
+import {Image, Alert} from 'react-native';
+import {
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
-  conatiner: {
+  container: {
     flex: 1,
+  },
+  textArea: {
+    flexDirection: 'row',
+  },
+  infoIconStyle: {
+    margin: 4,
+    height: 25,
+    width: 25,
+    resizeMode: 'stretch',
   },
 });
 
 const KpiViewer = ({kpi}) => {
+  const createAlert = () => {
+    Alert.alert(
+      'KPI INFO',
+      kpi.description,
+      [
+        {
+          text: 'Back',
+        },
+      ],
+      {cancelable: false},
+    );
+  };
+
   return (
-    <SafeAreaView style={styles.conatiner}>
-      <Text>{kpi.kpi}</Text>
-      <Text>Metabase url: {kpi.METABASE_SITE_URL}</Text>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.textArea}>
+        <Text>{kpi.kpi}</Text>
+        <TouchableWithoutFeedback onPress={createAlert}>
+          <Image
+            style={styles.infoIconStyle}
+            source={require('../../assets/info_icon.jpg')}
+          />
+        </TouchableWithoutFeedback>
+      </View>
       <WebView
         source={{
           uri: `http://134.209.57.186:3000/`,
