@@ -48,7 +48,7 @@ const ViewerContainer = ({route}) => {
   };
 
   const handleShowPrevKpi = () => {
-    const {kpis} = kpisOfSubcategory;
+    const kpis = kpisOfSubcategory;
     const index = kpis.indexOf(displayKpi);
     if (index === 0) {
       setDisplayKpi(kpis[kpis.length - 1]);
