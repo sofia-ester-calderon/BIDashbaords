@@ -1,335 +1,351 @@
 [
   {
-    "category": "Ventas",
-    "subcategory": "Operaciones Bodega",
+    "name": "Ventas",
     "access": ["Administrator", "Gerencia", "Ventas"],
-    "kpis": [
+    "subcategories": [
       {
-        "kpi": "KPI - Entregas completadas",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Operaciones Bodega",
+        "kpis": [
+          {
+            "id": 1,
+            "kpi": "KPI - Entregas completadas",
+            "description": ""
+          },
+          {
+            "id": 2,
+            "kpi": "KPI - Entregas no completadas",
+            "description": ""
+          },
+          {
+            "id": 3,
+            "kpi": "OdA no completadas",
+            "description": ""
+          },
+          {
+            "id": 4,
+            "kpi": "OdA no entregadas",
+            "description": ""
+          },
+          {
+            "id": 5,
+            "kpi": "KPI - Traslados no completados",
+            "description": ""
+          },
+          {
+            "id": 6,
+            "kpi": "KPI - OdV incompletas de Entrega",
+            "description": ""
+          },
+          {
+            "id": 7,
+            "kpi": "KPI- OdV no recolectadas",
+            "description": ""
+          }
+        ]
       },
       {
-        "kpi": "KPI - Entregas no completadas",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Operaciones Facturacion",
+        "kpis": [
+          {
+            "id": 8,
+            "kpi": "KPI - OdV no completadas",
+            "description": ""
+          },
+          {
+            "id": 9,
+            "kpi": "KPI - OdV en proceso",
+            "description": ""
+          },
+          {
+            "id": 10,
+            "kpi": "KPI - OdV incompletas de facturacion",
+            "description": ""
+          },
+          {
+            "id": 11,
+            "kpi": "KPI - Facturas de venta completadas",
+            "description": ""
+          },
+          {
+            "id": 12,
+            "kpi": "KPI - Facturas de venta no completadas",
+            "description": ""
+          },
+          {
+            "id": 13,
+            "kpi": "Numero de OdV erroneas",
+            "description": ""
+          }
+        ]
       },
       {
-        "kpi": "OdA no completadas",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Ventas General",
+        "kpis": [
+          {
+            "id": 14,
+            "kpi": "Facturacion neta por mes",
+            "description": ""
+          },
+          {
+            "id": 15,
+            "kpi": "Facturacion neta por linea",
+            "description": ""
+          },
+          {
+            "id": 16,
+            "kpi": "Facturacion neta por vendedores",
+            "description": ""
+          },
+          {
+            "id": 17,
+            "kpi": "Facturacion neta por vendedor y linea",
+            "description": ""
+          },
+          {
+            "id": 18,
+            "kpi": "Facturacion, costo y margen de ganancia (%) por mes",
+            "description": ""
+          },
+          {
+            "id": 19,
+            "kpi": "Facturacion, costo y margen de ganancia (%) por vendedor",
+            "description": ""
+          },
+          {
+            "id": 20,
+            "kpi": "Facturacion, costo y margen de ganancia (%) por linea",
+            "description": ""
+          },
+          {
+            "id": 21,
+            "kpi": "Facturacion, costo y margen de ganancia (monto) por mes",
+            "description": ""
+          },
+          {
+            "id": 22,
+            "kpi": "Facturacion, costo y margen de ganancia (monto) por vendedor",
+            "description": ""
+          },
+          {
+            "id": 23,
+            "kpi": "Facturacion, costo y margen de ganancia (monto) por linea",
+            "description": ""
+          }
+        ]
       },
       {
-        "kpi": "OdA no entregadas",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Traslados no completados",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Ventas Acumuladas",
+        "kpis": [
+          {
+            "id": 24,
+            "kpi": "Facturacion neta por mes acumulada",
+            "description": ""
+          },
+          {
+            "id": 25,
+            "kpi": "Facturacion neta por vendedor y mes acumulada",
+            "description": ""
+          },
+          {
+            "id": 26,
+            "kpi": "Facturacion neta por linea y mes acumulada",
+            "description": ""
+          },
+          {
+            "id": 27,
+            "kpi": "Facturacion neta por cliente y mes acumulada",
+            "description": ""
+          },
+          {
+            "id": 28,
+            "kpi": "Facturacion, costo y margen de ganancia (monto) por mes acumulada",
+            "description": ""
+          },
+          {
+            "id": 29,
+            "kpi": "Facturacion, costo y margen de ganancia (monto) por linea y mes acumulada",
+            "description": ""
+          },
+          {
+            "id": 30,
+            "kpi": "Facturacion, costo y margen de ganancia (monto) por vendedor y mes acumulada",
+            "description": ""
+          }
+        ]
       }
     ]
   },
   {
-    "category": "Ventas",
-    "subcategory": "Operaciones Facturacion",
-    "access": ["Administrator", "Gerencia", "Ventas"],
-    "kpis": [
-      {
-        "kpi": "KPI - OdV no completadas",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - OdV en proceso",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - OdV incompletas de facturacion",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Facturas de venta completadas",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Facturas de venta no completadas",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Numero de OdV",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      }
-    ]
-  },
-  {
-    "category": "Ventas",
-    "subcategory": "Ventas General",
-    "access": ["Administrator", "Gerencia", "Ventas"],
-    "kpis": [
-      {
-        "kpi": "Facturacion neta por mes",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion neta por linea",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion neta por vendedores",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion neta por vendedor y linea",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion, costo y margen de ganancia (%) por mes",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion, costo y margen de ganancia (%) por vendedor",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion, costo y margen de ganancia (%) por linea",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion, costo y margen de ganancia (monto) por mes",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion, costo y margen de ganancia (monto) por vendedor",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion, costo y margen de ganancia (monto) por linea",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      }
-    ]
-  },
-  {
-    "category": "Ventas",
-    "subcategory": "Ventas Acumuladas",
-    "access": ["Administrator", "Gerencia", "Ventas"],
-    "kpis": [
-      {
-        "kpi": "Facturacion neta por mes acumulada",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion neta por vendedor y mes acumulada",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion neta por linea y mes acumulada",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion neta por cliente y mes acumulada",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion, costo y margen de ganancia (monto) por mes acumulada",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion, costo y margen de ganancia (monto) por linea y mes acumulada",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "Facturacion, costo y margen de ganancia (monto) por vendedor y mes acumulada",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      }
-    ]
-  },
-  {
-    "category": "Compras",
-    "subcategory": "Operaciones Bodega",
+    "name": "Compras",
     "access": ["Administrator", "Gerencia", "Compras"],
-    "kpis": [
+    "subcategories": [
       {
-        "kpi": "KPI - recibos no completados",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Operaciones Bodega",
+        "kpis": [
+          {
+            "id": 31,
+            "kpi": "KPI - recibos no completados",
+            "description": ""
+          },
+          {
+            "id": 32,
+            "kpi": "KPI - OdC incompletas de recibo de material",
+            "description": ""
+          }
+        ]
       },
       {
-        "kpi": "KPI - OdC incompletas de recibo de material",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Operaciones Facturacion",
+        "kpis": [
+          {
+            "id": 33,
+            "kpi": "KPI - OdC incompletas de facturacion",
+            "description": ""
+          },
+          {
+            "id": 34,
+            "kpi": "KPI - FdC no completadas",
+            "description": ""
+          },
+          {
+            "id": 35,
+            "kpi": "KPI - Gastos de retaceo no distribuidos",
+            "description": ""
+          },
+          {
+            "id": 36,
+            "kpi": "KPI - OdC no cerradas",
+            "description": ""
+          }
+        ]
       }
     ]
   },
   {
-    "category": "Compras",
-    "subcategory": "Operaciones Facturacion",
-    "access": ["Administrator", "Gerencia", "Compras"],
-    "kpis": [
-      {
-        "kpi": "KPI - OdC incompletas de facturacion",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - FdC no completadas",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Gastos de retaceo no distribuidos",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - OdC no cerradas",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      }
-    ]
-  },
-  {
-    "category": "Tesoreria",
-    "subcategory": "Tesoreria Operaciones",
+    "name": "Tesoreria",
     "access": ["Administrator", "Gerencia"],
-    "kpis": [
+    "subcategories": [
       {
-        "kpi": "KPI - Seleccion de pagos no pagados",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Pagos planeados no pagados",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Pagos no asignados",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Seleccion de pagos no completados",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Pagos no completados",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Tesoreria Operaciones",
+        "kpis": [
+          {
+            "id": 37,
+            "kpi": "KPI - Seleccion de pagos no pagados",
+            "description": ""
+          },
+          {
+            "id": 38,
+            "kpi": "KPI - Pagos planeados no pagados",
+            "description": ""
+          },
+          {
+            "id": 39,
+            "kpi": "KPI - Pagos no asignado",
+            "description": ""
+          },
+          {
+            "id": 40,
+            "kpi": "KPI - Seleccion de pagos no completados",
+            "description": ""
+          },
+          {
+            "id": 41,
+            "kpi": "KPI - Pagos no completados",
+            "description": ""
+          }
+        ]
       }
     ]
   },
   {
-    "category": "Contabilidad",
-    "subcategory": "Contabilidad Operaciones",
-    "access": ["Administrator", "Gerencia", "Ventas", "Contabilidad"],
-    "kpis": [
+    "name": "Contabilidad",
+    "access": ["Administrator", "Gerencia", "Ventas"],
+    "subcategories": [
       {
-        "kpi": "KPI - Contabilidad documentos no procesados",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Contabilidad Operaciones",
+        "kpis": [
+          {
+            "id": 42,
+            "kpi": "KPI - Contabilidad documentos no procesados",
+            "description": ""
+          }
+        ]
       }
     ]
   },
   {
-    "category": "Finanzas",
-    "subcategory": "Finanzas Rendimiento",
-    "access": ["Administrator", "Gerencia", "Contabilidad"],
-    "kpis": [
+    "name": "Finanzas",
+    "access": ["Administrator", "Gerencia"],
+    "subcategories": [
       {
-        "kpi": "KPI - EBIT margin",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Finanzas Rendimiento",
+        "kpis": [
+          {
+            "id": 43,
+            "kpi": "KPI - EBIT margin",
+            "description": ""
+          },
+          {
+            "id": 44,
+            "kpi": "KPI - Net profit margin",
+            "description": ""
+          },
+          {
+            "id": 45,
+            "kpi": "KPI - Return on non-current assets",
+            "description": ""
+          }
+        ]
       },
       {
-        "kpi": "KPI - Net profit margin",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Finanzas Eficiencia",
+        "kpis": [
+          {
+            "id": 46,
+            "kpi": "KPI - Cost efficiency ratio",
+            "description": ""
+          },
+          {
+            "id": 47,
+            "kpi": "KPI - Working capital ratio",
+            "description": ""
+          },
+          {
+            "id": 48,
+            "kpi": "KPI - Inventory turnonver",
+            "description": ""
+          },
+          {
+            "id": 49,
+            "kpi": "KPI - Labour asset turnonver",
+            "description": ""
+          }
+        ]
       },
       {
-        "kpi": "KPI - Return on non-current assets",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      }
-    ]
-  },
-  {
-    "category": "Finanzas",
-    "subcategory": "Finanzas Eficiencia",
-    "access": ["Administrator", "Gerencia", "Contabilidad"],
-    "kpis": [
-      {
-        "kpi": "KPI - Cost efficiency ratio",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Finanzas Riesgo",
+        "kpis": [
+          {
+            "id": 50,
+            "kpi": "KPI - Interest gearing",
+            "description": ""
+          }
+        ]
       },
       {
-        "kpi": "KPI - Working capital ratio",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Inventory turnonver",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Labour asset turnonver",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      }
-    ]
-  },
-  {
-    "category": "Finanzas",
-    "subcategory": "Finanzas Riesgo",
-    "access": ["Administrator", "Gerencia", "Contabilidad"],
-    "kpis": [
-      {
-        "kpi": "KPI - Interest gearing",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      }
-    ]
-  },
-  {
-    "category": "Finanzas",
-    "subcategory": "Finanzas Liquidez",
-    "access": ["Administrator", "Gerencia", "Contabilidad"],
-    "kpis": [
-      {
-        "kpi": "KPI - Current asset ratio",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
-      },
-      {
-        "kpi": "KPI - Cash exhaustion ratio",
-        "METABASE_SITE_URL": "http://10.8.2.1:3000",
-        "METABASE_SECRET_KEY": "xxxxx"
+        "name": "Finanzas Liquidez",
+        "kpis": [
+          {
+            "id": 51,
+            "kpi": "KPI - Current asset ratio",
+            "description": ""
+          },
+          {
+            "id": 52,
+            "kpi": "KPI - Cash exhaustion ratio",
+            "description": ""
+          }
+        ]
       }
     ]
   }

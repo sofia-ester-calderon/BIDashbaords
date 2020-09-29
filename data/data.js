@@ -2,26 +2,22 @@ const dashboards = require('./dashboards.json');
 const users = require('./users.json');
 
 const getCategories = (role) => {
-  const set = new Set();
-  dashboards.forEach((dashboard) => {
-    if (dashboard.access.includes(role)) {
-      set.add(dashboard.category);
-    }
-  });
-  return Array.from(set);
+  return dashboards
+    .filter((dashboard) => dashboard.access.includes(role))
+    .map((dashboard) => dashboard.name);
 };
 
 const getSubcategories = (category) => {
-  return dashboards
-    .filter((dashboard) => dashboard.category === category)
-    .map((dashboard) => dashboard.subcategory);
+  const cat = dashboards.find((dashboard) => dashboard.name === category);
+  return cat.subcategories.map((subCategory) => subCategory.name);
 };
 
 const getDashboardOfSubCategory = (category, subCategory) => {
-  return dashboards.find(
-    (dashboard) =>
-      dashboard.category === category && dashboard.subcategory === subCategory,
+  const cat = dashboards.find((dashboard) => dashboard.name === category);
+  const wantedSubcat = cat.subcategories.find(
+    (subcat) => subcat.name === subCategory,
   );
+  return wantedSubcat.kpis;
 };
 
 const loginUser = (username, password) => {
