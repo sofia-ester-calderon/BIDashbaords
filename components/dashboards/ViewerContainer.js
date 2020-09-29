@@ -25,18 +25,20 @@ const ViewerContainer = ({route}) => {
   );
 
   useEffect(() => {
-    setSubcategories(data.getSubcategories(category));
+    if (category) {
+      setSubcategories(data.getSubcategories(category));
+    }
   }, [category]);
 
   const handleChooseSubCategory = (subCategory) => {
     const dashboard = data.getDashboardOfSubCategory(category, subCategory);
     setKpisOfSubcategory(dashboard);
-    setDisplayKpi(dashboard.kpis[0]);
+    setDisplayKpi(dashboard[0]);
     setShowCategories(false);
   };
 
   const handleShowNextKpi = () => {
-    const {kpis} = kpisOfSubcategory;
+    const kpis = kpisOfSubcategory;
     const index = kpis.indexOf(displayKpi);
     if (index === kpis.length - 1) {
       setDisplayKpi(kpis[0]);
