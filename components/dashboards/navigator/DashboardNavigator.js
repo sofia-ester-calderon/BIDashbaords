@@ -5,17 +5,21 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
-  //   conatiner: {
+  //   container: {
   //     flex: 1,
   //   },
 });
 
-const DashboardNavigator = ({onNext, onPrevious, onBack}) => {
+const DashboardNavigator = ({onNext, onPrevious, onBack, kpiCount}) => {
   return (
-    <SafeAreaView style={styles.conatiner}>
+    <SafeAreaView style={styles.container}>
       <Button title="Back to Subcategories" onPress={onBack} />
-      <Button title="Previous" onPress={onPrevious} />
-      <Button title="Next" onPress={onNext} />
+      {kpiCount > 1 && (
+        <>
+          <Button title="Previous" onPress={onPrevious} />
+          <Button title="Next" onPress={onNext} />
+        </>
+      )}
     </SafeAreaView>
   );
 };

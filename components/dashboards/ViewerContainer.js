@@ -74,6 +74,7 @@ const ViewerContainer = ({route}) => {
             onNext={handleShowNextKpi}
             onPrevious={handleShowPrevKpi}
             onBack={handleShowSubCategories}
+            kpiCount={kpisOfSubcategory.kpis.length}
           />
           <KpiViewer kpi={displayKpi} />
         </>
