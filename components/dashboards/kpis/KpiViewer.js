@@ -6,10 +6,8 @@ import PropTypes from 'prop-types';
 
 import {WebView} from 'react-native-webview';
 import {Image, Alert} from 'react-native';
-import {
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native-gesture-handler';
+import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+const infoIcon = require('../../assets/info_icon.jpg');
 
 const styles = StyleSheet.create({
   container: {
@@ -45,10 +43,7 @@ const KpiViewer = ({kpi}) => {
       <View style={styles.textArea}>
         <Text>{kpi.kpi}</Text>
         <TouchableWithoutFeedback onPress={createAlert}>
-          <Image
-            style={styles.infoIconStyle}
-            source={require('../../assets/info_icon.jpg')}
-          />
+          <Image style={styles.infoIconStyle} source={infoIcon} />
         </TouchableWithoutFeedback>
       </View>
       <WebView
