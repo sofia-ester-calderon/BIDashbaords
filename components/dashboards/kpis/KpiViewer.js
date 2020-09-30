@@ -28,14 +28,14 @@ const styles = StyleSheet.create({
 const KpiViewer = ({kpi, token}) => {
   const createAlert = () => {
     Alert.alert(
-      'KPI INFO',
+      'INFORMACIÓN',
       kpi.description,
       [
         {
-          text: 'Back',
+          text: 'OK',
         },
       ],
-      {cancelable: false}
+      {cancelable: false},
     );
   };
 

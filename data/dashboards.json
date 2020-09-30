@@ -9,37 +9,37 @@
           {
             "id": 1,
             "kpi": "KPI - Entregas completadas",
-            "description": ""
+            "description": "Cantidad de Entregas de Material completadas"
           },
           {
             "id": 2,
             "kpi": "KPI - Entregas no completadas",
-            "description": ""
+            "description": "Entregas no Completadas (= estado 'Borrador', 'En Proceso' o 'Invalido')"
           },
           {
             "id": 3,
             "kpi": "OdA no completadas",
-            "description": ""
+            "description": "Total de órdenes de almacén no completadas por día."
           },
           {
             "id": 4,
             "kpi": "OdA no entregadas",
-            "description": ""
+            "description": "Ordenes de Almacen procesadas por día, pero no entregadas."
           },
           {
             "id": 5,
             "kpi": "KPI - Traslados no completados",
-            "description": ""
+            "description": "Número de traslados no completados por día."
           },
           {
             "id": 6,
             "kpi": "KPI - OdV incompletas de Entrega",
-            "description": ""
+            "description": "Ordenes de Venta con entregas incompletas por día."
           },
           {
             "id": 7,
             "kpi": "KPI- OdV no recolectadas",
-            "description": ""
+            "description": "Ordenes de Venta completadas por día, no recolectadas."
           }
         ]
       },
@@ -49,32 +49,32 @@
           {
             "id": 8,
             "kpi": "KPI - OdV no completadas",
-            "description": ""
+            "description": "Ordenes de Venta no completadas por día."
           },
           {
             "id": 9,
             "kpi": "KPI - OdV en proceso",
-            "description": ""
+            "description": "OdV en proceso por día (=no en borrador ni completadas)"
           },
           {
             "id": 10,
             "kpi": "KPI - OdV incompletas de facturacion",
-            "description": ""
+            "description": "Ordenes de venta incompletas de Facturacion por día (puede que se haya facturado parcialmente o no)"
           },
           {
             "id": 11,
             "kpi": "KPI - Facturas de venta completadas",
-            "description": ""
+            "description": "Facturas de venta completadas por día"
           },
           {
             "id": 12,
             "kpi": "KPI - Facturas de venta no completadas",
-            "description": ""
+            "description": "Facturas creadas pero sin completar la facturacion, por día"
           },
           {
             "id": 13,
             "kpi": "Numero de OdV erroneas",
-            "description": ""
+            "description": "OdV erróneas por día. Posibles errores: período cerrado, mal almacén, no líneas , límite de crédito "
           }
         ]
       },
@@ -84,52 +84,52 @@
           {
             "id": 14,
             "kpi": "Facturacion neta por mes",
-            "description": ""
+            "description": "Venta Neta por Mes = Monto Facturado - Devoluciones - Anulaciones. Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones"
           },
           {
             "id": 15,
             "kpi": "Facturacion neta por linea",
-            "description": ""
+            "description": "Venta Neta por Línea de Productos = Monto Facturado - Devoluciones - Anulaciones. Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones."
           },
           {
             "id": 16,
             "kpi": "Facturacion neta por vendedores",
-            "description": ""
+            "description": "Venta Neta por Vendedor = Monto Facturado - Devoluciones - Anulaciones. Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones."
           },
           {
             "id": 17,
             "kpi": "Facturacion neta por vendedor y linea",
-            "description": ""
+            "description": "Facturación Neta por Vendedor y Línea = Monto Facturado - Devoluciones - Anulaciones. Se despliega por Vendedor apilada la venta neta de cada Línea."
           },
           {
             "id": 18,
             "kpi": "Facturacion, costo y margen de ganancia (%) por mes",
-            "description": ""
+            "description": "Venta bruta = Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones. Margen de ganancia en %  = (Monto Facturado - Costos) / Monto Facturado."
           },
           {
             "id": 19,
             "kpi": "Facturacion, costo y margen de ganancia (%) por vendedor",
-            "description": ""
+            "description": "Venta bruta = Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones. Margen de ganancia en %  = (Monto Facturado - Costos) / Monto Facturado."
           },
           {
             "id": 20,
             "kpi": "Facturacion, costo y margen de ganancia (%) por linea",
-            "description": ""
+            "description": "Venta bruta = Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones. Margen de ganancia en %  = (Monto Facturado - Costos) / Monto Facturado."
           },
           {
             "id": 21,
             "kpi": "Facturacion, costo y margen de ganancia (monto) por mes",
-            "description": ""
+            "description": "Venta bruta = Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones. Margen de ganancia  = Monto Facturado - Costos."
           },
           {
             "id": 22,
             "kpi": "Facturacion, costo y margen de ganancia (monto) por vendedor",
-            "description": ""
+            "description": "Venta bruta = Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones. Margen de ganancia = Monto Facturado - Costos."
           },
           {
             "id": 23,
             "kpi": "Facturacion, costo y margen de ganancia (monto) por linea",
-            "description": ""
+            "description": "Venta bruta = Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones. Margen de ganancia = Monto Facturado - Costos."
           }
         ]
       },
@@ -139,37 +139,37 @@
           {
             "id": 24,
             "kpi": "Facturacion neta por mes acumulada",
-            "description": ""
+            "description": "Venta neta = Monto Facturado - Devoluciones - Anulaciones. A cada mes se le suman los meses anteriores. Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones."
           },
           {
             "id": 25,
             "kpi": "Facturacion neta por vendedor y mes acumulada",
-            "description": ""
+            "description": "Venta neta = Monto Facturado - Devoluciones - Anulaciones. A cada mes se le suman los meses anteriores. Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones."
           },
           {
             "id": 26,
             "kpi": "Facturacion neta por linea y mes acumulada",
-            "description": ""
+            "description": "Venta neta = Monto Facturado - Devoluciones - Anulaciones. A cada mes se le suman los meses anteriores. Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones."
           },
           {
             "id": 27,
             "kpi": "Facturacion neta por cliente y mes acumulada",
-            "description": ""
+            "description": "Venta neta = Monto Facturado - Devoluciones - Anulaciones. A cada mes se le suman los meses anteriores. Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones."
           },
           {
             "id": 28,
             "kpi": "Facturacion, costo y margen de ganancia (monto) por mes acumulada",
-            "description": ""
+            "description": "Venta bruta = Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones. Margen de ganancia  = Monto Facturado - Costos."
           },
           {
             "id": 29,
             "kpi": "Facturacion, costo y margen de ganancia (monto) por linea y mes acumulada",
-            "description": ""
+            "description": "Venta bruta = Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones. Margen de ganancia  = Monto Facturado - Costos."
           },
           {
             "id": 30,
             "kpi": "Facturacion, costo y margen de ganancia (monto) por vendedor y mes acumulada",
-            "description": ""
+            "description": "Venta bruta = Monto facturado: con impuestos extrahídos, no incluidas anulaciones ni devoluciones. Margen de ganancia  = Monto Facturado - Costos."
           }
         ]
       }
@@ -185,12 +185,12 @@
           {
             "id": 31,
             "kpi": "KPI - recibos no completados",
-            "description": ""
+            "description": "Recibos no completados (en estados diferentes a completado o anulado)"
           },
           {
             "id": 32,
             "kpi": "KPI - OdC incompletas de recibo de material",
-            "description": ""
+            "description": "Ordenes de Compra completadas, pero incompletas de Recibo de Material"
           }
         ]
       },
@@ -200,22 +200,22 @@
           {
             "id": 33,
             "kpi": "KPI - OdC incompletas de facturacion",
-            "description": ""
+            "description": "Ordenes de compra imcompletas de Facturacion: no se ha facturado o sólo se ha facturado parcialmente."
           },
           {
             "id": 34,
             "kpi": "KPI - FdC no completadas",
-            "description": ""
+            "description": "Facturas de Compra no completadas (por estar en borrador, en proceso o inválidas)"
           },
           {
             "id": 35,
             "kpi": "KPI - Gastos de retaceo no distribuidos",
-            "description": ""
+            "description": "Gastos de Retaceo no distribuidos: Facturas de retaceo que no han sido distruibuidas"
           },
           {
             "id": 36,
             "kpi": "KPI - OdC no cerradas",
-            "description": ""
+            "description": "Ordenes de Compra no Cerradas"
           }
         ]
       }
@@ -231,27 +231,27 @@
           {
             "id": 37,
             "kpi": "KPI - Seleccion de pagos no pagados",
-            "description": ""
+            "description": " Seleccion de Pagos completados, pero no pagados"
           },
           {
             "id": 38,
             "kpi": "KPI - Pagos planeados no pagados",
-            "description": ""
+            "description": "Seleccion de pagos no pagadas"
           },
           {
             "id": 39,
             "kpi": "KPI - Pagos no asignado",
-            "description": ""
+            "description": "Pagos completados, pero no asignados"
           },
           {
             "id": 40,
             "kpi": "KPI - Seleccion de pagos no completados",
-            "description": ""
+            "description": "Seleccion de Pagos no completados (en estado 'Borrador', 'En Proceso' o 'Inválido'"
           },
           {
             "id": 41,
             "kpi": "KPI - Pagos no completados",
-            "description": ""
+            "description": "Pagos no completados; no incluye cajas"
           }
         ]
       }
@@ -267,7 +267,7 @@
           {
             "id": 42,
             "kpi": "KPI - Contabilidad documentos no procesados",
-            "description": ""
+            "description": "Documentos no procesados"
           }
         ]
       }
@@ -283,17 +283,17 @@
           {
             "id": 43,
             "kpi": "KPI - EBIT margin",
-            "description": ""
+            "description": "Margen de Ganancia de Operaciones en %  - antes de Intereses e Impuestos"
           },
           {
             "id": 44,
             "kpi": "KPI - Net profit margin",
-            "description": ""
+            "description": "Margen de Ganancia neta en % "
           },
           {
             "id": 45,
             "kpi": "KPI - Return on non-current assets",
-            "description": ""
+            "description": "Margen de ganancia operacional sobre activos no corrientes en % "
           }
         ]
       },
@@ -303,22 +303,22 @@
           {
             "id": 46,
             "kpi": "KPI - Cost efficiency ratio",
-            "description": ""
+            "description": "Tasa de eficiencia de costos operacionales. Tasa < 1 = gastos actuales son menores que los esperados. Tasa > 1 = gastos actuales son mayores que los esperados."
           },
           {
             "id": 47,
             "kpi": "KPI - Working capital ratio",
-            "description": ""
+            "description": "Tasa de capital circulante en % de los ingresos"
           },
           {
             "id": 48,
             "kpi": "KPI - Inventory turnonver",
-            "description": ""
+            "description": "Rotación de inventario"
           },
           {
             "id": 49,
             "kpi": "KPI - Labour asset turnonver",
-            "description": ""
+            "description": "Rotación de activos laborales "
           }
         ]
       },
@@ -328,7 +328,7 @@
           {
             "id": 50,
             "kpi": "KPI - Interest gearing",
-            "description": ""
+            "description": "Cuota de gastos financieros en % de las ganancias de operaciones"
           }
         ]
       },
@@ -338,12 +338,12 @@
           {
             "id": 51,
             "kpi": "KPI - Current asset ratio",
-            "description": ""
+            "description": "Tasa de activos corrientes vs. deudas corrientes"
           },
           {
             "id": 52,
             "kpi": "KPI - Cash exhaustion ratio",
-            "description": ""
+            "description": "Tasa de agotamiento de las reservas en efectivo en caso de paro de operaciones"
           }
         ]
       }
