@@ -8,20 +8,26 @@ import {WebView} from 'react-native-webview';
 
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 
-const infoIcon = require('../../assets/info_icon.jpg');
+const infoIcon = require('../../assets/info_icon_2.jpg');
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  textArea: {
+  horizontalLayout: {
     flexDirection: 'row',
+    backgroundColor: 'white',
+    justifyContent: 'flex-end',
   },
   infoIconStyle: {
     margin: 4,
     height: 25,
-    width: 25,
+    width: 27,
     resizeMode: 'stretch',
+  },
+  text: {
+    backgroundColor: 'white',
+    textAlignVertical: 'center',
   },
 });
 
@@ -41,16 +47,19 @@ const KpiViewer = ({kpi, token}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.textArea}>
-        <TouchableWithoutFeedback onPress={createAlert}>
-          <Image style={styles.infoIconStyle} source={infoIcon} />
-        </TouchableWithoutFeedback>
-      </View>
       <WebView
         source={{
           uri: `http://134.209.57.186:3000/embed/question/${token}`,
         }}
       />
+      <View style={styles.horizontalLayout}>
+        <Text style={styles.text} onPress={createAlert}>
+          Information
+        </Text>
+        <TouchableWithoutFeedback onPress={createAlert}>
+          <Image style={styles.infoIconStyle} source={infoIcon} />
+        </TouchableWithoutFeedback>
+      </View>
     </SafeAreaView>
   );
 };
