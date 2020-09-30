@@ -12,6 +12,7 @@ const ViewerContainer = ({route}) => {
   const [subCategories, setSubcategories] = useState([]);
   const [kpisOfSubcategory, setKpisOfSubcategory] = useState();
   const [displayKpi, setDisplayKpi] = useState();
+  const [token, setToken] = useState();
 
   useFocusEffect(
     React.useCallback(() => {
@@ -21,7 +22,7 @@ const ViewerContainer = ({route}) => {
       return () => {
         // Do something when the screen is unfocused
       };
-    }, []),
+    }, [])
   );
 
   useEffect(() => {
@@ -29,6 +30,12 @@ const ViewerContainer = ({route}) => {
       setSubcategories(data.getSubcategories(category));
     }
   }, [category]);
+
+  useEffect(() => {
+    if (displayKpi) {
+      setToken(data.getTokenOfKpi(displayKpi.id));
+    }
+  }, [displayKpi]);
 
   const handleChooseSubCategory = (subCategory) => {
     const dashboard = data.getDashboardOfSubCategory(category, subCategory);
@@ -76,7 +83,7 @@ const ViewerContainer = ({route}) => {
             onBack={handleShowSubCategories}
             kpiCount={kpisOfSubcategory.length}
           />
-          <KpiViewer kpi={displayKpi} />
+          <KpiViewer kpi={displayKpi} token={token} />
         </>
       )}
     </>
