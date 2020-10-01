@@ -37,9 +37,7 @@ const DrawerMenu = () => {
     setCategories(data.getCategories(userPermissions.role));
   }, [userPermissions.role]);
 
-  useEffect(() => {
-    console.log('got new userPermissions', userPermissions);
-  }, [userPermissions]);
+  useEffect(() => {}, [userPermissions]);
 
   return (
     <NavigationContainer ref={navigationRef}>
