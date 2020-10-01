@@ -1,20 +1,15 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import {StyleSheet, Button, Image} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
-import {
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-} from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {Button} from 'react-native-paper';
 
 const backArrow = require('../../assets/back_arrow.jpg');
 const forwardArrow = require('../../assets/forward_arrow.jpg');
 
 const styles = StyleSheet.create({
-  //   container: {
-  //     flex: 1,
-  //   },
   horizontalLayout: {
     backgroundColor: 'white',
     flexDirection: 'row',
@@ -38,7 +33,9 @@ const DashboardNavigator = ({onNext, onPrevious, onBack, kpiCount}) => {
           </TouchableOpacity>
         </>
       )}
-      <Button title="Back to subcategories" onPress={onBack} />
+      <Button mode="outlined" onPress={onBack}>
+        Go Back{' '}
+      </Button>
       {kpiCount > 1 && (
         <>
           <TouchableOpacity onPress={onNext}>

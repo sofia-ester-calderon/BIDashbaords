@@ -1,12 +1,13 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import {Text, StyleSheet, View, Image, Alert} from 'react-native';
+import {StyleSheet, View, Image, Alert} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
 
 import {WebView} from 'react-native-webview';
 
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+import {Text} from 'react-native-paper';
 
 const infoIcon = require('../../assets/info_icon_2.jpg');
 
@@ -17,7 +18,6 @@ const styles = StyleSheet.create({
   horizontalLayout: {
     flexDirection: 'row',
     backgroundColor: 'white',
-    justifyContent: 'flex-end',
   },
   infoIconStyle: {
     margin: 4,
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   text: {
     backgroundColor: 'white',
     textAlignVertical: 'center',
+    fontSize: 15,
   },
 });
 
@@ -53,12 +54,17 @@ const KpiViewer = ({kpi, token}) => {
         }}
       />
       <View style={styles.horizontalLayout}>
-        <Text style={styles.text} onPress={createAlert}>
-          Information
-        </Text>
-        <TouchableWithoutFeedback onPress={createAlert}>
-          <Image style={styles.infoIconStyle} source={infoIcon} />
-        </TouchableWithoutFeedback>
+        <View style={{flex: 1}}>
+          <Text style={styles.text}>Numbering</Text>
+        </View>
+        <View style={({flex: 1}, styles.horizontalLayout)}>
+          <Text style={styles.text} onPress={createAlert}>
+            Information
+          </Text>
+          <TouchableWithoutFeedback onPress={createAlert}>
+            <Image style={styles.infoIconStyle} source={infoIcon} />
+          </TouchableWithoutFeedback>
+        </View>
       </View>
     </SafeAreaView>
   );
