@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import {PropTypes} from 'prop-types';
+import Spinner from 'react-native-loading-spinner-overlay';
 import KpiViewer from './kpis/KpiViewer';
 import data from '../../data/data';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
@@ -14,6 +15,7 @@ const ViewerContainer = ({route}) => {
   const [displayKpi, setDisplayKpi] = useState();
   const [token, setToken] = useState();
   const [displayKpiIndex, setDisplayKpiIndex] = useState(0);
+  const [showSpinner, setShowSpinner] = useState(false);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -23,7 +25,7 @@ const ViewerContainer = ({route}) => {
       return () => {
         // Do something when the screen is unfocused
       };
-    }, []),
+    }, [])
   );
 
   useEffect(() => {
@@ -35,8 +37,23 @@ const ViewerContainer = ({route}) => {
   useEffect(() => {
     if (displayKpi) {
       setToken(data.getTokenOfKpi(displayKpi.id));
+      showSpinnerForSeconds(2000);
     }
   }, [displayKpi]);
+
+  useEffect(() => {
+    if (!showCategories) {
+      showSpinnerForSeconds(6000);
+    }
+  }, [showCategories]);
+
+  const showSpinnerForSeconds = (time) => {
+    setShowSpinner(true);
+
+    setTimeout(() => {
+      setShowSpinner(false);
+    }, time);
+  };
 
   const handleChooseSubCategory = (subCategory) => {
     const dashboard = subCategory.kpis;
@@ -83,6 +100,13 @@ const ViewerContainer = ({route}) => {
         />
       ) : (
         <>
+          <Spinner
+            visible={showSpinner}
+            textContent="Loading..."
+            textStyle={{
+              color: '#FFF',
+            }}
+          />
           <DashboardNavigator
             onNext={handleShowNextKpi}
             onPrevious={handleShowPrevKpi}
