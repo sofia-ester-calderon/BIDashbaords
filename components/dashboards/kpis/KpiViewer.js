@@ -25,14 +25,20 @@ const styles = StyleSheet.create({
     width: 27,
     resizeMode: 'stretch',
   },
-  text: {
+  textInfo: {
     backgroundColor: 'white',
     textAlignVertical: 'center',
-    fontSize: 15,
+    fontSize: 18,
+  },
+  textNumbering: {
+    backgroundColor: 'white',
+    textAlignVertical: 'center',
+    fontSize: 18,
+    marginStart: 10,
   },
 });
 
-const KpiViewer = ({kpi, token = ''}) => {
+const KpiViewer = ({kpi, token = '', count, totalCount}) => {
   const createAlert = () => {
     Alert.alert(
       'INFORMACIÓN',
@@ -42,7 +48,7 @@ const KpiViewer = ({kpi, token = ''}) => {
           text: 'OK',
         },
       ],
-      {cancelable: false}
+      {cancelable: false},
     );
   };
 
@@ -55,10 +61,12 @@ const KpiViewer = ({kpi, token = ''}) => {
       />
       <View style={styles.horizontalLayout}>
         <View style={{flex: 1}}>
-          <Text style={styles.text}>Numbering</Text>
+          <Text style={styles.textNumbering}>
+            {count} of {totalCount}
+          </Text>
         </View>
         <View style={({flex: 1}, styles.horizontalLayout)}>
-          <Text style={styles.text} onPress={createAlert}>
+          <Text style={styles.textInfo} onPress={createAlert}>
             Information
           </Text>
           <TouchableWithoutFeedback onPress={createAlert}>
@@ -73,6 +81,8 @@ const KpiViewer = ({kpi, token = ''}) => {
 KpiViewer.propTypes = {
   kpi: PropTypes.object.isRequired,
   token: PropTypes.string,
+  count: PropTypes.number.isRequired,
+  totalCount: PropTypes.number.isRequired,
 };
 
 export default KpiViewer;
