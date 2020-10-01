@@ -5,6 +5,7 @@
     "subcategories": [
       {
         "name": "Operaciones Bodega",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 1,
@@ -45,6 +46,7 @@
       },
       {
         "name": "Operaciones Facturacion",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 8,
@@ -80,6 +82,7 @@
       },
       {
         "name": "Ventas General",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 14,
@@ -135,6 +138,7 @@
       },
       {
         "name": "Ventas Acumuladas",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 24,
@@ -181,6 +185,7 @@
     "subcategories": [
       {
         "name": "Operaciones Bodega",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 31,
@@ -196,6 +201,7 @@
       },
       {
         "name": "Operaciones Facturacion",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 33,
@@ -227,6 +233,7 @@
     "subcategories": [
       {
         "name": "Tesoreria Operaciones",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 37,
@@ -263,6 +270,7 @@
     "subcategories": [
       {
         "name": "Contabilidad Operaciones",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 42,
@@ -279,6 +287,7 @@
     "subcategories": [
       {
         "name": "Finanzas Rendimiento",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 43,
@@ -299,6 +308,7 @@
       },
       {
         "name": "Finanzas Eficiencia",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 46,
@@ -324,6 +334,7 @@
       },
       {
         "name": "Finanzas Riesgo",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 50,
@@ -334,6 +345,7 @@
       },
       {
         "name": "Finanzas Liquidez",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "kpis": [
           {
             "id": 51,
