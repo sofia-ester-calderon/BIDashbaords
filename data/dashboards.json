@@ -5,7 +5,7 @@
     "subcategories": [
       {
         "name": "Operaciones Bodega",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs muestran el rendimiento de los procesos en bodega relacionados a ventas",
         "kpis": [
           {
             "id": 1,
@@ -46,7 +46,7 @@
       },
       {
         "name": "Operaciones Facturacion",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs muestran el rendimiento de los procesos de facturación de ventas",
         "kpis": [
           {
             "id": 8,
@@ -82,7 +82,7 @@
       },
       {
         "name": "Ventas General",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs muestran el rendimiento de los procesos de venta por mes, líneas de producto y vendedores",
         "kpis": [
           {
             "id": 14,
@@ -138,7 +138,7 @@
       },
       {
         "name": "Ventas Acumuladas",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs muestran el rendimiento de los procesos de venta por mes, líneas de producto y vendedores acumulados a lo largo del tiempo",
         "kpis": [
           {
             "id": 24,
@@ -185,7 +185,7 @@
     "subcategories": [
       {
         "name": "Operaciones Bodega",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs muestran el rendimiento de los procesos en bodega relacionados a compras",
         "kpis": [
           {
             "id": 31,
@@ -201,7 +201,7 @@
       },
       {
         "name": "Operaciones Facturacion",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs muestran el rendimiento de los procesos de facturación de compras",
         "kpis": [
           {
             "id": 33,
@@ -233,7 +233,7 @@
     "subcategories": [
       {
         "name": "Tesoreria Operaciones",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs muestran el rendimiento de diferentes procesos de pago",
         "kpis": [
           {
             "id": 37,
@@ -247,7 +247,7 @@
           },
           {
             "id": 39,
-            "kpi": "KPI - Pagos no asignado",
+            "kpi": "KPI - Pagos no asignados",
             "description": "Pagos completados, pero no asignados"
           },
           {
@@ -270,7 +270,7 @@
     "subcategories": [
       {
         "name": "Contabilidad Operaciones",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs muestran el rendimiento de procesos de contabilidad",
         "kpis": [
           {
             "id": 42,
@@ -287,28 +287,28 @@
     "subcategories": [
       {
         "name": "Finanzas Rendimiento",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs analizan las ganancias",
         "kpis": [
           {
             "id": 43,
             "kpi": "KPI - EBIT margin",
-            "description": "Margen de Ganancia de Operaciones en %  - antes de Intereses e Impuestos"
+            "description": "Margen de Ganancia de Operaciones en %. Ganancia de Operaciones = Ingresos - costos de venta - costos de personal - otros costos operacionales - depreciaciones"
           },
           {
             "id": 44,
             "kpi": "KPI - Net profit margin",
-            "description": "Margen de Ganancia neta en % "
+            "description": "Margen de Ganancia neta en %. Ganancia neta = Ingresos - costos de venta - costos de personal - otros costos operacionales - depreciaciones - Intereses - Impuestos."
           },
           {
             "id": 45,
             "kpi": "KPI - Return on non-current assets",
-            "description": "Margen de ganancia operacional sobre activos no corrientes en % "
+            "description": "Margen de Ganancia de Operaciones sobre activos no corrientes en % "
           }
         ]
       },
       {
         "name": "Finanzas Eficiencia",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs analizan la eficiencia de procesos operativos globales",
         "kpis": [
           {
             "id": 46,
@@ -318,7 +318,7 @@
           {
             "id": 47,
             "kpi": "KPI - Working capital ratio",
-            "description": "Tasa de capital circulante en % de los ingresos"
+            "description": "Tasa de capital circulante en % de los ingresos. Capital circulante = cuentas por cobrar + valor de inventario - pagables"
           },
           {
             "id": 48,
@@ -328,13 +328,13 @@
           {
             "id": 49,
             "kpi": "KPI - Labour asset turnonver",
-            "description": "Rotación de activos laborales "
+            "description": "Rotación de activos laborales (costos de personal)"
           }
         ]
       },
       {
         "name": "Finanzas Riesgo",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs analizan los gastos financieros",
         "kpis": [
           {
             "id": 50,
@@ -345,7 +345,7 @@
       },
       {
         "name": "Finanzas Liquidez",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "description": "Estos KPIs analizan el nivel de liquidez",
         "kpis": [
           {
             "id": 51,
