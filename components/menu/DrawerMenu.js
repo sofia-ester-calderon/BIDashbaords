@@ -23,7 +23,7 @@ const DrawerMenu = () => {
     const {state, ...rest} = props;
     const newState = {...state};
     newState.routes = newState.routes.filter(
-      (item) => item.name !== 'Home' && item.name !== 'Login',
+      (item) => item.name !== 'Home' && item.name !== 'Login'
     );
 
     return (
@@ -49,8 +49,6 @@ const DrawerMenu = () => {
         screenOptions={{
           headerShown: true,
         }}>
-        <Drawer.Screen name="Login" component={LoginContainer} />
-        <Drawer.Screen name="Home" component={Home} />
         {categories.map((category) => (
           <Drawer.Screen
             key={category}
@@ -59,6 +57,8 @@ const DrawerMenu = () => {
             initialParams={{category}}
           />
         ))}
+        <Drawer.Screen name="Login" component={LoginContainer} />
+        <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen name="Logout" component={LogoutContainer} />
       </Drawer.Navigator>
     </NavigationContainer>
