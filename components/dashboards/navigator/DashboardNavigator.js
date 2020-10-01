@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  horizontalLayoutCentered: {
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   arrowIconStyle: {
     margin: 4,
     height: 45,
@@ -25,7 +30,10 @@ const styles = StyleSheet.create({
 
 const DashboardNavigator = ({onNext, onPrevious, onBack, kpiCount}) => {
   return (
-    <SafeAreaView style={styles.horizontalLayout}>
+    <SafeAreaView
+      style={
+        kpiCount > 1 ? styles.horizontalLayout : styles.horizontalLayoutCentered
+      }>
       {kpiCount > 1 && (
         <>
           <TouchableOpacity onPress={onPrevious}>
