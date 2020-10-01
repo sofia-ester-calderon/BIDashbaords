@@ -38,7 +38,7 @@ const ViewerContainer = ({route}) => {
   }, [displayKpi]);
 
   const handleChooseSubCategory = (subCategory) => {
-    const dashboard = data.getDashboardOfSubCategory(category, subCategory);
+    const dashboard = subCategory.kpis;
     setKpisOfSubcategory(dashboard);
     setDisplayKpi(dashboard[0]);
     setShowCategories(false);

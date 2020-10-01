@@ -10,7 +10,7 @@ const getCategories = (role) => {
 
 const getSubcategories = (category) => {
   const cat = dashboards.find((dashboard) => dashboard.name === category);
-  return cat.subcategories.map((subCategory) => subCategory.name);
+  return cat.subcategories;
 };
 
 const getDashboardOfSubCategory = (category, subCategory) => {

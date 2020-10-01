@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const KpiViewer = ({kpi, token}) => {
+const KpiViewer = ({kpi, token = ''}) => {
   const createAlert = () => {
     Alert.alert(
       'INFORMACIÓN',
@@ -41,7 +41,7 @@ const KpiViewer = ({kpi, token}) => {
           text: 'OK',
         },
       ],
-      {cancelable: false},
+      {cancelable: false}
     );
   };
 
@@ -66,7 +66,7 @@ const KpiViewer = ({kpi, token}) => {
 
 KpiViewer.propTypes = {
   kpi: PropTypes.object.isRequired,
-  token: PropTypes.string.isRequired,
+  token: PropTypes.string,
 };
 
 export default KpiViewer;
