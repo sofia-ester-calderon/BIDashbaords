@@ -2,7 +2,9 @@
 import React from 'react';
 import {View} from 'react-native';
 import {TextInput, Button, HelperText} from 'react-native-paper';
+import {Picker} from '@react-native-community/picker';
 import {PropTypes} from 'prop-types';
+import companies from '../../../data/companies';
 
 const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
   return (
@@ -32,19 +34,20 @@ const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
       <HelperText type="error" visible>
         {errors.password}
       </HelperText>
-      <TextInput
-        label="Company"
-        value={loginDetails.company}
-        onChangeText={(text) => onChange(text, 'company')}
-        error={errors.company}
-        autoCapitalize="none"
-        autoCorrect={false}
-        placeholder="enter company"
-        defaultValue="Agrinter ES"
-      />
-      <HelperText type="error" visible>
-        {errors.company}
-      </HelperText>
+      <Picker
+        selectedValue={loginDetails.company}
+        onValueChange={(itemValue, itemIndex) =>
+          onChange(itemValue, 'company')
+        }>
+        <Picker.Item label="Please select a company..." value="0" />
+        {companies.map((company) => (
+          <Picker.Item
+            label={company.companyName}
+            value={company.companyName}
+            key={company.companyName}
+          />
+        ))}
+      </Picker>
       <Button mode="contained" onPress={onLogin}>
         Login
       </Button>
