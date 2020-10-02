@@ -9,7 +9,7 @@ import {WebView} from 'react-native-webview';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {Text} from 'react-native-paper';
 
-const infoIcon = require('../../assets/info_icon_2.jpg');
+const infoIcon = require('../../assets/info_icon_2.png');
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +17,11 @@ const styles = StyleSheet.create({
   },
   horizontalLayout: {
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: '#5725E5',
+    padding: 5,
+    paddingLeft: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   infoIconStyle: {
     margin: 4,
@@ -26,15 +30,8 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
   },
   textInfo: {
-    backgroundColor: 'white',
-    textAlignVertical: 'center',
     fontSize: 18,
-  },
-  textNumbering: {
-    backgroundColor: 'white',
-    textAlignVertical: 'center',
-    fontSize: 18,
-    marginStart: 10,
+    color: 'white',
   },
 });
 
@@ -48,7 +45,7 @@ const KpiViewer = ({kpi, token = '', count, totalCount}) => {
           text: 'OK',
         },
       ],
-      {cancelable: false},
+      {cancelable: false}
     );
   };
 
@@ -61,14 +58,11 @@ const KpiViewer = ({kpi, token = '', count, totalCount}) => {
       />
       <View style={styles.horizontalLayout}>
         <View style={{flex: 1}}>
-          <Text style={styles.textNumbering}>
+          <Text style={styles.textInfo}>
             {count} of {totalCount}
           </Text>
         </View>
         <View style={({flex: 1}, styles.horizontalLayout)}>
-          <Text style={styles.textInfo} onPress={createAlert}>
-            Information
-          </Text>
           <TouchableWithoutFeedback onPress={createAlert}>
             <Image style={styles.infoIconStyle} source={infoIcon} />
           </TouchableWithoutFeedback>
