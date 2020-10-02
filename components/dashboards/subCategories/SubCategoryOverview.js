@@ -3,10 +3,11 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {PropTypes} from 'prop-types';
 import {Button, Text} from 'react-native-paper';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const SubCateogryOverview = ({subCategories, onChooseSubCategory}) => {
   return (
-    <>
+    <ScrollView>
       {subCategories.map((subCategory) => (
         <View key={subCategory.name} style={styles.view}>
           <Text style={styles.titleText}>{subCategory.name}</Text>
@@ -19,7 +20,7 @@ const SubCateogryOverview = ({subCategories, onChooseSubCategory}) => {
           </Button>
         </View>
       ))}
-    </>
+    </ScrollView>
   );
 };
 
