@@ -15,7 +15,9 @@ const getSubcategories = (category) => {
 
 const getDashboardOfSubCategory = (category, subCategory) => {
   const cat = dashboards.find((dashboard) => dashboard.name === category);
-  const wantedSubcat = cat.subcategories.find((subcat) => subcat.name === subCategory);
+  const wantedSubcat = cat.subcategories.find(
+    (subcat) => subcat.name === subCategory,
+  );
   return wantedSubcat.kpis;
 };
 
@@ -24,15 +26,23 @@ const getTokenOfKpi = (id) => {
   return token.token;
 };
 
-const loginUser = (username, password) => {
-  return users.find((user) => user.username === username && user.password === password);
+const getLoginUser = (username, password, company) => {
+  const existingUser = users.find(
+    (user) =>
+      user.username === username &&
+      user.password === password &&
+      user.companies.includes(company),
+  );
+  if (existingUser) {
+    return {...existingUser, company: company};
+  }
 };
 
 const data = {
   getCategories,
   getSubcategories,
   getDashboardOfSubCategory,
-  loginUser,
+  getLoginUser,
   getTokenOfKpi,
 };
 

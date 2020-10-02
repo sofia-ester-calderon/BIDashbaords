@@ -2,26 +2,31 @@
   {
     "username": "user1",
     "password": "yyyyy",
-    "role": "Administrator"
+    "role": "Administrator",
+    "companies": ["Agrinter ES"]
   },
   {
     "username": "user2",
     "password": "yyyyy",
-    "role": "Gerencia"
+    "role": "Gerencia",
+    "companies": ["Agrinter ES"]
   },
   {
     "username": "user3",
     "password": "yyyyy",
-    "role": "Ventas"
+    "role": "Ventas",
+    "companies": ["Agrinter ES"]
   },
   {
     "username": "user4",
     "password": "yyyyy",
-    "role": "Compras"
+    "role": "Compras",
+    "companies": ["Agrinter ES"]
   },
   {
     "username": "user5",
     "password": "yyyyy",
-    "role": "Contabilidad"
+    "role": "Contabilidad",
+    "companies": ["Agrinter ES"]
   }
 ]

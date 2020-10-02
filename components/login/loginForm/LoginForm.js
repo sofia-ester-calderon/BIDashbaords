@@ -32,6 +32,19 @@ const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
       <HelperText type="error" visible>
         {errors.password}
       </HelperText>
+      <TextInput
+        label="Company"
+        value={loginDetails.company}
+        onChangeText={(text) => onChange(text, 'company')}
+        error={errors.company}
+        autoCapitalize="none"
+        autoCorrect={false}
+        placeholder="enter company"
+        defaultValue="Agrinter ES"
+      />
+      <HelperText type="error" visible>
+        {errors.company}
+      </HelperText>
       <Button mode="contained" onPress={onLogin}>
         Login
       </Button>
