@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   horizontalLayout: {
     flexDirection: 'row',
-    backgroundColor: '#5725E5',
+    backgroundColor: '#7852E3',
     padding: 5,
     paddingLeft: 15,
     justifyContent: 'center',
