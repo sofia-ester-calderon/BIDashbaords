@@ -6,18 +6,29 @@ const UserPermissionsProvider = ({children}) => {
   const [userPermissions, setUserPermissions] = useState({loggedIn: false});
 
   const loginUser = useCallback((user) => {
-    setUserPermissions({loggedIn: true, role: user.role});
+    setUserPermissions({
+      loggedIn: true,
+      role: user.role,
+      company: user.company,
+    });
   });
 
   const logoutUser = useCallback(() => {
-    setUserPermissions({loggedIn: false, role: null});
+    setUserPermissions({loggedIn: false, role: null, company: null});
   });
 
   const userFunctions = {loginUser, logoutUser};
 
-  const data = useMemo(() => [userPermissions, userFunctions], [userPermissions, userFunctions]);
+  const data = useMemo(() => [userPermissions, userFunctions], [
+    userPermissions,
+    userFunctions,
+  ]);
 
-  return <UserPermissionsContext.Provider value={data}>{children}</UserPermissionsContext.Provider>;
+  return (
+    <UserPermissionsContext.Provider value={data}>
+      {children}
+    </UserPermissionsContext.Provider>
+  );
 };
 
 const useUserPermissions = () => {
