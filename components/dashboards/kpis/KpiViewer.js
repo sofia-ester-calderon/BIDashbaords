@@ -8,6 +8,8 @@ import {WebView} from 'react-native-webview';
 
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {Text} from 'react-native-paper';
+import companies from '../../../data/companies.json';
+import {useUserPermissions} from '../../hooks/UserPermissionsProvider';
 
 const infoIcon = require('../../assets/info_icon_2.jpg');
 
@@ -52,11 +54,17 @@ const KpiViewer = ({kpi, token = '', count, totalCount}) => {
     );
   };
 
+  const [userPermissions, userFunctions] = useUserPermissions();
+  const currentCompany = companies.find(
+    (company) => userPermissions.company === company.companyName,
+  );
+  const uri = currentCompany.url.concat('/embed/question/', token);
+
   return (
     <SafeAreaView style={styles.container}>
       <WebView
         source={{
-          uri: `http://134.209.57.186:3000/embed/question/${token}`,
+          uri: uri,
         }}
       />
       <View style={styles.horizontalLayout}>
