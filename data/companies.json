@@ -1,10 +1,14 @@
 [
   {
     "companyName": "Agrinter ES",
-    "ad_client_id": "1000000"
+    "companyID": "agrinteres",
+    "ad_client_id": "1000000",
+    "url": "http://134.209.57.186:3000"
   },
   {
     "companyName": "Agrinter HN",
-    "ad_client_id": "1000021"
+    "companyID": "agrinterhn",
+    "ad_client_id": "1000021",
+    "url": "http://134.209.57.186:3000"
   }
 ]
