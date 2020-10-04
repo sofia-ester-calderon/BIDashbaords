@@ -11,12 +11,12 @@ const LoginContainer = ({navigation}) => {
   const [loginDetails, setLoginDetails] = useState({
     username: '',
     password: '',
-    company: '',
+    companyID: '',
   });
   const [errors, setErrors] = useState({
     username: null,
     password: null,
-    company: null,
+    companyID: null,
   });
 
   const handleLoginDetailsChanged = (value, key) => {
@@ -32,8 +32,8 @@ const LoginContainer = ({navigation}) => {
       formErrors.username = 'Please enter a username';
     if (loginDetails.password === '')
       formErrors.password = 'Please enter a password';
-    if (loginDetails.company === '')
-      formErrors.company = 'Please enter a company';
+    if (loginDetails.companyID === '')
+      formErrors.companyID = 'Please enter a company';
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
@@ -43,19 +43,19 @@ const LoginContainer = ({navigation}) => {
       const loggedInUser = data.getLoginUser(
         loginDetails.username,
         loginDetails.password,
-        loginDetails.company,
+        loginDetails.companyID,
       );
       if (loggedInUser) {
         userFunctions.loginUser(loggedInUser);
         navigation.navigate('Home');
         handleLoginDetailsChanged('', 'username');
         handleLoginDetailsChanged('', 'password');
-        handleLoginDetailsChanged('', 'company');
+        handleLoginDetailsChanged('', 'companyID');
       } else {
         const formErrors = {};
         formErrors.username = 'Invalid credentials';
         formErrors.password = 'Invalid credentials';
-        formErrors.company = 'Invalid credentials';
+        formErrors.companyID = 'Invalid credentials';
         setErrors(formErrors);
       }
     }

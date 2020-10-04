@@ -28,15 +28,15 @@ const getTokenOfKpi = (id, companyID) => {
   return token;
 };
 
-const getLoginUser = (username, password, company) => {
+const getLoginUser = (username, password, companyID) => {
   const existingUser = users.find(
     (user) =>
       user.username === username &&
       user.password === password &&
-      user.companies.includes(company),
+      user.companies.includes(companyID),
   );
   if (existingUser) {
-    return {...existingUser, company: company};
+    return {...existingUser, companyID: companyID};
   }
 };
 

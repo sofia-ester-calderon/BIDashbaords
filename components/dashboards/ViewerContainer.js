@@ -6,7 +6,6 @@ import KpiViewer from './kpis/KpiViewer';
 import data from '../../data/data';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
 import DashboardNavigator from './navigator/DashboardNavigator';
-import companies from '../../data/companies.json';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
 const ViewerContainer = ({route}) => {
@@ -38,11 +37,8 @@ const ViewerContainer = ({route}) => {
   }, [category]);
 
   useEffect(() => {
-    const currentCompany = companies.find(
-      (company) => userPermissions.company === company.companyName,
-    );
     if (displayKpi) {
-      setToken(data.getTokenOfKpi(displayKpi.id, currentCompany.companyID));
+      setToken(data.getTokenOfKpi(displayKpi.id, userPermissions.companyID));
       showSpinnerForSeconds(2000);
     }
   }, [displayKpi]);

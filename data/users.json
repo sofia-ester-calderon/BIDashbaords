@@ -3,30 +3,30 @@
     "username": "user1",
     "password": "yyyyy",
     "role": "Administrator",
-    "companies": ["Agrinter ES"]
+    "companies": ["agrinteres"]
   },
   {
     "username": "user2",
     "password": "yyyyy",
     "role": "Gerencia",
-    "companies": ["Agrinter ES"]
+    "companies": ["agrinteres"]
   },
   {
     "username": "user3",
     "password": "yyyyy",
     "role": "Ventas",
-    "companies": ["Agrinter ES"]
+    "companies": ["agrinteres"]
   },
   {
     "username": "user4",
     "password": "yyyyy",
     "role": "Compras",
-    "companies": ["Agrinter ES"]
+    "companies": ["agrinteres"]
   },
   {
     "username": "user5",
     "password": "yyyyy",
     "role": "Contabilidad",
-    "companies": ["Agrinter ES"]
+    "companies": ["agrinteres"]
   }
 ]

@@ -9,12 +9,16 @@ const UserPermissionsProvider = ({children}) => {
     setUserPermissions({
       loggedIn: true,
       role: user.role,
-      company: user.company,
+      companyID: user.companyID,
     });
   });
 
   const logoutUser = useCallback(() => {
-    setUserPermissions({loggedIn: false, role: null, company: null});
+    setUserPermissions({
+      loggedIn: false,
+      role: null,
+      companyID: null,
+    });
   });
 
   const userFunctions = {loginUser, logoutUser};

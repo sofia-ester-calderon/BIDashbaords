@@ -53,7 +53,7 @@ const KpiViewer = ({kpi, token = '', count, totalCount}) => {
 
   const [userPermissions, userFunctions] = useUserPermissions();
   const currentCompany = companies.find(
-    (company) => userPermissions.company === company.companyName,
+    (company) => userPermissions.companyID === company.companyID,
   );
   const uri = currentCompany
     ? currentCompany.url.concat('/embed/question/', token)

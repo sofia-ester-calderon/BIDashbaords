@@ -35,16 +35,16 @@ const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
         {errors.password}
       </HelperText>
       <Picker
-        selectedValue={loginDetails.company}
+        selectedValue={loginDetails.companyID}
         onValueChange={(itemValue, itemIndex) =>
-          onChange(itemValue, 'company')
+          onChange(itemValue, 'companyID')
         }>
         <Picker.Item label="Please select a company..." value="0" />
         {companies.map((company) => (
           <Picker.Item
             label={company.companyName}
-            value={company.companyName}
-            key={company.companyName}
+            value={company.companyID}
+            key={company.companyID}
           />
         ))}
       </Picker>
