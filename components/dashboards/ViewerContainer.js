@@ -6,6 +6,8 @@ import KpiViewer from './kpis/KpiViewer';
 import data from '../../data/data';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
 import DashboardNavigator from './navigator/DashboardNavigator';
+import companies from '../../data/companies.json';
+import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
 const ViewerContainer = ({route}) => {
   const [category, setCategory] = useState();
@@ -16,6 +18,7 @@ const ViewerContainer = ({route}) => {
   const [token, setToken] = useState();
   const [displayKpiIndex, setDisplayKpiIndex] = useState(0);
   const [showSpinner, setShowSpinner] = useState(false);
+  const [userPermissions, userFunctions] = useUserPermissions();
 
   useFocusEffect(
     React.useCallback(() => {
@@ -25,7 +28,7 @@ const ViewerContainer = ({route}) => {
       return () => {
         // Do something when the screen is unfocused
       };
-    }, [])
+    }, []),
   );
 
   useEffect(() => {
@@ -35,8 +38,11 @@ const ViewerContainer = ({route}) => {
   }, [category]);
 
   useEffect(() => {
+    const currentCompany = companies.find(
+      (company) => userPermissions.company === company.companyName,
+    );
     if (displayKpi) {
-      setToken(data.getTokenOfKpi(displayKpi.id));
+      setToken(data.getTokenOfKpi(displayKpi.id, currentCompany.companyID));
       showSpinnerForSeconds(2000);
     }
   }, [displayKpi]);

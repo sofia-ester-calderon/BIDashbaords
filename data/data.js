@@ -21,9 +21,11 @@ const getDashboardOfSubCategory = (category, subCategory) => {
   return wantedSubcat.kpis;
 };
 
-const getTokenOfKpi = (id) => {
-  const token = tokens.find((t) => t.id === id);
-  return token.token;
+const getTokenOfKpi = (id, companyID) => {
+  const token = tokens
+    .find((t) => t.id === id)
+    .companies.find((company) => company.companyID === companyID).token;
+  return token;
 };
 
 const getLoginUser = (username, password, company) => {
