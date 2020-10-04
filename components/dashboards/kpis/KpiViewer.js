@@ -47,7 +47,7 @@ const KpiViewer = ({kpi, token = '', count, totalCount}) => {
           text: 'OK',
         },
       ],
-      {cancelable: false}
+      {cancelable: false},
     );
   };
 
@@ -55,7 +55,9 @@ const KpiViewer = ({kpi, token = '', count, totalCount}) => {
   const currentCompany = companies.find(
     (company) => userPermissions.company === company.companyName,
   );
-  const uri = currentCompany.url.concat('/embed/question/', token);
+  const uri = currentCompany
+    ? currentCompany.url.concat('/embed/question/', token)
+    : '';
 
   return (
     <SafeAreaView style={styles.container}>
