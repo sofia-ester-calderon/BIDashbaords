@@ -60,3 +60,5 @@ buck-out/
 
 .talismanrc
 tokens.json
+google-services.json
+GoogleService-info.plist
