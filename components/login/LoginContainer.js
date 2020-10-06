@@ -67,7 +67,7 @@ const LoginContainer = ({navigation}) => {
       userFunctions.loginUser({
         id: loggedInUser.uid,
         loggedIn: true,
-        role: loggedInUser.role,
+        roles: loggedInUser.roles,
         companyID: loginDetails.companyID,
         language: company.language,
         url: company.url,

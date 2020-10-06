@@ -35,7 +35,7 @@ const DrawerMenu = () => {
   };
 
   useEffect(() => {
-    if (userPermissions.role) {
+    if (userPermissions.roles) {
       database()
         .ref(`/categories`)
         .once('value')
@@ -43,7 +43,9 @@ const DrawerMenu = () => {
           const categoryInfo = categoriesSnapshot
             .val()
             .filter((categoryData) =>
-              categoryData.roles.includes(userPermissions.role),
+              categoryData.roles.some(
+                (r) => userPermissions.roles.indexOf(r) >= 0,
+              ),
             )
             .map((categoryData, index) => {
               return {
@@ -54,7 +56,7 @@ const DrawerMenu = () => {
           setCategories(categoryInfo);
         });
     }
-  }, [userPermissions.role]);
+  }, [userPermissions.roles]);
 
   useEffect(() => {}, [userPermissions]);
 

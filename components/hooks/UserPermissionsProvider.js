@@ -10,7 +10,7 @@ const UserPermissionsProvider = ({children}) => {
     setUserPermissions({
       id: user.id,
       loggedIn: true,
-      role: user.role,
+      roles: user.roles,
       companyID: user.companyID,
       language: user.language,
       url: user.url,
