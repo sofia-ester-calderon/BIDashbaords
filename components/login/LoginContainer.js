@@ -44,6 +44,7 @@ const LoginContainer = ({navigation}) => {
         .then((companiesSnapshot) => {
           setCompanies(transformJsonToArray(companiesSnapshot.val()));
         });
+      setLoading(false);
       return () => {
         // Do something when the screen is unfocused
       };
@@ -117,6 +118,7 @@ const LoginContainer = ({navigation}) => {
         )
         .then(() => {})
         .catch((error) => {
+          setLoading(false);
           console.log(error.code);
           if (
             error.code === 'auth/user-not-found' ||
