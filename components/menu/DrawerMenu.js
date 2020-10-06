@@ -5,9 +5,9 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
+import database from '@react-native-firebase/database';
 import {navigationRef} from './RootNavigation';
 import ViewerContainer from '../dashboards/ViewerContainer';
-import data from '../../data/data';
 import LoginContainer from '../login/LoginContainer';
 import LogoutContainer from '../logout/LogoutContainer';
 import Home from '../home/Home';
@@ -23,7 +23,7 @@ const DrawerMenu = () => {
     const {state, ...rest} = props;
     const newState = {...state};
     newState.routes = newState.routes.filter(
-      (item) => item.name !== 'Home' && item.name !== 'Login'
+      (item) => item.name !== 'Home' && item.name !== 'Login',
     );
 
     return (
@@ -34,7 +34,17 @@ const DrawerMenu = () => {
   };
 
   useEffect(() => {
-    setCategories(data.getCategories(userPermissions.role));
+    if (userPermissions.role) {
+      database()
+        .ref(`/categories`)
+        .once('value')
+        .then((categoriesSnapshot) => {
+          const categoryNames = categoriesSnapshot
+            .val()
+            .map((categoryData) => categoryData.name[userPermissions.language]);
+          setCategories(categoryNames);
+        });
+    }
   }, [userPermissions.role]);
 
   useEffect(() => {}, [userPermissions]);
