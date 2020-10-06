@@ -49,7 +49,7 @@ const KpiViewer = ({kpi, token = '', count, totalCount, url = ''}) => {
     );
   };
 
-  const uri = url.concat('/embed/question/', token);
+  const uri = url !== '' ? url.concat('/embed/question/', token) : '';
 
   return (
     <SafeAreaView style={styles.container}>
