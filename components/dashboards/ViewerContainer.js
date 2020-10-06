@@ -1,27 +1,30 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable prettier/prettier */
 import React, {useState, useEffect} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import {PropTypes} from 'prop-types';
 import Spinner from 'react-native-loading-spinner-overlay';
+import database from '@react-native-firebase/database';
 import KpiViewer from './kpis/KpiViewer';
-import data from '../../data/data';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
 import DashboardNavigator from './navigator/DashboardNavigator';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
 const ViewerContainer = ({route}) => {
-  const [category, setCategory] = useState();
+  const [categoryIndex, setCategoryIndex] = useState(-1);
   const [showCategories, setShowCategories] = useState(true);
   const [subCategories, setSubcategories] = useState([]);
+  const [displaySubcategory, setDisplaySubcategory] = useState([]);
   const [kpisOfSubcategory, setKpisOfSubcategory] = useState();
   const [displayKpi, setDisplayKpi] = useState();
   const [token, setToken] = useState();
   const [displayKpiIndex, setDisplayKpiIndex] = useState(0);
   const [showSpinner, setShowSpinner] = useState(false);
-  const [userPermissions, userFunctions] = useUserPermissions();
+  const [userPermissions] = useUserPermissions();
 
   useFocusEffect(
     React.useCallback(() => {
-      setCategory(route.params.category);
+      setCategoryIndex(route.params.categoryIndex);
       setShowCategories(true);
 
       return () => {
@@ -31,14 +34,39 @@ const ViewerContainer = ({route}) => {
   );
 
   useEffect(() => {
-    if (category) {
-      setSubcategories(data.getSubcategories(category));
+    if (categoryIndex > -1) {
+      database()
+        .ref(`/categories/${categoryIndex}/subcategories`)
+        .once('value')
+        .then((categoriesSnapshot) => {
+          const subCatData = categoriesSnapshot.val().map((item, index) => {
+            return {
+              name: item.name[userPermissions.language],
+              description: item.description[userPermissions.language],
+              index,
+            };
+          });
+          setSubcategories(subCatData);
+        });
     }
-  }, [category]);
+  }, [categoryIndex]);
 
   useEffect(() => {
     if (displayKpi) {
-      setToken(data.getTokenOfKpi(displayKpi.id, userPermissions.companyID));
+      database()
+        .ref(
+          `/categories/${categoryIndex}/subcategories/${displaySubcategory}/kpis/${displayKpi.index}/tokens`,
+        )
+        .once('value')
+        .then((tokenSnapshot) => {
+          if (tokenSnapshot.val()) {
+            const tokenOfCompany = tokenSnapshot.val().find((tokenData) => {
+              return tokenData.companyId === userPermissions.companyID;
+            });
+            setToken(tokenOfCompany.token);
+          }
+        });
+
       showSpinnerForSeconds(2000);
     }
   }, [displayKpi]);
@@ -58,11 +86,25 @@ const ViewerContainer = ({route}) => {
   };
 
   const handleChooseSubCategory = (subCategory) => {
-    const dashboard = subCategory.kpis;
-    setKpisOfSubcategory(dashboard);
-    setDisplayKpi(dashboard[0]);
-    setDisplayKpiIndex(1);
-    setShowCategories(false);
+    setDisplaySubcategory(subCategory.index);
+    database()
+      .ref(
+        `/categories/${categoryIndex}/subcategories/${subCategory.index}/kpis`,
+      )
+      .once('value')
+      .then((kpisSnapshot) => {
+        const kpis = kpisSnapshot.val().map((kpiData, index) => {
+          return {
+            name: kpiData.name[userPermissions.language],
+            description: kpiData.description[userPermissions.language],
+            index,
+          };
+        });
+        setKpisOfSubcategory(kpis);
+        setDisplayKpi(kpis[0]);
+        setDisplayKpiIndex(1);
+        setShowCategories(false);
+      });
   };
 
   const handleShowNextKpi = () => {

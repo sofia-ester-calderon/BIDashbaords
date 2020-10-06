@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
 import {
   createDrawerNavigator,
@@ -39,10 +40,18 @@ const DrawerMenu = () => {
         .ref(`/categories`)
         .once('value')
         .then((categoriesSnapshot) => {
-          const categoryNames = categoriesSnapshot
+          const categoryInfo = categoriesSnapshot
             .val()
-            .map((categoryData) => categoryData.name[userPermissions.language]);
-          setCategories(categoryNames);
+            .filter((categoryData) =>
+              categoryData.roles.includes(userPermissions.role),
+            )
+            .map((categoryData, index) => {
+              return {
+                name: categoryData.name[userPermissions.language],
+                index,
+              };
+            });
+          setCategories(categoryInfo);
         });
     }
   }, [userPermissions.role]);
@@ -59,10 +68,12 @@ const DrawerMenu = () => {
         }}>
         {categories.map((category) => (
           <Drawer.Screen
-            key={category}
-            name={category}
+            key={category.index}
+            name={category.name}
             component={ViewerContainer}
-            initialParams={{category}}
+            initialParams={{
+              categoryIndex: category.index,
+            }}
           />
         ))}
         <Drawer.Screen name="Login" component={LoginContainer} />
