@@ -1,5 +1,4 @@
 const dashboards = require('./dashboards.json');
-const users = require('./users.json');
 const tokens = require('./tokens.json');
 
 const getCategories = (role) => {
@@ -22,29 +21,16 @@ const getDashboardOfSubCategory = (category, subCategory) => {
 };
 
 const getTokenOfKpi = (id, companyID) => {
-  const token = tokens
+  const {token} = tokens
     .find((t) => t.id === id)
-    .companies.find((company) => company.companyID === companyID).token;
+    .companies.find((company) => company.companyID === companyID);
   return token;
-};
-
-const getLoginUser = (username, password, companyID) => {
-  const existingUser = users.find(
-    (user) =>
-      user.username === username &&
-      user.password === password &&
-      user.companies.includes(companyID),
-  );
-  if (existingUser) {
-    return {...existingUser, companyID: companyID};
-  }
 };
 
 const data = {
   getCategories,
   getSubcategories,
   getDashboardOfSubCategory,
-  getLoginUser,
   getTokenOfKpi,
 };
 

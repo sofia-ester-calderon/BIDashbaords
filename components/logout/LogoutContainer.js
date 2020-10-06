@@ -3,6 +3,7 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {useFocusEffect} from '@react-navigation/native';
 import {Alert} from 'react-native';
+import auth from '@react-native-firebase/auth';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
 const LogoutContainer = ({navigation}) => {
@@ -20,18 +21,22 @@ const LogoutContainer = ({navigation}) => {
           },
           {text: 'No', onPress: () => navigation.navigate('Home')},
         ],
-        {cancelable: true}
+        {cancelable: true},
       );
 
       return () => {
         // Do something when the screen is unfocused
       };
-    }, [])
+    }, []),
   );
 
   const handleLogout = () => {
-    userFunctions.logoutUser();
-    navigation.navigate('Login');
+    auth()
+      .signOut()
+      .then(() => {
+        userFunctions.logoutUser();
+        navigation.navigate('Login');
+      });
   };
 
   return <></>;

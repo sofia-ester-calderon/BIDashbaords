@@ -1,10 +1,17 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import {View} from 'react-native';
-import {TextInput, Button, HelperText} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import {TextInput, Button, HelperText, Text} from 'react-native-paper';
 import {Picker} from '@react-native-community/picker';
 import {PropTypes} from 'prop-types';
 import companies from '../../../data/companies';
+
+const styles = StyleSheet.create({
+  error: {
+    color: '#A92F3E',
+    margin: 5,
+  },
+});
 
 const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
   return (
@@ -48,6 +55,7 @@ const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
           />
         ))}
       </Picker>
+      <Text style={styles.error}>{errors.companyID}</Text>
       <Button mode="contained" onPress={onLogin}>
         Login
       </Button>

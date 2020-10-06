@@ -6,18 +6,20 @@ const UserPermissionsProvider = ({children}) => {
   const [userPermissions, setUserPermissions] = useState({loggedIn: false});
 
   const loginUser = useCallback((user) => {
+    console.log('logging in user', user);
     setUserPermissions({
+      id: user.id,
       loggedIn: true,
       role: user.role,
       companyID: user.companyID,
+      language: user.language,
     });
   });
 
   const logoutUser = useCallback(() => {
+    console.log('logging out user');
     setUserPermissions({
       loggedIn: false,
-      role: null,
-      companyID: null,
     });
   });
 
