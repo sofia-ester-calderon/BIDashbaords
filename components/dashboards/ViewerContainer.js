@@ -120,6 +120,7 @@ const ViewerContainer = ({route}) => {
             token={token}
             count={displayKpiIndex}
             totalCount={kpisOfSubcategory.length}
+            url={userPermissions.url}
           />
         </>
       )}

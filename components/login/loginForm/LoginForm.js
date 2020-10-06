@@ -4,7 +4,6 @@ import {StyleSheet, View} from 'react-native';
 import {TextInput, Button, HelperText, Text} from 'react-native-paper';
 import {Picker} from '@react-native-community/picker';
 import {PropTypes} from 'prop-types';
-import companies from '../../../data/companies';
 
 const styles = StyleSheet.create({
   error: {
@@ -13,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
+const LoginForm = ({loginDetails, onChange, onLogin, errors, companies}) => {
   return (
     <View>
       <TextInput
@@ -49,9 +48,9 @@ const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
         <Picker.Item label="Please select a company..." value="0" />
         {companies.map((company) => (
           <Picker.Item
-            label={company.companyName}
-            value={company.companyID}
-            key={company.companyID}
+            label={company.name}
+            value={company.id}
+            key={company.id}
           />
         ))}
       </Picker>
@@ -68,6 +67,7 @@ LoginForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
+  companies: PropTypes.array.isRequired,
 };
 
 export default LoginForm;

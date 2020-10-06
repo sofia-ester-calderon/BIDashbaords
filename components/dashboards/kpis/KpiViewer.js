@@ -8,8 +8,6 @@ import {WebView} from 'react-native-webview';
 
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {Text} from 'react-native-paper';
-import companies from '../../../data/companies.json';
-import {useUserPermissions} from '../../hooks/UserPermissionsProvider';
 
 const infoIcon = require('../../assets/info_icon_2.png');
 
@@ -37,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const KpiViewer = ({kpi, token = '', count, totalCount}) => {
+const KpiViewer = ({kpi, token = '', count, totalCount, url = ''}) => {
   const createAlert = () => {
     Alert.alert(
       'INFORMACIÓN',
@@ -51,19 +49,13 @@ const KpiViewer = ({kpi, token = '', count, totalCount}) => {
     );
   };
 
-  const [userPermissions, userFunctions] = useUserPermissions();
-  const currentCompany = companies.find(
-    (company) => userPermissions.companyID === company.companyID,
-  );
-  const uri = currentCompany
-    ? currentCompany.url.concat('/embed/question/', token)
-    : '';
+  const uri = url.concat('/embed/question/', token);
 
   return (
     <SafeAreaView style={styles.container}>
       <WebView
         source={{
-          uri: uri,
+          uri,
         }}
       />
       <View style={styles.horizontalLayout}>
@@ -87,6 +79,7 @@ KpiViewer.propTypes = {
   token: PropTypes.string,
   count: PropTypes.number.isRequired,
   totalCount: PropTypes.number.isRequired,
+  url: PropTypes.string,
 };
 
 export default KpiViewer;

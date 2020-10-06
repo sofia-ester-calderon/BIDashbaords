@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import {PropTypes} from 'prop-types';
@@ -34,9 +37,17 @@ const LogoutContainer = ({navigation}) => {
     auth()
       .signOut()
       .then(() => {
-        userFunctions.logoutUser();
-        navigation.navigate('Login');
+        logout();
+      })
+      .catch((error) => {
+        console.log(error);
+        logout();
       });
+  };
+
+  const logout = () => {
+    userFunctions.logoutUser();
+    navigation.navigate('Login');
   };
 
   return <></>;

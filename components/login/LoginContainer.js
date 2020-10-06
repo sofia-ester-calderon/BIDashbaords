@@ -8,13 +8,16 @@ import {PropTypes} from 'prop-types';
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
 import Spinner from 'react-native-loading-spinner-overlay';
+import {useFocusEffect} from '@react-navigation/native';
 import LoginForm from './loginForm/LoginForm';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
+import {transformJsonToArray} from '../../data/firebaseHelper';
 
 const LoginContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [companies, setCompanies] = useState([]);
 
   const [loginDetails, setLoginDetails] = useState({
     username: '',
@@ -32,6 +35,21 @@ const LoginContainer = ({navigation}) => {
     return subscriber;
   }, []);
 
+  useFocusEffect(
+    React.useCallback(() => {
+      setLoginDetails({...loginDetails, password: ''});
+      database()
+        .ref(`/companies`)
+        .once('value')
+        .then((companiesSnapshot) => {
+          setCompanies(transformJsonToArray(companiesSnapshot.val()));
+        });
+      return () => {
+        // Do something when the screen is unfocused
+      };
+    }, []),
+  );
+
   useEffect(() => {
     if (loggedInUser) {
       if (!loggedInUser.companies.includes(loginDetails.companyID)) {
@@ -42,20 +60,19 @@ const LoginContainer = ({navigation}) => {
         setLoading(false);
         return;
       }
-      database()
-        .ref(`/companies/${loginDetails.companyID}`)
-        .once('value')
-        .then((companySnapshot) => {
-          const company = companySnapshot.val();
-          userFunctions.loginUser({
-            id: loggedInUser.uid,
-            loggedIn: true,
-            role: loggedInUser.role,
-            companyID: loginDetails.companyID,
-            language: company.language,
-          });
-          navigation.navigate('Home');
-        });
+      const company = companies.find(
+        (comp) => comp.id === loginDetails.companyID,
+      );
+      userFunctions.loginUser({
+        id: loggedInUser.uid,
+        loggedIn: true,
+        role: loggedInUser.role,
+        companyID: loginDetails.companyID,
+        language: company.language,
+        url: company.url,
+      });
+      navigation.navigate('Home');
+      setLoading(false);
     }
   }, [loggedInUser]);
 
@@ -100,6 +117,7 @@ const LoginContainer = ({navigation}) => {
         )
         .then(() => {})
         .catch((error) => {
+          console.log(error.code);
           if (
             error.code === 'auth/user-not-found' ||
             error.code === 'auth/invalid-email'
@@ -132,6 +150,7 @@ const LoginContainer = ({navigation}) => {
         onChange={handleLoginDetailsChanged}
         onLogin={handleLogin}
         errors={errors}
+        companies={companies}
       />
     </>
   );

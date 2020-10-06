@@ -13,6 +13,7 @@ const UserPermissionsProvider = ({children}) => {
       role: user.role,
       companyID: user.companyID,
       language: user.language,
+      url: user.url,
     });
   });
 
