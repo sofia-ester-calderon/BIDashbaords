@@ -11,10 +11,10 @@ const NavBar = () => {
   const [userPermissions] = useUserPermissions();
 
   const handleOnPress = () => {
-    if (userPermissions.loggedIn) {
+    if (userPermissions.loggedIn && userPermissions.company) {
       Navigation.toggleDrawer();
     } else {
-      Alert.alert('Message', 'Please Log in First!', [{text: 'OK'}], {
+      Alert.alert('', 'Please complete Login First!', [{text: 'OK'}], {
         cancelable: true,
       });
     }
@@ -22,7 +22,10 @@ const NavBar = () => {
 
   return (
     <SafeAreaView style={{backgroundColor: '#6200ee'}}>
-      <TouchableOpacity style={styles.HeaderStyle} activeOpacity={0.4} onPress={handleOnPress}>
+      <TouchableOpacity
+        style={styles.HeaderStyle}
+        activeOpacity={0.4}
+        onPress={handleOnPress}>
         <Image style={styles.MenuIconStyle} source={menu} />
         <Image source={logoShw} style={styles.ImageIconStyle} />
       </TouchableOpacity>

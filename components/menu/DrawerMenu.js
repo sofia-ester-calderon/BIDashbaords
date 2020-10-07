@@ -20,20 +20,39 @@ const DrawerMenu = () => {
   const [userPermissions] = useUserPermissions();
 
   const [categories, setCategories] = useState([]);
+  const [oneCompany, setOneCompany] = useState(false);
   const Drawer = createDrawerNavigator();
+
+  useEffect(() => {
+    if (userPermissions.companies) {
+      console.log(
+        'user companies changed',
+        userPermissions.companies.length === 1,
+      );
+      setOneCompany(userPermissions.companies.length === 1);
+    }
+  }, [userPermissions.companies]);
 
   const CustomDrawerContent = (props) => {
     const {state, ...rest} = props;
     const newState = {...state};
-    newState.routes = newState.routes.filter(
-      (item) => item.name !== 'Home' && item.name !== 'Login',
-    );
+    newState.routes = newState.routes.filter((item) => filterDrawerItems(item));
 
     return (
       <DrawerContentScrollView {...props}>
         <DrawerItemList state={newState} {...rest} />
       </DrawerContentScrollView>
     );
+  };
+
+  const filterDrawerItems = (item) => {
+    if (item.name === 'Home' || item.name === 'Login') {
+      return false;
+    }
+    if (oneCompany && item.name === 'Select Company') {
+      return false;
+    }
+    return true;
   };
 
   useEffect(() => {
@@ -59,8 +78,6 @@ const DrawerMenu = () => {
         });
     }
   }, [userPermissions.roles, userPermissions.language]);
-
-  useEffect(() => {}, [userPermissions]);
 
   return (
     <NavigationContainer ref={navigationRef}>

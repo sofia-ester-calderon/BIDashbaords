@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable prettier/prettier */
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
@@ -12,9 +13,10 @@ const CompaniesContainer = ({navigation}) => {
 
   useEffect(() => {
     if (userPermissions && userPermissions.companies) {
+      setCompanies([]);
       getCompaniesOfUser();
     }
-  }, [userPermissions]);
+  }, [userPermissions.companies]);
 
   const getCompaniesOfUser = () => {
     const comps = [];
@@ -25,6 +27,11 @@ const CompaniesContainer = ({navigation}) => {
         .then((companySnapshot) => {
           comps.push({...companySnapshot.val(), id: company});
           if (index === userPermissions.companies.length - 1) {
+            if (comps.length === 1) {
+              userFunctions.setUserCompany(comps[0]);
+              navigation.navigate('Home');
+              return;
+            }
             setCompanies(comps);
             if (userPermissions.company) {
               setSelectedCompany(userPermissions.company.id);
@@ -49,13 +56,17 @@ const CompaniesContainer = ({navigation}) => {
 
   return (
     <View>
-      <Text>Please select a company</Text>
-      <CompanyPicker
-        companies={companies}
-        onChange={handleSelectionChanged}
-        selectedValue={selectedCompany}
-        onSelect={handleSelect}
-      />
+      {companies.length > 0 && (
+        <>
+          <Text>Please select a company</Text>
+          <CompanyPicker
+            companies={companies}
+            onChange={handleSelectionChanged}
+            selectedValue={selectedCompany}
+            onSelect={handleSelect}
+          />
+        </>
+      )}
     </View>
   );
 };
