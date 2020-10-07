@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {Alert, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import * as Navigation from './RootNavigation';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';

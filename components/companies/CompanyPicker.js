@@ -1,13 +1,22 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {PropTypes} from 'prop-types';
 import {Picker} from '@react-native-community/picker';
-import {Button} from 'react-native-paper';
+import {Button, Text} from 'react-native-paper';
 
 const CompanyPicker = ({companies, onChange, selectedValue, onSelect}) => {
+  const styles = StyleSheet.create({
+    text: {
+      fontSize: 18,
+      alignSelf: 'center',
+      margin: 20,
+    },
+  });
+
   return (
     <View>
+      <Text style={styles.text}>Please select a company</Text>
       <Picker
         selectedValue={selectedValue}
         onValueChange={(itemValue) => onChange(itemValue)}>

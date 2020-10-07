@@ -8,6 +8,7 @@ import {
 } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import database from '@react-native-firebase/database';
+import {Image} from 'react-native';
 import {navigationRef} from './RootNavigation';
 import ViewerContainer from '../dashboards/ViewerContainer';
 import LoginContainer from '../login/LoginContainer';
@@ -15,6 +16,8 @@ import LogoutContainer from '../logout/LogoutContainer';
 import Home from '../home/Home';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompaniesContainer from '../companies/CompaniesContainer';
+
+const graphIcon = require('../assets/graph.png');
 
 const DrawerMenu = () => {
   const [userPermissions] = useUserPermissions();
@@ -25,10 +28,6 @@ const DrawerMenu = () => {
 
   useEffect(() => {
     if (userPermissions.companies) {
-      console.log(
-        'user companies changed',
-        userPermissions.companies.length === 1,
-      );
       setOneCompany(userPermissions.companies.length === 1);
     }
   }, [userPermissions.companies]);
@@ -94,6 +93,19 @@ const DrawerMenu = () => {
             component={ViewerContainer}
             initialParams={{
               categoryIndex: category.index,
+            }}
+            options={{
+              drawerIcon: ({focused, size}) => (
+                <Image
+                  source={graphIcon}
+                  style={{
+                    height: size,
+                    width: size,
+                    paddingRight: 0,
+                    marginRight: 0,
+                  }}
+                />
+              ),
             }}
           />
         ))}

@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable prettier/prettier */
 import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import database from '@react-native-firebase/database';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompanyPicker from './CompanyPicker';
@@ -58,7 +58,6 @@ const CompaniesContainer = ({navigation}) => {
     <View>
       {companies.length > 0 && (
         <>
-          <Text>Please select a company</Text>
           <CompanyPicker
             companies={companies}
             onChange={handleSelectionChanged}
