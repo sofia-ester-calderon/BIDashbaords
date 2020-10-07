@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
 import {
@@ -13,6 +14,7 @@ import LoginContainer from '../login/LoginContainer';
 import LogoutContainer from '../logout/LogoutContainer';
 import Home from '../home/Home';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
+import CompaniesContainer from '../companies/CompaniesContainer';
 
 const DrawerMenu = () => {
   const [userPermissions] = useUserPermissions();
@@ -56,7 +58,7 @@ const DrawerMenu = () => {
           setCategories(categoryInfo);
         });
     }
-  }, [userPermissions.roles]);
+  }, [userPermissions.roles, userPermissions.language]);
 
   useEffect(() => {}, [userPermissions]);
 
@@ -78,9 +80,10 @@ const DrawerMenu = () => {
             }}
           />
         ))}
+        <Drawer.Screen name="Select Company" component={CompaniesContainer} />
+        <Drawer.Screen name="Logout" component={LogoutContainer} />
         <Drawer.Screen name="Login" component={LoginContainer} />
         <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Logout" component={LogoutContainer} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

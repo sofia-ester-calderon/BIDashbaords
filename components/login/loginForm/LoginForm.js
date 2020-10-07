@@ -1,8 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {TextInput, Button, HelperText, Text} from 'react-native-paper';
-import {Picker} from '@react-native-community/picker';
+import {TextInput, Button, HelperText} from 'react-native-paper';
 import {PropTypes} from 'prop-types';
 
 const styles = StyleSheet.create({
@@ -12,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginForm = ({loginDetails, onChange, onLogin, errors, companies}) => {
+const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
   return (
     <View>
       <TextInput
@@ -40,21 +39,6 @@ const LoginForm = ({loginDetails, onChange, onLogin, errors, companies}) => {
       <HelperText type="error" visible>
         {errors.password}
       </HelperText>
-      <Picker
-        selectedValue={loginDetails.companyID}
-        onValueChange={(itemValue, itemIndex) =>
-          onChange(itemValue, 'companyID')
-        }>
-        <Picker.Item label="Please select a company..." value="0" />
-        {companies.map((company) => (
-          <Picker.Item
-            label={company.name}
-            value={company.id}
-            key={company.id}
-          />
-        ))}
-      </Picker>
-      <Text style={styles.error}>{errors.companyID}</Text>
       <Button mode="contained" onPress={onLogin}>
         Login
       </Button>
@@ -67,7 +51,6 @@ LoginForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
-  companies: PropTypes.array.isRequired,
 };
 
 export default LoginForm;

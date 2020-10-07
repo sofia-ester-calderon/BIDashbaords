@@ -61,7 +61,7 @@ const ViewerContainer = ({route}) => {
         .then((tokenSnapshot) => {
           if (tokenSnapshot.val()) {
             const tokenOfCompany = tokenSnapshot.val().find((tokenData) => {
-              return tokenData.companyId === userPermissions.companyID;
+              return tokenData.companyId === userPermissions.company.id;
             });
             setToken(tokenOfCompany.token);
           }
@@ -162,7 +162,7 @@ const ViewerContainer = ({route}) => {
             token={token}
             count={displayKpiIndex}
             totalCount={kpisOfSubcategory.length}
-            url={userPermissions.url}
+            url={userPermissions.company.url}
           />
         </>
       )}

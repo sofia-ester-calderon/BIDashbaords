@@ -7,14 +7,7 @@ const UserPermissionsProvider = ({children}) => {
 
   const loginUser = useCallback((user) => {
     console.log('logging in user', user);
-    setUserPermissions({
-      id: user.id,
-      loggedIn: true,
-      roles: user.roles,
-      companyID: user.companyID,
-      language: user.language,
-      url: user.url,
-    });
+    setUserPermissions(user);
   });
 
   const logoutUser = useCallback(() => {
@@ -24,7 +17,16 @@ const UserPermissionsProvider = ({children}) => {
     });
   });
 
-  const userFunctions = {loginUser, logoutUser};
+  const setUserCompany = useCallback((company) => {
+    console.log('setting company', company);
+    setUserPermissions({
+      ...userPermissions,
+      company,
+      language: company.language,
+    });
+  });
+
+  const userFunctions = {loginUser, logoutUser, setUserCompany};
 
   const data = useMemo(() => [userPermissions, userFunctions], [
     userPermissions,
