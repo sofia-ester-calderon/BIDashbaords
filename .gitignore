@@ -62,3 +62,4 @@ buck-out/
 tokens.json
 google-services.json
 GoogleService-info.plist
+key.json
