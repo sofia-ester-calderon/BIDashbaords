@@ -2,21 +2,46 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {PropTypes} from 'prop-types';
 import {useFocusEffect} from '@react-navigation/native';
 import {Alert} from 'react-native';
 import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
 const LogoutContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
+  let messages = {};
+
+  const getMessages = () => {
+    console.log('1 useEffect eingetreten');
+    console.log('2 userPermissions.language: ', userPermissions.language);
+    database()
+      .ref(`/messages/logout/${userPermissions.language}`)
+      .once('value')
+      .then((logoutSnapshot) => {
+        console.log('3 logoutSnapshot: ', logoutSnapshot.val());
+        messages = logoutSnapshot.val();
+        console.log('4 messages ist: ', messages);
+        console.log('5 und question ist: ', messages.question);
+        console.log('5 und no ist: ', messages.no);
+      });
+    console.log('6 Sprache ist: ', userPermissions.language);
+    console.log('7 die Uebersetzungen sind: ', messages);
+    console.log('8 und no ist: ', messages.no);
+  };
+  useEffect(() => {
+    getMessages();
+  }, [userPermissions.language]);
 
   useFocusEffect(
     React.useCallback(() => {
       Alert.alert(
         'Logout',
-        'Are you sure you want to logout?',
+        messages.question
+          ? messages.question
+          : 'leider nix gefunden' /* 'Are you sure you want to logout?' */,
         [
           {
             text: 'Yes',
@@ -26,6 +51,7 @@ const LogoutContainer = ({navigation}) => {
         ],
         {cancelable: true},
       );
+      console.log('9 Nach Alert-Aufruf ', messages);
 
       return () => {
         // Do something when the screen is unfocused
