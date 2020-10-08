@@ -70,10 +70,8 @@ const LoginContainer = ({navigation}) => {
 
   const isFormValid = () => {
     const formErrors = {};
-    if (loginDetails.username === '')
-      formErrors.username = 'Please enter a username';
-    if (loginDetails.password === '')
-      formErrors.password = 'Please enter a password';
+    if (loginDetails.username === '') formErrors.username = '!';
+    if (loginDetails.password === '') formErrors.password = '!';
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
@@ -94,16 +92,16 @@ const LoginContainer = ({navigation}) => {
             error.code === 'auth/user-not-found' ||
             error.code === 'auth/invalid-email'
           ) {
-            setErrors({username: 'Username does not exist'});
+            setErrors({username: '!'});
             return;
           }
           if (error.code === 'auth/wrong-password') {
-            setErrors({password: 'Wrong password'});
+            setErrors({password: '!'});
             return;
           }
           setErrors({
-            username: 'Wrong credentials',
-            password: 'Wrong credentials',
+            username: '!',
+            password: '!',
           });
         });
     }

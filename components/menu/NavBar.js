@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-use-before-define */
 import React from 'react';
-import {Alert, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import * as Navigation from './RootNavigation';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
@@ -13,10 +15,6 @@ const NavBar = () => {
   const handleOnPress = () => {
     if (userPermissions.loggedIn && userPermissions.company) {
       Navigation.toggleDrawer();
-    } else {
-      Alert.alert('', 'Please complete Login First!', [{text: 'OK'}], {
-        cancelable: true,
-      });
     }
   };
 
@@ -26,7 +24,9 @@ const NavBar = () => {
         style={styles.HeaderStyle}
         activeOpacity={0.4}
         onPress={handleOnPress}>
-        <Image style={styles.MenuIconStyle} source={menu} />
+        {userPermissions.loggedIn && userPermissions.company && (
+          <Image style={styles.MenuIconStyle} source={menu} />
+        )}
         <Image source={logoShw} style={styles.ImageIconStyle} />
       </TouchableOpacity>
     </SafeAreaView>

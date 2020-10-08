@@ -15,13 +15,12 @@ const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
   return (
     <View>
       <TextInput
-        label="Username"
+        label="E-Mail"
         value={loginDetails.username}
         onChangeText={(text) => onChange(text, 'username')}
         error={errors.username}
         autoCapitalize="none"
         autoCorrect={false}
-        placeholder="enter user name"
       />
       <HelperText type="error" visible>
         {errors.username}
@@ -33,7 +32,6 @@ const LoginForm = ({loginDetails, onChange, onLogin, errors}) => {
         error={errors.password}
         autoCapitalize="none"
         autoCorrect={false}
-        placeholder="enter password"
         secureTextEntry
       />
       <HelperText type="error" visible>
