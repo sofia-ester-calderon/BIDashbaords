@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Image, View} from 'react-native';
 import {Text} from 'react-native-paper';
-const homeLogo = require('../assets/logo_shw.gif');
+const homeLogo = require('../assets/logo_shw.png');
 
 const styles = StyleSheet.create({
   logoIconStyle: {
