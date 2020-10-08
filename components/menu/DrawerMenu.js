@@ -55,7 +55,7 @@ const DrawerMenu = () => {
   };
 
   useEffect(() => {
-    if (userPermissions.roles) {
+    if (userPermissions.roles && userPermissions.language) {
       database()
         .ref(`/categories`)
         .once('value')

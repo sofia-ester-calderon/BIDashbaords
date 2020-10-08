@@ -53,7 +53,6 @@ const LoginContainer = ({navigation}) => {
             loggedIn: true,
             roles: userSnapshot.val().roles,
             companies: userSnapshot.val().companies,
-            language: 'en',
           });
           navigation.navigate('Select Company');
           setLoading(false);

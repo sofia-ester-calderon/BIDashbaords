@@ -26,6 +26,9 @@ const CompaniesContainer = ({navigation}) => {
         .once('value')
         .then((companySnapshot) => {
           comps.push({...companySnapshot.val(), id: company});
+          if (index === 0) {
+            userFunctions.setLanguage(companySnapshot.val().language);
+          }
           if (index === userPermissions.companies.length - 1) {
             if (comps.length === 1) {
               userFunctions.setUserCompany(comps[0]);

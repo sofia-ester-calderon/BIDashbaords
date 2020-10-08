@@ -1,24 +1,31 @@
-import React, {useState, useCallback, useMemo, useContext} from 'react';
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useContext,
+  useEffect,
+} from 'react';
 
 const UserPermissionsContext = React.createContext({});
 
 const UserPermissionsProvider = ({children}) => {
   const [userPermissions, setUserPermissions] = useState({loggedIn: false});
 
+  useEffect(() => {
+    console.log('new user permissions', userPermissions);
+  }, [userPermissions]);
+
   const loginUser = useCallback((user) => {
-    console.log('logging in user', user);
     setUserPermissions(user);
   });
 
   const logoutUser = useCallback(() => {
-    console.log('logging out user');
     setUserPermissions({
       loggedIn: false,
     });
   });
 
   const setUserCompany = useCallback((company) => {
-    console.log('setting company', company);
     setUserPermissions({
       ...userPermissions,
       company,
@@ -26,7 +33,14 @@ const UserPermissionsProvider = ({children}) => {
     });
   });
 
-  const userFunctions = {loginUser, logoutUser, setUserCompany};
+  const setLanguage = useCallback((language) => {
+    setUserPermissions({
+      ...userPermissions,
+      language,
+    });
+  });
+
+  const userFunctions = {loginUser, logoutUser, setUserCompany, setLanguage};
 
   const data = useMemo(() => [userPermissions, userFunctions], [
     userPermissions,
