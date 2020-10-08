@@ -10,8 +10,8 @@ function generateToken(question) {
   console.log(`TOKEN FOR QUESTION ${question}\n${token}\n\n`);
 }
 
-const question1 = process.argv[2];
-const question2 = process.argv[3];
+const question1 = parseInt(process.argv[2]);
+const question2 = parseInt(process.argv[3]);
 
 if (!question2) {
   generateToken(question1);
