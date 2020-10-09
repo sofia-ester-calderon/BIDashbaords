@@ -15,37 +15,32 @@ const LogoutContainer = ({navigation}) => {
   const [messages, setMessages] = useState({});
 
   const getMessages = () => {
-    console.log('1 useEffect eingetreten');
-    console.log('2 userPermissions.language: ', userPermissions.language);
+    console.log('4 sprache ist: ', userPermissions.language);
     database()
       .ref(`/messages/logout/${userPermissions.language}`)
       .once('value')
       .then((logoutSnapshot) => {
-        console.log('3 logoutSnapshot: ', logoutSnapshot.val());
+        console.log('5 logoutSnapshot: ', logoutSnapshot.val());
         const tmpMessages = logoutSnapshot.val();
-        console.log('4a tmpMessages ist: ', tmpMessages);
+        console.log('6 tmpMessages ist: ', tmpMessages);
         setMessages({...tmpMessages});
-        console.log('4b messages ist: ', messages);
-        console.log('5a und question ist: ', messages.question);
-        console.log('5b und no ist: ', messages.no);
+        console.log('7 messages ist: ', messages);
       });
-    console.log('6 Sprache ist: ', userPermissions.language);
-    console.log('7 die Uebersetzungen sind: ', messages);
-    console.log('8 und no ist: ', messages.no);
   };
 
-  /* useEffect(() => { // gleicher Effekt wie useFocusEffect()
-    getMessages();
-  }, [userPermissions.language]); */
+  useEffect(() => {
+    console.log('1 messages ist: ', messages);
+    console.log('2 und question ist: ', messages.question);
+    console.log('3 und no ist: ', messages.no);
+  }, [messages]);
+  // useEffect(() => {
+  //   getMessages();
+  // }, [userPermissions.language]);
 
   useFocusEffect(
     React.useCallback(() => {
+      setMessages({});
       getMessages();
-    }, []),
-  );
-
-  useFocusEffect(
-    React.useCallback(() => {
       Alert.alert(
         'Logout',
         messages.question
@@ -60,7 +55,7 @@ const LogoutContainer = ({navigation}) => {
         ],
         {cancelable: true},
       );
-      console.log('9 Messages nach Alert-Aufruf: ', messages);
+      console.log('9 Nach Alert-Aufruf ', messages);
 
       return () => {
         // Do something when the screen is unfocused
