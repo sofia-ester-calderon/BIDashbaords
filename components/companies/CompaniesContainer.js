@@ -13,8 +13,10 @@ const CompaniesContainer = ({navigation}) => {
 
   useEffect(() => {
     if (userPermissions && userPermissions.companies) {
-      setCompanies([]);
-      getCompaniesOfUser();
+      if (!haveCompaniesChanged(userPermissions.companies)) {
+        setCompanies([]);
+        getCompaniesOfUser();
+      }
     }
   }, [userPermissions.companies]);
 
@@ -44,6 +46,11 @@ const CompaniesContainer = ({navigation}) => {
           }
         });
     });
+  };
+
+  const haveCompaniesChanged = (companyNames) => {
+    const savedCompanyNames = companies.map((company) => company.id);
+    return savedCompanyNames === companyNames;
   };
 
   const handleSelectionChanged = (value) => {
