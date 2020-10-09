@@ -11,16 +11,21 @@ const CompaniesContainer = ({navigation}) => {
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState();
 
+  console.log('im CompaniesContainer init!!');
+
   useEffect(() => {
+    console.log('im CompaniesContainer start von useFocusEffect()');
     if (userPermissions && userPermissions.companies) {
       if (!haveCompaniesChanged(userPermissions.companies)) {
         setCompanies([]);
         getCompaniesOfUser();
       }
     }
+    console.log('im CompaniesContainer ende von useFocusEffect()');
   }, [userPermissions.companies]);
 
   const getCompaniesOfUser = () => {
+    console.log('im CompaniesContainer start von getCompaniesOfUser()');
     const comps = [];
     userPermissions.companies.forEach((company, index) => {
       database()
@@ -46,22 +51,30 @@ const CompaniesContainer = ({navigation}) => {
           }
         });
     });
+    console.log('im CompaniesContainer ende von getCompaniesOfUser()');
   };
 
   const haveCompaniesChanged = (companyNames) => {
+    console.log('im CompaniesContainer start von haveCompaniesChanged()');
     const savedCompanyNames = companies.map((company) => company.id);
+    console.log('im CompaniesContainer ende von haveCompaniesChanged()');
     return savedCompanyNames === companyNames;
   };
 
   const handleSelectionChanged = (value) => {
+    console.log('im CompaniesContainer start von handleSelectionChanged()');
     setSelectedCompany(value);
+    console.log('im CompaniesContainer ende von handleSelectionChanged()');
   };
 
   const handleSelect = () => {
+    console.log('im CompaniesContainer start von handleSelect()');
     userFunctions.setUserCompany(
       companies.find((company) => company.id === selectedCompany),
     );
+    console.log('im CompaniesContainer vor navigate(home)');
     navigation.navigate('Home');
+    console.log('im CompaniesContainer ende von handleSelect()');
   };
 
   return (

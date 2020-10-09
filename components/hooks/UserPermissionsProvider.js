@@ -16,7 +16,12 @@ const UserPermissionsProvider = ({children}) => {
   }, [userPermissions]);
 
   const loginUser = useCallback((user) => {
+    console.log(
+      'im UserPermissionsProvider, start von loginUser(), user: ',
+      user,
+    );
     setUserPermissions(user);
+    console.log('im UserPermissionsProvider, end von loginUser() ');
   });
 
   const logoutUser = useCallback(() => {
@@ -26,11 +31,13 @@ const UserPermissionsProvider = ({children}) => {
   });
 
   const setUserCompany = useCallback((company) => {
+    console.log('im UserPermissionsProvider, start von setUserCompany() ');
     setUserPermissions({
       ...userPermissions,
       company,
       language: company.language,
     });
+    console.log('im UserPermissionsProvider, end von setUserCompany() ');
   });
 
   const setLanguage = useCallback((language) => {
