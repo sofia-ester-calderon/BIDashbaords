@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/forbid-prop-types */
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {PropTypes} from 'prop-types';
 import {useFocusEffect} from '@react-navigation/native';
 import {Alert} from 'react-native';
@@ -12,31 +12,32 @@ import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 
 const LogoutContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
-  let messages = {};
+  const [messages, setMessages] = useState({});
 
   const getMessages = () => {
-    console.log('1 useEffect eingetreten');
-    console.log('2 userPermissions.language: ', userPermissions.language);
+    console.log('2 sprache ist: ', userPermissions.language);
     database()
       .ref(`/messages/logout/${userPermissions.language}`)
       .once('value')
       .then((logoutSnapshot) => {
         console.log('3 logoutSnapshot: ', logoutSnapshot.val());
-        messages = logoutSnapshot.val();
-        console.log('4 messages ist: ', messages);
-        console.log('5 und question ist: ', messages.question);
-        console.log('5 und no ist: ', messages.no);
+        setMessages(logoutSnapshot.val());
       });
-    console.log('6 Sprache ist: ', userPermissions.language);
-    console.log('7 die Uebersetzungen sind: ', messages);
-    console.log('8 und no ist: ', messages.no);
   };
+
   useEffect(() => {
-    getMessages();
-  }, [userPermissions.language]);
+    console.log('4 messages ist: ', messages);
+    console.log('5 und question ist: ', messages.question);
+    console.log('5 und no ist: ', messages.no);
+  }, [messages]);
+  // useEffect(() => {
+  //   getMessages();
+  // }, [userPermissions.language]);
 
   useFocusEffect(
     React.useCallback(() => {
+      setMessages({});
+      getMessages();
       Alert.alert(
         'Logout',
         messages.question
