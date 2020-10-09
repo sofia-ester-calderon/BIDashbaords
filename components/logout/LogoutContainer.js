@@ -33,9 +33,16 @@ const LogoutContainer = ({navigation}) => {
     console.log('7 die Uebersetzungen sind: ', messages);
     console.log('8 und no ist: ', messages.no);
   };
-  useEffect(() => {
+
+  /* useEffect(() => { // gleicher Effekt wie useFocusEffect()
     getMessages();
-  }, [userPermissions.language]);
+  }, [userPermissions.language]); */
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getMessages();
+    }, []),
+  );
 
   useFocusEffect(
     React.useCallback(() => {
