@@ -13,9 +13,13 @@ import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 const LogoutContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
   const [messages, setMessages] = useState({});
+  const [timePassed, setTimePassed] = useState({timePassed: false});
 
   const getMessages = () => {
-    console.log('4 sprache ist: ', userPermissions.language);
+    console.log(
+      '4 getMessages() start, sprache ist: ',
+      userPermissions.language,
+    );
     database()
       .ref(`/messages/logout/${userPermissions.language}`)
       .once('value')
@@ -26,6 +30,10 @@ const LogoutContainer = ({navigation}) => {
         setMessages({...tmpMessages});
         console.log('7 messages ist: ', messages);
       });
+    console.log(
+      '8 getMessages() ende, sprache ist: ',
+      userPermissions.language,
+    );
   };
 
   useEffect(() => {
@@ -39,23 +47,30 @@ const LogoutContainer = ({navigation}) => {
 
   useFocusEffect(
     React.useCallback(() => {
+      console.log('9 Callback-Start ', messages);
       setMessages({});
+      console.log('10 vor getMessages()-Aufruf ', messages);
       getMessages();
-      Alert.alert(
-        'Logout',
-        messages.question
-          ? messages.question
-          : 'leider nix gefunden' /* 'Are you sure you want to logout?' */,
-        [
-          {
-            text: 'Yes',
-            onPress: () => handleLogout(),
-          },
-          {text: 'No', onPress: () => navigation.navigate('Home')},
-        ],
-        {cancelable: true},
-      );
-      console.log('9 Nach Alert-Aufruf ', messages);
+      console.log('11 nach getMessages()-Aufruf, vor Timeout ', messages);
+      setTimeout(() => {
+        console.log('12 Timeout, vor Alert-Aufruf ', messages);
+        Alert.alert(
+          'Logout',
+          messages.question
+            ? messages.question
+            : 'leider nix gefunden' /* 'Are you sure you want to logout?' */,
+          [
+            {
+              text: 'Yes',
+              onPress: () => handleLogout(),
+            },
+            {text: 'No', onPress: () => navigation.navigate('Home')},
+          ],
+          {cancelable: true},
+        );
+        console.log('13 Timeout ende, nach Alert()', messages);
+      }, 6000);
+      console.log('14 Callback-Ende', messages);
 
       return () => {
         // Do something when the screen is unfocused
