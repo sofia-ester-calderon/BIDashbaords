@@ -75,10 +75,10 @@ const LoginContainer = ({navigation}) => {
             companies: userSnapshot.val().companies,
           });
           console.log("im LoginContainer vor 'Select Company'-Aufruf ");
-          if (userPermissions.loggedIn) {
-            navigation.navigate('Select Company');
-            setLoading(false);
-          }
+          /* if (userPermissions.loggedIn) { */
+          navigation.navigate('Select Company');
+          setLoading(false);
+          /*  } */
           console.log("im LoginContainer nach 'Select Company'-Aufruf ");
         });
       console.log('im LoginContainer, end von onAuthStateChanged(): ');
