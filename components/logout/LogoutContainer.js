@@ -13,7 +13,8 @@ import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 const LogoutContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
   const [messages, setMessages] = useState({});
-  const [timePassed, setTimePassed] = useState({timePassed: false});
+
+  let messages2 = {};
 
   const getMessages = () => {
     console.log(
@@ -27,8 +28,9 @@ const LogoutContainer = ({navigation}) => {
         console.log('5 logoutSnapshot: ', logoutSnapshot.val());
         const tmpMessages = logoutSnapshot.val();
         console.log('6 tmpMessages ist: ', tmpMessages);
+        messages2 = tmpMessages;
         setMessages({...tmpMessages});
-        console.log('7 messages ist: ', messages);
+        console.log('7 messages ist: ', messages2);
       });
     console.log(
       '8 getMessages() ende, sprache ist: ',
@@ -37,40 +39,40 @@ const LogoutContainer = ({navigation}) => {
   };
 
   useEffect(() => {
-    console.log('1 messages ist: ', messages);
-    console.log('2 und question ist: ', messages.question);
-    console.log('3 und no ist: ', messages.no);
-  }, [messages]);
+    console.log('1 messages ist: ', messages2);
+    console.log('2 und question ist: ', messages2.question);
+    console.log('3 und no ist: ', messages2.no);
+  }, [messages2]);
   // useEffect(() => {
   //   getMessages();
   // }, [userPermissions.language]);
 
   useFocusEffect(
     React.useCallback(() => {
-      console.log('9 Callback-Start ', messages);
+      console.log('9 Callback-Start ', messages2);
       setMessages({});
-      console.log('10 vor getMessages()-Aufruf ', messages);
+      console.log('10 vor getMessages()-Aufruf ', messages2);
       getMessages();
-      console.log('11 nach getMessages()-Aufruf, vor Timeout ', messages);
+      console.log('11 nach getMessages()-Aufruf, vor Timeout ', messages2);
       setTimeout(() => {
-        console.log('12 Timeout, vor Alert-Aufruf ', messages);
+        console.log('12 Timeout, vor Alert-Aufruf ', messages2);
         Alert.alert(
           'Logout',
-          messages.question
-            ? messages.question
+          messages2.question
+            ? messages2.question
             : 'leider nix gefunden' /* 'Are you sure you want to logout?' */,
           [
             {
-              text: 'Yes',
+              text: messages2.yes,
               onPress: () => handleLogout(),
             },
-            {text: 'No', onPress: () => navigation.navigate('Home')},
+            {text: messages2.no, onPress: () => navigation.navigate('Home')},
           ],
           {cancelable: true},
         );
-        console.log('13 Timeout ende, nach Alert()', messages);
-      }, 6000);
-      console.log('14 Callback-Ende', messages);
+        console.log('13 Timeout ende, nach Alert()', messages2);
+      }, 444);
+      console.log('14 Callback-Ende', messages2);
 
       return () => {
         // Do something when the screen is unfocused
