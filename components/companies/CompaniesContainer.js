@@ -5,18 +5,18 @@ import {View} from 'react-native';
 import database from '@react-native-firebase/database';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompanyPicker from './CompanyPicker';
+import {useLanguage} from '../hooks/LanguageProvider';
 
 const CompaniesContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
+  const [language, setLanguage] = useLanguage();
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState();
 
   useEffect(() => {
     if (userPermissions && userPermissions.companies) {
-      if (!haveCompaniesChanged(userPermissions.companies)) {
-        setCompanies([]);
-        getCompaniesOfUser();
-      }
+      setCompanies([]);
+      getCompaniesOfUser();
     }
   }, [userPermissions.companies]);
 
@@ -29,10 +29,11 @@ const CompaniesContainer = ({navigation}) => {
         .then((companySnapshot) => {
           comps.push({...companySnapshot.val(), id: company});
           if (index === 0) {
-            userFunctions.setLanguage(companySnapshot.val().language);
+            setLanguage(companySnapshot.val().language);
           }
           if (index === userPermissions.companies.length - 1) {
             if (comps.length === 1) {
+              setLanguage(comps[0].language);
               userFunctions.setUserCompany(comps[0]);
               navigation.navigate('Home');
               return;
@@ -48,19 +49,16 @@ const CompaniesContainer = ({navigation}) => {
     });
   };
 
-  const haveCompaniesChanged = (companyNames) => {
-    const savedCompanyNames = companies.map((company) => company.id);
-    return savedCompanyNames === companyNames;
-  };
-
   const handleSelectionChanged = (value) => {
     setSelectedCompany(value);
   };
 
   const handleSelect = () => {
-    userFunctions.setUserCompany(
-      companies.find((company) => company.id === selectedCompany),
+    const selectedComp = companies.find(
+      (company) => company.id === selectedCompany,
     );
+    userFunctions.setUserCompany(selectedComp);
+    setLanguage(selectedComp.language);
     navigation.navigate('Home');
   };
 

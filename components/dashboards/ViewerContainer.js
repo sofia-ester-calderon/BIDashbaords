@@ -9,6 +9,7 @@ import KpiViewer from './kpis/KpiViewer';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
 import DashboardNavigator from './navigator/DashboardNavigator';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
+import {useLanguage} from '../hooks/LanguageProvider';
 
 const ViewerContainer = ({route}) => {
   const [categoryIndex, setCategoryIndex] = useState(-1);
@@ -21,6 +22,7 @@ const ViewerContainer = ({route}) => {
   const [displayKpiIndex, setDisplayKpiIndex] = useState(0);
   const [showSpinner, setShowSpinner] = useState(false);
   const [userPermissions] = useUserPermissions();
+  const [language] = useLanguage();
 
   useFocusEffect(
     React.useCallback(() => {
@@ -41,8 +43,8 @@ const ViewerContainer = ({route}) => {
         .then((categoriesSnapshot) => {
           const subCatData = categoriesSnapshot.val().map((item, index) => {
             return {
-              name: item.name[userPermissions.language],
-              description: item.description[userPermissions.language],
+              name: item.name[language],
+              description: item.description[language],
               index,
             };
           });
@@ -95,8 +97,8 @@ const ViewerContainer = ({route}) => {
       .then((kpisSnapshot) => {
         const kpis = kpisSnapshot.val().map((kpiData, index) => {
           return {
-            name: kpiData.name[userPermissions.language],
-            description: kpiData.description[userPermissions.language],
+            name: kpiData.name[language],
+            description: kpiData.description[language],
             index,
           };
         });
