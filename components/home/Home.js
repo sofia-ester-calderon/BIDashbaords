@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
+import database from '@react-native-firebase/database';
 import {StyleSheet, Image, View} from 'react-native';
 import {Text} from 'react-native-paper';
+import {useUserPermissions} from '../hooks/UserPermissionsProvider';
+
 const homeLogo = require('../assets/logo_shw.png');
 
 const styles = StyleSheet.create({
@@ -28,6 +31,27 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
+  const [timerRunnung, setTimerRunning] = useState(true);
+  let messages = {};
+  const getMessages = () => {
+    const [userPermissions, userFunctions] = useUserPermissions();
+    database()
+      .ref(`/messages/home/${userPermissions.language}`)
+      .once('value')
+      .then((logoutSnapshot) => {
+        messages = logoutSnapshot.val();
+      });
+  };
+
+  getMessages();
+
+  setTimeout(() => {
+    setTimerRunning(false);
+  }, 444);
+  do {
+    console.log('waiting...', timerRunnung);
+  } while (timerRunnung);
+
   return (
     <View style={styles.layout}>
       <Image style={styles.logoIconStyle} source={homeLogo} />
