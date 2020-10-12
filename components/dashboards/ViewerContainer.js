@@ -10,6 +10,7 @@ import SubCateogryOverview from './subCategories/SubCategoryOverview';
 import DashboardNavigator from './navigator/DashboardNavigator';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useLanguage} from '../hooks/LanguageProvider';
+import {useCompany} from '../hooks/CompanyProvider';
 
 const ViewerContainer = ({route}) => {
   const [categoryIndex, setCategoryIndex] = useState(-1);
@@ -23,6 +24,7 @@ const ViewerContainer = ({route}) => {
   const [showSpinner, setShowSpinner] = useState(false);
   const [userPermissions] = useUserPermissions();
   const [language] = useLanguage();
+  const [company] = useCompany();
 
   useFocusEffect(
     React.useCallback(() => {
@@ -63,7 +65,7 @@ const ViewerContainer = ({route}) => {
         .then((tokenSnapshot) => {
           if (tokenSnapshot.val()) {
             const tokenOfCompany = tokenSnapshot.val().find((tokenData) => {
-              return tokenData.companyId === userPermissions.company.id;
+              return tokenData.companyId === company.id;
             });
             setToken(tokenOfCompany.token);
           }
@@ -164,7 +166,7 @@ const ViewerContainer = ({route}) => {
             token={token}
             count={displayKpiIndex}
             totalCount={kpisOfSubcategory.length}
-            url={userPermissions.company.url}
+            url={company.url}
           />
         </>
       )}

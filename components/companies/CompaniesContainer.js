@@ -6,10 +6,12 @@ import database from '@react-native-firebase/database';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompanyPicker from './CompanyPicker';
 import {useLanguage} from '../hooks/LanguageProvider';
+import {useCompany} from '../hooks/CompanyProvider';
 
 const CompaniesContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
   const [language, setLanguage] = useLanguage();
+  const [company, setCompany] = useCompany();
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState();
 
@@ -34,7 +36,7 @@ const CompaniesContainer = ({navigation}) => {
           if (index === userPermissions.companies.length - 1) {
             if (comps.length === 1) {
               setLanguage(comps[0].language);
-              userFunctions.setUserCompany(comps[0]);
+              setCompany(comps[0]);
               navigation.navigate('Home');
               return;
             }
@@ -54,10 +56,8 @@ const CompaniesContainer = ({navigation}) => {
   };
 
   const handleSelect = () => {
-    const selectedComp = companies.find(
-      (company) => company.id === selectedCompany,
-    );
-    userFunctions.setUserCompany(selectedComp);
+    const selectedComp = companies.find((comp) => comp.id === selectedCompany);
+    setCompany(selectedComp);
     setLanguage(selectedComp.language);
     navigation.navigate('Home');
   };

@@ -5,15 +5,17 @@ import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import * as Navigation from './RootNavigation';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
+import {useCompany} from '../hooks/CompanyProvider';
 
 const logoShw = require('../assets/logo_shw.jpg');
 const menu = require('../assets/menu_icon.png');
 
 const NavBar = () => {
   const [userPermissions] = useUserPermissions();
+  const [company] = useCompany();
 
   const handleOnPress = () => {
-    if (userPermissions.loggedIn && userPermissions.company) {
+    if (userPermissions.loggedIn && company) {
       Navigation.toggleDrawer();
     }
   };
@@ -24,7 +26,7 @@ const NavBar = () => {
         style={styles.HeaderStyle}
         activeOpacity={0.4}
         onPress={handleOnPress}>
-        {userPermissions.loggedIn && userPermissions.company && (
+        {userPermissions.loggedIn && company && (
           <Image style={styles.MenuIconStyle} source={menu} />
         )}
         <Image source={logoShw} style={styles.ImageIconStyle} />
