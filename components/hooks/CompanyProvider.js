@@ -5,9 +5,7 @@ const CompanyContext = React.createContext({});
 const CompanyProvider = ({children}) => {
   const [company, setCompany] = useState();
 
-  useEffect(() => {
-    console.log('setting company', company);
-  }, [company]);
+  useEffect(() => {}, [company]);
 
   const data = useMemo(() => [company, setCompany], [company, setCompany]);
 

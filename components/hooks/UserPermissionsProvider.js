@@ -11,9 +11,7 @@ const UserPermissionsContext = React.createContext({});
 const UserPermissionsProvider = ({children}) => {
   const [userPermissions, setUserPermissions] = useState({loggedIn: false});
 
-  useEffect(() => {
-    console.log('new user permissions', userPermissions);
-  }, [userPermissions]);
+  useEffect(() => {}, [userPermissions]);
 
   const loginUser = useCallback((user) => {
     setUserPermissions(user);

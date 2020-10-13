@@ -25,25 +25,15 @@ const ViewerContainer = ({route}) => {
   const [language] = useLanguage();
   const [company] = useCompany();
   const [messages] = useMessages();
-  console.log('ViewerContainer. language:', language, 'messages:', messages);
 
   function isEmptyObject(obj) {
     return !Object.keys(obj).length;
   }
 
-  console.log(
-    'ViewerContainer. Auswertung von : "language && !isEmptyObject(messages)"',
-    language && !isEmptyObject(messages) ? true : false,
-    'language: ',
-    language,
-    'isEmptyObject(messages)',
-    isEmptyObject(messages),
-  );
   const viewerMessages =
     language && !isEmptyObject(messages)
       ? messages[language].viewerContainer
-      : '';
-  console.log('ViewerContainer. viewerMessages: ', viewerMessages);
+      : {};
 
   useFocusEffect(
     React.useCallback(() => {

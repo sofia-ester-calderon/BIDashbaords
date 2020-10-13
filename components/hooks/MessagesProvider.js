@@ -5,9 +5,7 @@ const MessagesContext = React.createContext({});
 const MessagesProvider = ({children}) => {
   const [messages, setMessages] = useState({});
 
-  useEffect(() => {
-    console.log('setting messages', messages);
-  }, [messages]);
+  useEffect(() => {}, [messages]);
 
   const data = useMemo(() => [messages, setMessages], [messages, setMessages]);
 

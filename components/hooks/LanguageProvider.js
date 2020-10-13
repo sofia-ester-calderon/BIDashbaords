@@ -5,9 +5,7 @@ const LanguageContext = React.createContext({});
 const LanguageProvider = ({children}) => {
   const [language, setLanguage] = useState('en');
 
-  useEffect(() => {
-    console.log('setting language', language);
-  }, [language]);
+  useEffect(() => {}, [language]);
 
   const data = useMemo(() => [language, setLanguage], [language, setLanguage]);
 

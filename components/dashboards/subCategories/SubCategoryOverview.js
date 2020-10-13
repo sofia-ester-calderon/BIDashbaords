@@ -14,23 +14,10 @@ const SubCateogryOverview = ({subCategories, onChooseSubCategory}) => {
   function isEmptyObject(obj) {
     return !Object.keys(obj).length;
   }
-
-  console.log(
-    'SubCateogryOverview. Auswertung von : "language && !isEmptyObject(messages)"',
-    language && !isEmptyObject(messages) ? true : false,
-    'language: ',
-    language,
-    'isEmptyObject(messages)',
-    isEmptyObject(messages),
-  );
   const subcategoryMessages =
     language && !isEmptyObject(messages)
       ? messages[language].subcategoryOverview
-      : '';
-  console.log(
-    'SubCateogryOverview. subcategoryMessages: ',
-    subcategoryMessages,
-  );
+      : {};
 
   return (
     <ScrollView>
