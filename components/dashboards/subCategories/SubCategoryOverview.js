@@ -11,11 +11,8 @@ const SubCateogryOverview = ({subCategories, onChooseSubCategory}) => {
   const [language] = useLanguage();
   const [messages] = useMessages();
 
-  function isEmptyObject(obj) {
-    return !Object.keys(obj).length;
-  }
   const subcategoryMessages =
-    language && !isEmptyObject(messages)
+    language && Object.keys(messages).length
       ? messages[language].subcategoryOverview
       : {};
 

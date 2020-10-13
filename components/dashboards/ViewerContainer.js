@@ -26,12 +26,8 @@ const ViewerContainer = ({route}) => {
   const [company] = useCompany();
   const [messages] = useMessages();
 
-  function isEmptyObject(obj) {
-    return !Object.keys(obj).length;
-  }
-
   const viewerMessages =
-    language && !isEmptyObject(messages)
+    language && Object.keys(messages).length
       ? messages[language].viewerContainer
       : {};
 
