@@ -10,6 +10,7 @@ import SubCateogryOverview from './subCategories/SubCategoryOverview';
 import DashboardNavigator from './navigator/DashboardNavigator';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useLanguage} from '../hooks/LanguageProvider';
+import {useMessages} from '../hooks/MessagesProvider';
 
 const ViewerContainer = ({route}) => {
   const [categoryIndex, setCategoryIndex] = useState(-1);
@@ -23,6 +24,7 @@ const ViewerContainer = ({route}) => {
   const [showSpinner, setShowSpinner] = useState(false);
   const [userPermissions] = useUserPermissions();
   const [language] = useLanguage();
+  const [messages, setMessages] = useMessages();
 
   useFocusEffect(
     React.useCallback(() => {
@@ -148,7 +150,7 @@ const ViewerContainer = ({route}) => {
         <>
           <Spinner
             visible={showSpinner}
-            textContent="Loading..."
+            textContent={messages.viewerContainer.loading.concat('...')}
             textStyle={{
               color: '#FFF',
             }}
@@ -164,7 +166,7 @@ const ViewerContainer = ({route}) => {
             token={token}
             count={displayKpiIndex}
             totalCount={kpisOfSubcategory.length}
-            url={userPermissions.company.url}
+            url={userPermissions.company ? userPermissions.company.url : ''}
           />
         </>
       )}

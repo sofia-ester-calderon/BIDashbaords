@@ -6,10 +6,12 @@ import database from '@react-native-firebase/database';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompanyPicker from './CompanyPicker';
 import {useLanguage} from '../hooks/LanguageProvider';
+import {useMessages} from '../hooks/MessagesProvider';
 
 const CompaniesContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
   const [language, setLanguage] = useLanguage();
+  const [messages, setMessages, setAllMessages] = useMessages();
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState();
 
@@ -17,6 +19,11 @@ const CompaniesContainer = ({navigation}) => {
     if (userPermissions && userPermissions.companies) {
       setCompanies([]);
       getCompaniesOfUser();
+      getMessages();
+      console.log(
+        'CompaniesContainer, User effect: Messages geladen!!!!. Messages: ',
+      );
+      console.log(messages);
     }
   }, [userPermissions.companies]);
 
@@ -49,8 +56,25 @@ const CompaniesContainer = ({navigation}) => {
     });
   };
 
+  const getMessages = () => {
+    console.log('CompaniesContainer, getMessages() Start ');
+    database()
+      .ref(`/messages`)
+      .once('value')
+      .then((logoutSnapshot) => {
+        setMessages(logoutSnapshot.val());
+        setAllMessages(logoutSnapshot.val());
+      });
+    console.log('CompaniesContainer, getMessages() End ');
+  };
+
   const handleSelectionChanged = (value) => {
+    console.log(
+      'CompaniesContainer, handleSelectionChanged() Start, Value: ',
+      value,
+    );
     setSelectedCompany(value);
+    console.log('CompaniesContainer, handleSelectionChanged() End ');
   };
 
   const handleSelect = () => {
@@ -59,6 +83,27 @@ const CompaniesContainer = ({navigation}) => {
     );
     userFunctions.setUserCompany(selectedComp);
     setLanguage(selectedComp.language);
+    if (selectedComp.language) {
+      console.log(
+        'CompaniesContainer, handleSelect(): Sprache wird gesetzt!!!! Language: ',
+        selectedComp.language,
+      );
+      setMessages(messages[selectedComp.language]);
+    } else {
+      console.log(
+        'CompaniesContainer, handleSelect(): (keine Sprache) auf Default-Messages umstellen ?',
+      );
+    }
+    console.log(
+      'CompaniesContainer, handleSelect: Messages mit Uebersetzung gesetzt!!!! Language: ',
+      selectedComp.language,
+      ', Company: ',
+      selectedComp,
+    );
+    console.log(
+      'CompaniesContainer, handleSelect: Messages mit Uebersetzung gesetzt!!!! Messages ',
+      messages,
+    );
     navigation.navigate('Home');
   };
 

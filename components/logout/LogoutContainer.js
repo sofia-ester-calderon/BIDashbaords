@@ -8,21 +8,26 @@ import {useFocusEffect} from '@react-navigation/native';
 import {Alert} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
+import {useMessages} from '../hooks/MessagesProvider';
 
 const LogoutContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
+  const [messages, setMessages] = useMessages();
 
   useFocusEffect(
     React.useCallback(() => {
       Alert.alert(
-        'Logout',
-        'Are you sure you want to logout?',
+        messages.logout.title,
+        messages.logout.question,
         [
           {
-            text: 'Yes',
+            text: messages.logout.yes,
             onPress: () => handleLogout(),
           },
-          {text: 'No', onPress: () => navigation.navigate('Home')},
+          {
+            text: messages.logout.no,
+            onPress: () => navigation.navigate('Home'),
+          },
         ],
         {cancelable: true},
       );

@@ -21,6 +21,7 @@ const UserPermissionsProvider = ({children}) => {
 
   const logoutUser = useCallback(() => {
     setUserPermissions({
+      ...userPermissions,
       loggedIn: false,
     });
   });
