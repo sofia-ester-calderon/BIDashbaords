@@ -30,24 +30,7 @@ const UserPermissionsProvider = ({children}) => {
     });
   });
 
-  const setUserCompany = useCallback((company) => {
-    console.log('im UserPermissionsProvider, start von setUserCompany() ');
-    setUserPermissions({
-      ...userPermissions,
-      company,
-      language: company.language,
-    });
-    console.log('im UserPermissionsProvider, end von setUserCompany() ');
-  });
-
-  const setLanguage = useCallback((language) => {
-    setUserPermissions({
-      ...userPermissions,
-      language,
-    });
-  });
-
-  const userFunctions = {loginUser, logoutUser, setUserCompany, setLanguage};
+  const userFunctions = {loginUser, logoutUser};
 
   const data = useMemo(() => [userPermissions, userFunctions], [
     userPermissions,

@@ -16,14 +16,17 @@ import LogoutContainer from '../logout/LogoutContainer';
 import Home from '../home/Home';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompaniesContainer from '../companies/CompaniesContainer';
+import {useLanguage} from '../hooks/LanguageProvider';
 
 const graphIcon = require('../assets/graph.png');
 
 const DrawerMenu = () => {
   const [userPermissions] = useUserPermissions();
+  const [language] = useLanguage();
 
   const [categories, setCategories] = useState([]);
   const [oneCompany, setOneCompany] = useState(false);
+
   const Drawer = createDrawerNavigator();
 
   useEffect(() => {
@@ -55,7 +58,7 @@ const DrawerMenu = () => {
   };
 
   useEffect(() => {
-    if (userPermissions.roles && userPermissions.language) {
+    if (userPermissions.roles && language) {
       database()
         .ref(`/categories`)
         .once('value')
@@ -69,14 +72,14 @@ const DrawerMenu = () => {
             )
             .map((categoryData, index) => {
               return {
-                name: categoryData.name[userPermissions.language],
+                name: categoryData.name[language],
                 index,
               };
             });
           setCategories(categoryInfo);
         });
     }
-  }, [userPermissions.roles, userPermissions.language]);
+  }, [userPermissions.roles, language]);
 
   return (
     <NavigationContainer ref={navigationRef}>

@@ -5,9 +5,13 @@ import {View} from 'react-native';
 import database from '@react-native-firebase/database';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompanyPicker from './CompanyPicker';
+import {useLanguage} from '../hooks/LanguageProvider';
+import {useCompany} from '../hooks/CompanyProvider';
 
 const CompaniesContainer = ({navigation}) => {
-  const [userPermissions, userFunctions] = useUserPermissions();
+  const [userPermissions] = useUserPermissions();
+  const [language, setLanguage] = useLanguage();
+  const [company, setCompany] = useCompany();
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState();
 
@@ -16,10 +20,8 @@ const CompaniesContainer = ({navigation}) => {
   useEffect(() => {
     console.log('im CompaniesContainer start von useFocusEffect()');
     if (userPermissions && userPermissions.companies) {
-      if (!haveCompaniesChanged(userPermissions.companies)) {
-        setCompanies([]);
-        getCompaniesOfUser();
-      }
+      setCompanies([]);
+      getCompaniesOfUser();
     }
     console.log('im CompaniesContainer ende von useFocusEffect()');
   }, [userPermissions.companies]);
@@ -34,11 +36,12 @@ const CompaniesContainer = ({navigation}) => {
         .then((companySnapshot) => {
           comps.push({...companySnapshot.val(), id: company});
           if (index === 0) {
-            userFunctions.setLanguage(companySnapshot.val().language);
+            setLanguage(companySnapshot.val().language);
           }
           if (index === userPermissions.companies.length - 1) {
             if (comps.length === 1) {
-              userFunctions.setUserCompany(comps[0]);
+              setLanguage(comps[0].language);
+              setCompany(comps[0]);
               navigation.navigate('Home');
               return;
             }
@@ -54,13 +57,6 @@ const CompaniesContainer = ({navigation}) => {
     console.log('im CompaniesContainer ende von getCompaniesOfUser()');
   };
 
-  const haveCompaniesChanged = (companyNames) => {
-    console.log('im CompaniesContainer start von haveCompaniesChanged()');
-    const savedCompanyNames = companies.map((company) => company.id);
-    console.log('im CompaniesContainer ende von haveCompaniesChanged()');
-    return savedCompanyNames === companyNames;
-  };
-
   const handleSelectionChanged = (value) => {
     console.log('im CompaniesContainer start von handleSelectionChanged()');
     setSelectedCompany(value);
@@ -68,11 +64,9 @@ const CompaniesContainer = ({navigation}) => {
   };
 
   const handleSelect = () => {
-    console.log('im CompaniesContainer start von handleSelect()');
-    userFunctions.setUserCompany(
-      companies.find((company) => company.id === selectedCompany),
-    );
-    console.log('im CompaniesContainer vor navigate(home)');
+    const selectedComp = companies.find((comp) => comp.id === selectedCompany);
+    setCompany(selectedComp);
+    setLanguage(selectedComp.language);
     navigation.navigate('Home');
     console.log('im CompaniesContainer ende von handleSelect()');
   };
