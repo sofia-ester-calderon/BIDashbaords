@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import database from '@react-native-firebase/database';
 import {StyleSheet, Image, View} from 'react-native';
 import {Text} from 'react-native-paper';
-import {useUserPermissions} from '../hooks/UserPermissionsProvider';
+import {useLanguage} from '../hooks/LanguageProvider';
 
 const homeLogo = require('../assets/logo_shw.png');
 
@@ -31,36 +31,30 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
-  const [timerRunnung, setTimerRunning] = useState(true);
-  let messages = {};
+  const [messages, setMessages] = useState({});
+  const [language] = useLanguage();
+
+  useEffect(() => {
+    console.log('IN HOME language', language);
+    getMessages();
+  }, [language]);
+
   const getMessages = () => {
-    const [userPermissions, userFunctions] = useUserPermissions();
     database()
-      .ref(`/messages/home/${userPermissions.language}`)
+      .ref(`/messages/${language}/home`)
       .once('value')
       .then((logoutSnapshot) => {
-        messages = logoutSnapshot.val();
+        console.log('got message', logoutSnapshot.val());
+        setMessages(logoutSnapshot.val());
       });
   };
-
-  getMessages();
-
-  setTimeout(() => {
-    setTimerRunning(false);
-  }, 444);
-  do {
-    console.log('waiting...', timerRunnung);
-  } while (timerRunnung);
 
   return (
     <View style={styles.layout}>
       <Image style={styles.logoIconStyle} source={homeLogo} />
-      <Text style={styles.mainText}>
-        Soluciones {'\n'} Business Intelligence
-      </Text>
-      <Text style={styles.subText}>
-        "Optimizando los procesos empresariales"
-      </Text>
+      <Text style={styles.mainText}>{messages.title1}</Text>
+      <Text style={styles.mainText}>{messages.title2}</Text>
+      <Text style={styles.subText}>{messages.slogan}</Text>
     </View>
   );
 };
