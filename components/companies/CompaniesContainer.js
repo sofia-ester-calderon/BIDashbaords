@@ -7,6 +7,7 @@ import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompanyPicker from './CompanyPicker';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useCompany} from '../hooks/CompanyProvider';
+import {useMessages} from '../hooks/MessagesProvider';
 
 const CompaniesContainer = ({navigation}) => {
   const [userPermissions] = useUserPermissions();
@@ -14,6 +15,7 @@ const CompaniesContainer = ({navigation}) => {
   const [company, setCompany] = useCompany();
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState();
+  const [messages, setMessages] = useMessages();
 
   console.log('im CompaniesContainer init!!');
 
@@ -22,6 +24,7 @@ const CompaniesContainer = ({navigation}) => {
     if (userPermissions && userPermissions.companies) {
       setCompanies([]);
       getCompaniesOfUser();
+      getMessages();
     }
     console.log('im CompaniesContainer ende von useFocusEffect()');
   }, [userPermissions.companies]);
@@ -55,6 +58,17 @@ const CompaniesContainer = ({navigation}) => {
         });
     });
     console.log('im CompaniesContainer ende von getCompaniesOfUser()');
+  };
+
+  const getMessages = () => {
+    console.log('CompaniesContainer, getMessages() Start ');
+    database()
+      .ref(`/messages`)
+      .once('value')
+      .then((messagesSnapshot) => {
+        setMessages(messagesSnapshot.val());
+      });
+    console.log('CompaniesContainer, getMessages() End ');
   };
 
   const handleSelectionChanged = (value) => {

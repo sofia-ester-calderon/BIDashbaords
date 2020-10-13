@@ -3,6 +3,7 @@ import database from '@react-native-firebase/database';
 import {StyleSheet, Image, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useLanguage} from '../hooks/LanguageProvider';
+import {useMessages} from '../hooks/MessagesProvider';
 
 const homeLogo = require('../assets/logo_shw.png');
 
@@ -31,30 +32,22 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
-  const [messages, setMessages] = useState({});
   const [language] = useLanguage();
+  const [messages] = useMessages();
+  const homeMessages = messages[language].home;
 
   useEffect(() => {
-    console.log('IN HOME language', language);
-    getMessages();
+    console.log('IN HOME language:', language);
+    console.log('IN HOME messages:', messages);
+    console.log('IN HOME homeMessages:', homeMessages);
   }, [language]);
-
-  const getMessages = () => {
-    database()
-      .ref(`/messages/${language}/home`)
-      .once('value')
-      .then((logoutSnapshot) => {
-        console.log('got message', logoutSnapshot.val());
-        setMessages(logoutSnapshot.val());
-      });
-  };
 
   return (
     <View style={styles.layout}>
       <Image style={styles.logoIconStyle} source={homeLogo} />
-      <Text style={styles.mainText}>{messages.title1}</Text>
-      <Text style={styles.mainText}>{messages.title2}</Text>
-      <Text style={styles.subText}>{messages.slogan}</Text>
+      <Text style={styles.mainText}>{homeMessages.title1}</Text>
+      <Text style={styles.mainText}>{homeMessages.title2}</Text>
+      <Text style={styles.subText}>{homeMessages.slogan}</Text>
     </View>
   );
 };

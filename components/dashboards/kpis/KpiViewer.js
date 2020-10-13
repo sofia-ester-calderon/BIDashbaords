@@ -8,6 +8,8 @@ import {WebView} from 'react-native-webview';
 
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {Text} from 'react-native-paper';
+import {useLanguage} from '../../hooks/LanguageProvider';
+import {useMessages} from '../../hooks/MessagesProvider';
 
 const infoIcon = require('../../assets/info_icon_2.png');
 
@@ -36,13 +38,16 @@ const styles = StyleSheet.create({
 });
 
 const KpiViewer = ({kpi, token = '', count, totalCount, url = ''}) => {
+  const [language] = useLanguage();
+  const [messages] = useMessages();
+  const kpiMessages = messages[language].kpiviewer;
   const createAlert = () => {
     Alert.alert(
-      'INFORMACIÓN',
+      kpiMessages.title,
       kpi.description,
       [
         {
-          text: 'OK',
+          text: kpiMessages.ok,
         },
       ],
       {cancelable: false},
@@ -61,7 +66,7 @@ const KpiViewer = ({kpi, token = '', count, totalCount, url = ''}) => {
       <View style={styles.horizontalLayout}>
         <View style={{flex: 1}}>
           <Text style={styles.textInfo}>
-            {count} of {totalCount}
+            {count} {kpiMessages.of} {totalCount}
           </Text>
         </View>
         <View style={({flex: 1}, styles.horizontalLayout)}>

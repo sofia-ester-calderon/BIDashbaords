@@ -11,6 +11,7 @@ import DashboardNavigator from './navigator/DashboardNavigator';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useCompany} from '../hooks/CompanyProvider';
+import {useMessages} from '../hooks/MessagesProvider';
 
 const ViewerContainer = ({route}) => {
   const [categoryIndex, setCategoryIndex] = useState(-1);
@@ -25,6 +26,8 @@ const ViewerContainer = ({route}) => {
   const [userPermissions] = useUserPermissions();
   const [language] = useLanguage();
   const [company] = useCompany();
+  const [messages] = useMessages();
+  const viewerMessages = messages[language].viewerContainer;
 
   useFocusEffect(
     React.useCallback(() => {
@@ -150,7 +153,7 @@ const ViewerContainer = ({route}) => {
         <>
           <Spinner
             visible={showSpinner}
-            textContent="Loading..."
+            textContent={viewerMessages.loading.concat('...')}
             textStyle={{
               color: '#FFF',
             }}

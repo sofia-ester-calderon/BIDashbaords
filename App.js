@@ -5,6 +5,7 @@ import NavBar from './components/menu/NavBar';
 import {UserPermissionsProvider} from './components/hooks/UserPermissionsProvider';
 import {LanguageProvider} from './components/hooks/LanguageProvider';
 import {CompanyProvider} from './components/hooks/CompanyProvider';
+import {MessagesProvider} from './components/hooks/MessagesProvider';
 
 function App() {
   return (
@@ -12,8 +13,10 @@ function App() {
       <UserPermissionsProvider>
         <CompanyProvider>
           <LanguageProvider>
-            <NavBar />
-            <DrawerMenu />
+            <MessagesProvider>
+              <NavBar />
+              <DrawerMenu />
+            </MessagesProvider>
           </LanguageProvider>
         </CompanyProvider>
       </UserPermissionsProvider>
