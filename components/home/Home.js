@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Image, View} from 'react-native';
 import {Text} from 'react-native-paper';
+import {useLanguage} from '../hooks/LanguageProvider';
+import {useMessages} from '../hooks/MessagesProvider';
+
 const homeLogo = require('../assets/logo_shw.png');
 
 const styles = StyleSheet.create({
@@ -28,15 +31,18 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
+  const [language] = useLanguage();
+  const [messages] = useMessages();
+  const homeMessages = messages[language].home;
+
+  useEffect(() => {}, [language]);
+
   return (
     <View style={styles.layout}>
       <Image style={styles.logoIconStyle} source={homeLogo} />
-      <Text style={styles.mainText}>
-        Soluciones {'\n'} Business Intelligence
-      </Text>
-      <Text style={styles.subText}>
-        "Optimizando los procesos empresariales"
-      </Text>
+      <Text style={styles.mainText}>{homeMessages.title1}</Text>
+      <Text style={styles.mainText}>{homeMessages.title2}</Text>
+      <Text style={styles.subText}>{homeMessages.slogan}</Text>
     </View>
   );
 };

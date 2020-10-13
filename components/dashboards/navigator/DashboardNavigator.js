@@ -4,6 +4,8 @@ import {StyleSheet, Image, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Button} from 'react-native-paper';
+import {useLanguage} from '../../hooks/LanguageProvider';
+import {useMessages} from '../../hooks/MessagesProvider';
 
 const backArrow = require('../../assets/back_arrow.png');
 const forwardArrow = require('../../assets/forward_arrow.png');
@@ -33,15 +35,25 @@ const styles = StyleSheet.create({
 });
 
 const DashboardNavigator = ({onNext, onPrevious, onBack, kpiCount}) => {
+  const [language] = useLanguage();
+  const [messages] = useMessages();
+  const dashboardMessages = messages[language].dashboardNavigator;
   return (
-    <View style={kpiCount > 1 ? styles.horizontalLayout : styles.horizontalLayoutCentered}>
+    <View
+      style={
+        kpiCount > 1 ? styles.horizontalLayout : styles.horizontalLayoutCentered
+      }>
       {kpiCount > 1 && (
         <TouchableOpacity onPress={onPrevious}>
           <Image style={styles.arrowIconStyle} source={backArrow} />
         </TouchableOpacity>
       )}
-      <Button mode="outlined" onPress={onBack} style={styles.button} labelStyle={{color: 'white'}}>
-        Go Back
+      <Button
+        mode="outlined"
+        onPress={onBack}
+        style={styles.button}
+        labelStyle={{color: 'white'}}>
+        {dashboardMessages.goback}
       </Button>
       {kpiCount > 1 && (
         <TouchableOpacity onPress={onNext}>

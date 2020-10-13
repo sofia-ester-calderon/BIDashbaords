@@ -7,18 +7,21 @@ import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompanyPicker from './CompanyPicker';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useCompany} from '../hooks/CompanyProvider';
+import {useMessages} from '../hooks/MessagesProvider';
 
 const CompaniesContainer = ({navigation}) => {
-  const [userPermissions, userFunctions] = useUserPermissions();
+  const [userPermissions] = useUserPermissions();
   const [language, setLanguage] = useLanguage();
   const [company, setCompany] = useCompany();
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState();
+  const [messages, setMessages] = useMessages();
 
   useEffect(() => {
     if (userPermissions && userPermissions.companies) {
       setCompanies([]);
       getCompaniesOfUser();
+      getMessages();
     }
   }, [userPermissions.companies]);
 
@@ -49,6 +52,15 @@ const CompaniesContainer = ({navigation}) => {
           }
         });
     });
+  };
+
+  const getMessages = () => {
+    database()
+      .ref(`/messages`)
+      .once('value')
+      .then((messagesSnapshot) => {
+        setMessages(messagesSnapshot.val());
+      });
   };
 
   const handleSelectionChanged = (value) => {

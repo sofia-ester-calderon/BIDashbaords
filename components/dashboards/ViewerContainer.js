@@ -8,9 +8,9 @@ import database from '@react-native-firebase/database';
 import KpiViewer from './kpis/KpiViewer';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
 import DashboardNavigator from './navigator/DashboardNavigator';
-import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useCompany} from '../hooks/CompanyProvider';
+import {useMessages} from '../hooks/MessagesProvider';
 
 const ViewerContainer = ({route}) => {
   const [categoryIndex, setCategoryIndex] = useState(-1);
@@ -22,9 +22,28 @@ const ViewerContainer = ({route}) => {
   const [token, setToken] = useState();
   const [displayKpiIndex, setDisplayKpiIndex] = useState(0);
   const [showSpinner, setShowSpinner] = useState(false);
-  const [userPermissions] = useUserPermissions();
   const [language] = useLanguage();
   const [company] = useCompany();
+  const [messages] = useMessages();
+  console.log('ViewerContainer. language:', language, 'messages:', messages);
+
+  function isEmptyObject(obj) {
+    return !Object.keys(obj).length;
+  }
+
+  console.log(
+    'ViewerContainer. Auswertung von : "language && !isEmptyObject(messages)"',
+    language && !isEmptyObject(messages) ? true : false,
+    'language: ',
+    language,
+    'isEmptyObject(messages)',
+    isEmptyObject(messages),
+  );
+  const viewerMessages =
+    language && !isEmptyObject(messages)
+      ? messages[language].viewerContainer
+      : '';
+  console.log('ViewerContainer. viewerMessages: ', viewerMessages);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -150,7 +169,7 @@ const ViewerContainer = ({route}) => {
         <>
           <Spinner
             visible={showSpinner}
-            textContent="Loading..."
+            textContent={viewerMessages.loading.concat('...')}
             textStyle={{
               color: '#FFF',
             }}
