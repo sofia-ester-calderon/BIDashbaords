@@ -30,7 +30,7 @@ const LogoutContainer = ({navigation}) => {
   useEffect(() => {
     if (messages && focused) {
       Alert.alert(
-        'Logout',
+        logoutMessages.title,
         logoutMessages.question,
         [
           {
