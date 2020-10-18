@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import database from '@react-native-firebase/database';
+import React from 'react';
 import {StyleSheet, Image, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useLanguage} from '../hooks/LanguageProvider';
@@ -35,12 +34,6 @@ const Home = () => {
   const [language] = useLanguage();
   const [messages] = useMessages();
   const homeMessages = messages[language].home;
-
-  useEffect(() => {
-    console.log('IN HOME language:', language);
-    console.log('IN HOME messages:', messages);
-    console.log('IN HOME homeMessages:', homeMessages);
-  }, [language]);
 
   return (
     <View style={styles.layout}>
