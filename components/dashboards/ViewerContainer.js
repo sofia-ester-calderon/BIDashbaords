@@ -8,7 +8,6 @@ import database from '@react-native-firebase/database';
 import KpiViewer from './kpis/KpiViewer';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
 import DashboardNavigator from './navigator/DashboardNavigator';
-import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useCompany} from '../hooks/CompanyProvider';
 import {useMessages} from '../hooks/MessagesProvider';
@@ -23,11 +22,10 @@ const ViewerContainer = ({route}) => {
   const [token, setToken] = useState();
   const [displayKpiIndex, setDisplayKpiIndex] = useState(0);
   const [showSpinner, setShowSpinner] = useState(false);
-  const [userPermissions] = useUserPermissions();
   const [language] = useLanguage();
   const [company] = useCompany();
   const [messages] = useMessages();
-  const viewerMessages = messages[language].viewerContainer;
+  const [viewerMessages, setViewerMessages] = useState({});
 
   useFocusEffect(
     React.useCallback(() => {
@@ -39,6 +37,15 @@ const ViewerContainer = ({route}) => {
       };
     }, []),
   );
+
+  useEffect(() => {
+    if (messages && messages[language]) {
+      setViewerMessages({
+        ...messages[language].viewerContainer,
+        ...messages[language].subcategoryOverview,
+      });
+    }
+  }, [messages]);
 
   useEffect(() => {
     if (categoryIndex > -1) {
@@ -148,6 +155,7 @@ const ViewerContainer = ({route}) => {
         <SubCateogryOverview
           subCategories={subCategories}
           onChooseSubCategory={handleChooseSubCategory}
+          buttonText={viewerMessages.gotokpis}
         />
       ) : (
         <>
