@@ -10,28 +10,25 @@ import auth from '@react-native-firebase/auth';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useMessages} from '../hooks/MessagesProvider';
+import {useCompany} from '../hooks/CompanyProvider';
 
 const LogoutContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
+  const [company, setCompany] = useCompany();
   const [language] = useLanguage();
   const [focused, setFocused] = useState(false);
   const [messages] = useMessages();
 
   useFocusEffect(
     React.useCallback(() => {
-      console.log('FOCUSSING LOGOUT VIEW');
-      console.log('IN HOME messages:', messages);
       setFocused(true);
       return () => {
-        console.log('UNFOCUSSING LOGOUT VIEW');
         setFocused(false);
       };
     }, []),
   );
 
   useEffect(() => {
-    console.log('IN LOGOUT create alert dialog', focused, language);
-
     const logoutMessages = messages[language].logout;
     if (messages && focused) {
       Alert.alert(
@@ -63,6 +60,7 @@ const LogoutContainer = ({navigation}) => {
 
   const logout = () => {
     userFunctions.logoutUser();
+    setCompany();
     navigation.navigate('Login');
   };
 
