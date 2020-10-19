@@ -3,6 +3,7 @@
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {SvgXml} from 'react-native-svg';
 import * as Navigation from './RootNavigation';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useCompany} from '../hooks/CompanyProvider';
@@ -29,7 +30,14 @@ const NavBar = () => {
         {userPermissions.loggedIn && company && (
           <Image style={styles.MenuIconStyle} source={menu} />
         )}
-        <Image source={logoShw} style={styles.ImageIconStyle} />
+        {/* <Image source={logoShw} style={styles.ImageIconStyle} /> */}
+        {company && (
+          <SvgXml
+            xml={company.logo}
+            height="100%"
+            style={styles.ImageIconStyle}
+          />
+        )}
       </TouchableOpacity>
     </SafeAreaView>
   );
