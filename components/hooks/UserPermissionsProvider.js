@@ -14,7 +14,12 @@ const UserPermissionsProvider = ({children}) => {
   useEffect(() => {}, [userPermissions]);
 
   const loginUser = useCallback((user) => {
+    console.log(
+      'im UserPermissionsProvider, start von loginUser(), user: ',
+      user,
+    );
     setUserPermissions(user);
+    console.log('im UserPermissionsProvider, end von loginUser() ');
   });
 
   const logoutUser = useCallback(() => {
@@ -23,14 +28,7 @@ const UserPermissionsProvider = ({children}) => {
     });
   });
 
-  const setUserCompany = useCallback((company) => {
-    setUserPermissions({
-      ...userPermissions,
-      company,
-    });
-  });
-
-  const userFunctions = {loginUser, logoutUser, setUserCompany};
+  const userFunctions = {loginUser, logoutUser};
 
   const data = useMemo(() => [userPermissions, userFunctions], [
     userPermissions,

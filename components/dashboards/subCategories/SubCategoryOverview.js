@@ -1,21 +1,16 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {PropTypes} from 'prop-types';
 import {Button, Text} from 'react-native-paper';
 import {ScrollView} from 'react-native-gesture-handler';
-import {useLanguage} from '../../hooks/LanguageProvider';
-import {useMessages} from '../../hooks/MessagesProvider';
 
-const SubCateogryOverview = ({subCategories, onChooseSubCategory}) => {
-  const [language] = useLanguage();
-  const [messages] = useMessages();
-
-  const subcategoryMessages =
-    language && Object.keys(messages).length
-      ? messages[language].subcategoryOverview
-      : {};
-
+const SubCateogryOverview = ({
+  subCategories,
+  onChooseSubCategory,
+  buttonText = '',
+}) => {
   return (
     <ScrollView>
       {subCategories.map((subCategory) => (
@@ -26,7 +21,7 @@ const SubCateogryOverview = ({subCategories, onChooseSubCategory}) => {
             mode="contained"
             style={styles.button}
             onPress={() => onChooseSubCategory(subCategory)}>
-            {subcategoryMessages.gotokpis}
+            {buttonText}
           </Button>
         </View>
       ))}
@@ -53,6 +48,7 @@ const styles = StyleSheet.create({
 SubCateogryOverview.propTypes = {
   subCategories: PropTypes.array.isRequired,
   onChooseSubCategory: PropTypes.func.isRequired,
+  buttonText: PropTypes.string,
 };
 
 export default SubCateogryOverview;

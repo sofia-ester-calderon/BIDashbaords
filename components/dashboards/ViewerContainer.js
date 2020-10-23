@@ -25,11 +25,7 @@ const ViewerContainer = ({route}) => {
   const [language] = useLanguage();
   const [company] = useCompany();
   const [messages] = useMessages();
-
-  const viewerMessages =
-    language && Object.keys(messages).length
-      ? messages[language].viewerContainer
-      : {};
+  const [viewerMessages, setViewerMessages] = useState({});
 
   useFocusEffect(
     React.useCallback(() => {
@@ -41,6 +37,15 @@ const ViewerContainer = ({route}) => {
       };
     }, []),
   );
+
+  useEffect(() => {
+    if (messages && messages[language]) {
+      setViewerMessages({
+        ...messages[language].viewerContainer,
+        ...messages[language].subcategoryOverview,
+      });
+    }
+  }, [messages]);
 
   useEffect(() => {
     if (categoryIndex > -1) {
@@ -150,6 +155,7 @@ const ViewerContainer = ({route}) => {
         <SubCateogryOverview
           subCategories={subCategories}
           onChooseSubCategory={handleChooseSubCategory}
+          buttonText={viewerMessages.gotokpis}
         />
       ) : (
         <>

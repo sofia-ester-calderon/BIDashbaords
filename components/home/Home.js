@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Image, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useLanguage} from '../hooks/LanguageProvider';
@@ -33,9 +33,13 @@ const styles = StyleSheet.create({
 const Home = () => {
   const [language] = useLanguage();
   const [messages] = useMessages();
-  const homeMessages = messages[language].home;
+  const [homeMessages, setHomeMessages] = useState({});
 
-  useEffect(() => {}, [language]);
+  useEffect(() => {
+    if (messages && messages[language]) {
+      setHomeMessages(messages[language].home);
+    }
+  }, [messages]);
 
   return (
     <View style={styles.layout}>

@@ -10,13 +10,14 @@ import auth from '@react-native-firebase/auth';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useMessages} from '../hooks/MessagesProvider';
+import {useCompany} from '../hooks/CompanyProvider';
 
 const LogoutContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
+  const [company, setCompany] = useCompany();
   const [language] = useLanguage();
   const [focused, setFocused] = useState(false);
   const [messages] = useMessages();
-  const logoutMessages = messages[language].logout;
 
   useFocusEffect(
     React.useCallback(() => {
@@ -28,9 +29,10 @@ const LogoutContainer = ({navigation}) => {
   );
 
   useEffect(() => {
+    const logoutMessages = messages[language].logout;
     if (messages && focused) {
       Alert.alert(
-        logoutMessages.title,
+        'Logout',
         logoutMessages.question,
         [
           {
@@ -58,6 +60,7 @@ const LogoutContainer = ({navigation}) => {
 
   const logout = () => {
     userFunctions.logoutUser();
+    setCompany();
     navigation.navigate('Login');
   };
 
