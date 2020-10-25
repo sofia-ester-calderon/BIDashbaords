@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-use-before-define */
 import React from 'react';
-import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {SvgXml} from 'react-native-svg';
 import * as Navigation from './RootNavigation';
@@ -20,7 +20,6 @@ const NavBar = () => {
       Navigation.toggleDrawer();
     }
   };
-
   return (
     <SafeAreaView style={{backgroundColor: '#6200ee'}}>
       <TouchableOpacity
@@ -32,11 +31,9 @@ const NavBar = () => {
         )}
         {/* <Image source={logoShw} style={styles.ImageIconStyle} /> */}
         {company && (
-          <SvgXml
-            xml={company.logo}
-            height="100%"
-            style={styles.ImageIconStyle}
-          />
+          <View style={styles.ImageIconStyle}>
+            <SvgXml xml={company.logo} />
+          </View>
         )}
       </TouchableOpacity>
     </SafeAreaView>
@@ -48,14 +45,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10,
     paddingLeft: 20,
-    paddingRight: 15,
     justifyContent: 'space-between',
   },
 
   ImageIconStyle: {
-    height: 35,
-    width: 25,
-    resizeMode: 'stretch',
+    backgroundColor: 'white',
+    height: 30,
+    padding: 5,
   },
   MenuIconStyle: {
     height: 25,
