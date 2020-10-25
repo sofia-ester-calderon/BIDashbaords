@@ -29,8 +29,8 @@ const LogoutContainer = ({navigation}) => {
   );
 
   useEffect(() => {
-    const logoutMessages = messages[language].logout;
     if (messages && focused) {
+      const logoutMessages = messages[language].logout;
       Alert.alert(
         'Logout',
         logoutMessages.question,
