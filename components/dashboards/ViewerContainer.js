@@ -172,13 +172,15 @@ const ViewerContainer = ({route}) => {
             onBack={handleShowSubCategories}
             kpiCount={kpisOfSubcategory.length}
           />
-          <KpiViewer
-            kpi={displayKpi}
-            token={token}
-            count={displayKpiIndex}
-            totalCount={kpisOfSubcategory.length}
-            url={company.url}
-          />
+          {company && (
+            <KpiViewer
+              kpi={displayKpi}
+              token={token}
+              count={displayKpiIndex}
+              totalCount={kpisOfSubcategory.length}
+              url={company.url}
+            />
+          )}
         </>
       )}
     </>
