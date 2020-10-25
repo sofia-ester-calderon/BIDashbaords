@@ -59,17 +59,6 @@ const CompaniesContainer = ({navigation}) => {
   };
 
   const getMessages = () => {
-    console.log('CompaniesContainer, getMessages() Start ');
-    database()
-      .ref(`/messages`)
-      .once('value')
-      .then((messagesSnapshot) => {
-        setMessages(messagesSnapshot.val());
-      });
-    console.log('CompaniesContainer, getMessages() End ');
-  };
-
-  const getMessages = () => {
     database()
       .ref(`/messages`)
       .once('value')
