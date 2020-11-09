@@ -4,14 +4,18 @@ import {Text} from 'react-native-paper';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useMessages} from '../hooks/MessagesProvider';
 
-const homeLogo = require('../assets/logo_shw.png');
+const homeLogo = require('../assets/logo_westfalia_pferd_transparent2.png');
+const homeText = require('../assets/logo_westfalia_schriftzug_transparent2.png');
 
 const styles = StyleSheet.create({
   logoIconStyle: {
-    margin: 20,
     height: 250,
-    width: 200,
-    resizeMode: 'stretch',
+    width: 260,
+  },
+  textIconStyle: {
+    margin: 7,
+    height: 90,
+    width: 260,
   },
   layout: {
     flex: 1,
@@ -21,7 +25,7 @@ const styles = StyleSheet.create({
   mainText: {
     fontSize: 30,
     textAlign: 'center',
-    marginBottom: 15,
+    marginBottom: 5,
   },
   subText: {
     fontSize: 18,
@@ -44,6 +48,7 @@ const Home = () => {
   return (
     <View style={styles.layout}>
       <Image style={styles.logoIconStyle} source={homeLogo} />
+      <Image style={styles.textIconStyle} source={homeText} />
       <Text style={styles.mainText}>{homeMessages.title1}</Text>
       <Text style={styles.mainText}>{homeMessages.title2}</Text>
       <Text style={styles.subText}>{homeMessages.slogan}</Text>
