@@ -8,7 +8,6 @@ import * as Navigation from './RootNavigation';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useCompany} from '../hooks/CompanyProvider';
 
-const logoShw = require('../assets/logo_shw.jpg');
 const menu = require('../assets/menu_icon.png');
 
 const NavBar = () => {
