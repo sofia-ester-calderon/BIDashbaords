@@ -18,17 +18,14 @@ const CompaniesContainer = ({navigation}) => {
   const [messages, setMessages] = useMessages();
 
   useEffect(() => {
-    console.log('im CompaniesContainer start von useFocusEffect()');
     if (userPermissions && userPermissions.companies) {
       setCompanies([]);
       getCompaniesOfUser();
       getMessages();
     }
-    console.log('im CompaniesContainer ende von useFocusEffect()');
   }, [userPermissions.companies]);
 
   const getCompaniesOfUser = () => {
-    console.log('im CompaniesContainer start von getCompaniesOfUser()');
     const comps = [];
     userPermissions.companies.forEach((company, index) => {
       database()
@@ -55,7 +52,6 @@ const CompaniesContainer = ({navigation}) => {
           }
         });
     });
-    console.log('im CompaniesContainer ende von getCompaniesOfUser()');
   };
 
   const getMessages = () => {
@@ -68,9 +64,7 @@ const CompaniesContainer = ({navigation}) => {
   };
 
   const handleSelectionChanged = (value) => {
-    console.log('im CompaniesContainer start von handleSelectionChanged()');
     setSelectedCompany(value);
-    console.log('im CompaniesContainer ende von handleSelectionChanged()');
   };
 
   const handleSelect = () => {
@@ -78,7 +72,6 @@ const CompaniesContainer = ({navigation}) => {
     setCompany(selectedComp);
     setLanguage(selectedComp.language);
     navigation.navigate('Home');
-    console.log('im CompaniesContainer ende von handleSelect()');
   };
 
   return (

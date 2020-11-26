@@ -14,12 +14,7 @@ const UserPermissionsProvider = ({children}) => {
   useEffect(() => {}, [userPermissions]);
 
   const loginUser = useCallback((user) => {
-    console.log(
-      'im UserPermissionsProvider, start von loginUser(), user: ',
-      user,
-    );
     setUserPermissions(user);
-    console.log('im UserPermissionsProvider, end von loginUser() ');
   });
 
   const logoutUser = useCallback(() => {

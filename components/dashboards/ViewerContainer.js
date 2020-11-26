@@ -85,7 +85,6 @@ const ViewerContainer = ({route}) => {
               key.encryptionKey,
             );
             const originalToken = bytes.toString(CryptoJS.enc.Utf8);
-
             setToken(originalToken);
           }
         });
