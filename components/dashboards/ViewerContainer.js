@@ -5,12 +5,15 @@ import {useFocusEffect} from '@react-navigation/native';
 import {PropTypes} from 'prop-types';
 import Spinner from 'react-native-loading-spinner-overlay';
 import database from '@react-native-firebase/database';
+import CryptoJS from 'react-native-crypto-js';
 import KpiViewer from './kpis/KpiViewer';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
 import DashboardNavigator from './navigator/DashboardNavigator';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useCompany} from '../hooks/CompanyProvider';
 import {useMessages} from '../hooks/MessagesProvider';
+
+const key = require('../../token-generator/key.json');
 
 const ViewerContainer = ({route}) => {
   const [categoryIndex, setCategoryIndex] = useState(-1);
@@ -77,7 +80,13 @@ const ViewerContainer = ({route}) => {
             const tokenOfCompany = tokenSnapshot.val().find((tokenData) => {
               return tokenData.companyId === company.id;
             });
-            setToken(tokenOfCompany.token);
+            const bytes = CryptoJS.AES.decrypt(
+              tokenOfCompany.encrToken,
+              key.encryptionKey,
+            );
+            const originalToken = bytes.toString(CryptoJS.enc.Utf8);
+
+            setToken(originalToken);
           }
         });
 
