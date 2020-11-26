@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const CryptoJS = require('react-native-crypto-js');
 const key = require('./key.json');
 
 function generateToken(question) {
@@ -6,8 +7,13 @@ function generateToken(question) {
     resource: {question},
     params: {},
   };
-  const token = jwt.sign(payload, key.value);
-  console.log(`TOKEN FOR QUESTION ${question}\n${token}\n\n`);
+  const token = jwt.sign(payload, key.tokenKey);
+  console.log(`\nQUESTION ${question}\n\n`);
+
+  console.log(`(Actual token: ${token})\n`);
+
+  const ciphertext = CryptoJS.AES.encrypt(token, key.encryptionKey).toString();
+  console.log(`ENCRYPTED TOKEN - STORE THIS IN FIREBASE\n${ciphertext}\n\n`);
 }
 
 const question1 = parseInt(process.argv[2]);

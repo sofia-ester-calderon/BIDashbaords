@@ -9,6 +9,7 @@
   "author": "Sofia Calderon",
   "license": "ISC",
   "dependencies": {
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "react-native-crypto-js": "^1.0.0"
   }
 }
