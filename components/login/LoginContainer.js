@@ -5,12 +5,11 @@
 /* eslint-disable react/forbid-prop-types */
 import React, {useState, useEffect} from 'react';
 import {PropTypes} from 'prop-types';
-import database from '@react-native-firebase/database';
-import auth from '@react-native-firebase/auth';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {useFocusEffect} from '@react-navigation/native';
 import LoginForm from './loginForm/LoginForm';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
+import * as firebaseHelper from '../firebase/firebaseHelper';
 
 const LoginContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
@@ -27,7 +26,7 @@ const LoginContainer = ({navigation}) => {
   });
 
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    const subscriber = firebaseHelper.subscribeToAuth(onAuthStateChanged);
     return subscriber;
   }, []);
 
@@ -43,20 +42,17 @@ const LoginContainer = ({navigation}) => {
 
   function onAuthStateChanged(user) {
     if (user && (!loggedInUser || user.uid !== loggedInUser.uid)) {
-      database()
-        .ref(`/users/${user.uid}`)
-        .once('value')
-        .then((userSnapshot) => {
-          setLoggedInUser(userSnapshot.val());
-          userFunctions.loginUser({
-            id: user.uid,
-            loggedIn: true,
-            roles: userSnapshot.val().roles,
-            companies: userSnapshot.val().companies,
-          });
-          navigation.navigate('Select Company');
-          setLoading(false);
+      firebaseHelper.getUser(user.uid).then((snapshot) => {
+        setLoggedInUser(snapshot);
+        userFunctions.loginUser({
+          id: user.uid,
+          loggedIn: true,
+          roles: snapshot.roles,
+          companies: snapshot.companies,
         });
+        navigation.navigate('Select Company');
+        setLoading(false);
+      });
     }
   }
 
@@ -78,30 +74,27 @@ const LoginContainer = ({navigation}) => {
   const handleLogin = () => {
     if (isFormValid()) {
       setLoading(true);
-      auth()
-        .signInWithEmailAndPassword(
-          loginDetails.username,
-          loginDetails.password,
-        )
-        .then(() => {})
-        .catch((error) => {
-          setLoading(false);
-          console.log(error.code);
-          if (
-            error.code === 'auth/user-not-found' ||
-            error.code === 'auth/invalid-email'
-          ) {
-            setErrors({username: '!'});
-            return;
+      firebaseHelper
+        .loginUser(loginDetails.username, loginDetails.password)
+        .then((response) => {
+          if (response) {
+            setLoading(false);
+            if (
+              response === 'auth/user-not-found' ||
+              response === 'auth/invalid-email'
+            ) {
+              setErrors({username: '!'});
+              return;
+            }
+            if (response === 'auth/wrong-password') {
+              setErrors({password: '!'});
+              return;
+            }
+            setErrors({
+              username: '!',
+              password: '!',
+            });
           }
-          if (error.code === 'auth/wrong-password') {
-            setErrors({password: '!'});
-            return;
-          }
-          setErrors({
-            username: '!',
-            password: '!',
-          });
         });
     }
   };

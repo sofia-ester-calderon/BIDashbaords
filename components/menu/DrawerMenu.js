@@ -7,7 +7,6 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import database from '@react-native-firebase/database';
 import {Image} from 'react-native';
 import {navigationRef} from './RootNavigation';
 import ViewerContainer from '../dashboards/ViewerContainer';
@@ -17,6 +16,7 @@ import Home from '../home/Home';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import CompaniesContainer from '../companies/CompaniesContainer';
 import {useLanguage} from '../hooks/LanguageProvider';
+import * as firebaseHelper from '../firebase/firebaseHelper';
 
 const graphIcon = require('../assets/graph.png');
 
@@ -59,25 +59,21 @@ const DrawerMenu = () => {
 
   useEffect(() => {
     if (userPermissions.roles && language) {
-      database()
-        .ref(`/categories`)
-        .once('value')
-        .then((categoriesSnapshot) => {
-          const categoryInfo = categoriesSnapshot
-            .val()
-            .filter((categoryData) =>
-              categoryData.roles.some(
-                (r) => userPermissions.roles.indexOf(r) >= 0,
-              ),
-            )
-            .map((categoryData, index) => {
-              return {
-                name: categoryData.name[language],
-                index,
-              };
-            });
-          setCategories(categoryInfo);
-        });
+      firebaseHelper.getCategories().then((snapshot) => {
+        const categoryInfo = snapshot
+          .filter((categoryData) =>
+            categoryData.roles.some(
+              (r) => userPermissions.roles.indexOf(r) >= 0,
+            ),
+          )
+          .map((categoryData, index) => {
+            return {
+              name: categoryData.name[language],
+              index,
+            };
+          });
+        setCategories(categoryInfo);
+      });
     }
   }, [userPermissions.roles, language]);
 

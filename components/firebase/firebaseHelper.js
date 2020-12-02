@@ -1,5 +1,15 @@
 /* eslint-disable prettier/prettier */
 import database from '@react-native-firebase/database';
+import auth from '@react-native-firebase/auth';
+
+export async function getCategories() {
+  return database()
+    .ref(`/categories`)
+    .once('value')
+    .then((categoriesSnapshot) => {
+      return categoriesSnapshot.val();
+    });
+}
 
 export async function getCompany(companyId) {
   return database()
@@ -46,5 +56,35 @@ export async function getKpiToken(category, subcategory, kpi) {
     .once('value')
     .then((tokenSnapshot) => {
       return tokenSnapshot.val();
+    });
+}
+
+export async function getUser(userId) {
+  return database()
+    .ref(`/users/${userId}`)
+    .once('value')
+    .then((userSnapshot) => {
+      return userSnapshot.val();
+    });
+}
+
+export function subscribeToAuth(authChangeFunction) {
+  return auth().onAuthStateChanged(authChangeFunction);
+}
+
+export async function loginUser(username, password) {
+  return auth()
+    .signInWithEmailAndPassword(username, password)
+    .then(() => {})
+    .catch((error) => {
+      return error.code;
+    });
+}
+
+export function logoutUser() {
+  auth()
+    .signOut()
+    .then(() => {
+      console.log('logged out of firebase');
     });
 }

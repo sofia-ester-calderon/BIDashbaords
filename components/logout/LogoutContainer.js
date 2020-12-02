@@ -6,11 +6,11 @@ import React, {useEffect, useState} from 'react';
 import {PropTypes} from 'prop-types';
 import {useFocusEffect} from '@react-navigation/native';
 import {Alert} from 'react-native';
-import auth from '@react-native-firebase/auth';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useMessages} from '../hooks/MessagesProvider';
 import {useCompany} from '../hooks/CompanyProvider';
+import * as firebaseHelper from '../firebase/firebaseHelper';
 
 const LogoutContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
@@ -47,15 +47,8 @@ const LogoutContainer = ({navigation}) => {
   }, [messages, focused]);
 
   const handleLogout = () => {
-    auth()
-      .signOut()
-      .then(() => {
-        logout();
-      })
-      .catch((error) => {
-        console.log(error);
-        logout();
-      });
+    firebaseHelper.logoutUser();
+    logout();
   };
 
   const logout = () => {
