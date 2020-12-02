@@ -42,10 +42,10 @@ const ViewerContainer = ({route}) => {
   );
 
   useEffect(() => {
-    if (messages && messages[language]) {
+    if (messages) {
       setViewerMessages({
-        ...messages[language].viewerContainer,
-        ...messages[language].subcategoryOverview,
+        ...messages.viewerContainer,
+        ...messages.subcategoryOverview,
       });
     }
   }, [messages]);

@@ -4,7 +4,6 @@ import {StyleSheet, Image, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Button} from 'react-native-paper';
-import {useLanguage} from '../../hooks/LanguageProvider';
 import {useMessages} from '../../hooks/MessagesProvider';
 
 const backArrow = require('../../assets/back_arrow.png');
@@ -35,9 +34,8 @@ const styles = StyleSheet.create({
 });
 
 const DashboardNavigator = ({onNext, onPrevious, onBack, kpiCount}) => {
-  const [language] = useLanguage();
   const [messages] = useMessages();
-  const dashboardMessages = messages[language].dashboardNavigator;
+  const dashboardMessages = messages.dashboardNavigator;
   return (
     <View
       style={
@@ -53,7 +51,7 @@ const DashboardNavigator = ({onNext, onPrevious, onBack, kpiCount}) => {
         onPress={onBack}
         style={styles.button}
         labelStyle={{color: 'white'}}>
-        {dashboardMessages.goback}
+        {messages.dashboardNavigator.goback}
       </Button>
       {kpiCount > 1 && (
         <TouchableOpacity onPress={onNext}>

@@ -11,7 +11,7 @@ import * as firebaseHelper from '../firebase/firebaseHelper';
 
 const CompaniesContainer = ({navigation}) => {
   const [userPermissions] = useUserPermissions();
-  const [language, setLanguage] = useLanguage();
+  const [language, setLanguage] = useLanguage('en');
   const [company, setCompany] = useCompany();
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState();
@@ -21,9 +21,14 @@ const CompaniesContainer = ({navigation}) => {
     if (userPermissions && userPermissions.companies) {
       setCompanies([]);
       getCompaniesOfUser();
-      firebaseHelper.getMessages().then((message) => setMessages(message));
     }
   }, [userPermissions.companies]);
+
+  useEffect(() => {
+    firebaseHelper.getMessages(language).then((message) => {
+      setMessages(message);
+    });
+  }, [language]);
 
   const getCompaniesOfUser = async () => {
     const comps = [];

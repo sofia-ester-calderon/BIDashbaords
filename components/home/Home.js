@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Image, View} from 'react-native';
 import {Text} from 'react-native-paper';
-import {useLanguage} from '../hooks/LanguageProvider';
 import {useMessages} from '../hooks/MessagesProvider';
 
 const homeLogo = require('../assets/logo_westfalia_pferd_transparent2.png');
@@ -35,13 +34,12 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
-  const [language] = useLanguage();
   const [messages] = useMessages();
   const [homeMessages, setHomeMessages] = useState({});
 
   useEffect(() => {
-    if (messages && messages[language]) {
-      setHomeMessages(messages[language].home);
+    if (messages) {
+      setHomeMessages(messages.home);
     }
   }, [messages]);
 

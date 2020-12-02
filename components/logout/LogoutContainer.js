@@ -7,7 +7,6 @@ import {PropTypes} from 'prop-types';
 import {useFocusEffect} from '@react-navigation/native';
 import {Alert} from 'react-native';
 import {useUserPermissions} from '../hooks/UserPermissionsProvider';
-import {useLanguage} from '../hooks/LanguageProvider';
 import {useMessages} from '../hooks/MessagesProvider';
 import {useCompany} from '../hooks/CompanyProvider';
 import * as firebaseHelper from '../firebase/firebaseHelper';
@@ -15,7 +14,6 @@ import * as firebaseHelper from '../firebase/firebaseHelper';
 const LogoutContainer = ({navigation}) => {
   const [userPermissions, userFunctions] = useUserPermissions();
   const [company, setCompany] = useCompany();
-  const [language] = useLanguage();
   const [focused, setFocused] = useState(false);
   const [messages] = useMessages();
 
@@ -30,7 +28,7 @@ const LogoutContainer = ({navigation}) => {
 
   useEffect(() => {
     if (messages && focused) {
-      const logoutMessages = messages[language].logout;
+      const logoutMessages = messages.logout;
       Alert.alert(
         'Logout',
         logoutMessages.question,

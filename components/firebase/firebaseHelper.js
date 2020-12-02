@@ -20,10 +20,9 @@ export async function getCompany(companyId) {
     });
 }
 
-// TODO: getMessages for only that languge
-export async function getMessages() {
+export async function getMessages(language) {
   return database()
-    .ref(`/messages`)
+    .ref(`/messages/${language}`)
     .once('value')
     .then((messagesSnapshot) => {
       return messagesSnapshot.val();
