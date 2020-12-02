@@ -4,7 +4,6 @@ import React, {useState, useEffect} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import {PropTypes} from 'prop-types';
 import Spinner from 'react-native-loading-spinner-overlay';
-import database from '@react-native-firebase/database';
 import CryptoJS from 'react-native-crypto-js';
 import KpiViewer from './kpis/KpiViewer';
 import SubCateogryOverview from './subCategories/SubCategoryOverview';
@@ -12,6 +11,7 @@ import DashboardNavigator from './navigator/DashboardNavigator';
 import {useLanguage} from '../hooks/LanguageProvider';
 import {useCompany} from '../hooks/CompanyProvider';
 import {useMessages} from '../hooks/MessagesProvider';
+import * as firebaseHelper from '../firebase/firebaseHelper';
 
 const key = require('../../token-generator/key.json');
 
@@ -52,32 +52,26 @@ const ViewerContainer = ({route}) => {
 
   useEffect(() => {
     if (categoryIndex > -1) {
-      database()
-        .ref(`/categories/${categoryIndex}/subcategories`)
-        .once('value')
-        .then((categoriesSnapshot) => {
-          const subCatData = categoriesSnapshot.val().map((item, index) => {
-            return {
-              name: item.name[language],
-              description: item.description[language],
-              index,
-            };
-          });
-          setSubcategories(subCatData);
+      firebaseHelper.getSubcategories(categoryIndex).then((snapshot) => {
+        const subCatData = snapshot.map((item, index) => {
+          return {
+            name: item.name[language],
+            description: item.description[language],
+            index,
+          };
         });
+        setSubcategories(subCatData);
+      });
     }
   }, [categoryIndex]);
 
   useEffect(() => {
     if (displayKpi) {
-      database()
-        .ref(
-          `/categories/${categoryIndex}/subcategories/${displaySubcategory}/kpis/${displayKpi.index}/tokens`,
-        )
-        .once('value')
-        .then((tokenSnapshot) => {
-          if (tokenSnapshot.val()) {
-            const tokenOfCompany = tokenSnapshot.val().find((tokenData) => {
+      firebaseHelper
+        .getKpiToken(categoryIndex, displaySubcategory, displayKpi.index)
+        .then((snapshot) => {
+          if (snapshot) {
+            const tokenOfCompany = snapshot.find((tokenData) => {
               return tokenData.companyId === company.id;
             });
             const bytes = CryptoJS.AES.decrypt(
@@ -88,7 +82,6 @@ const ViewerContainer = ({route}) => {
             setToken(originalToken);
           }
         });
-
       showSpinnerForSeconds(2000);
     }
   }, [displayKpi]);
@@ -109,13 +102,10 @@ const ViewerContainer = ({route}) => {
 
   const handleChooseSubCategory = (subCategory) => {
     setDisplaySubcategory(subCategory.index);
-    database()
-      .ref(
-        `/categories/${categoryIndex}/subcategories/${subCategory.index}/kpis`,
-      )
-      .once('value')
-      .then((kpisSnapshot) => {
-        const kpis = kpisSnapshot.val().map((kpiData, index) => {
+    firebaseHelper
+      .getKpis(categoryIndex, subCategory.index)
+      .then((snapshot) => {
+        const kpis = snapshot.map((kpiData, index) => {
           return {
             name: kpiData.name[language],
             description: kpiData.description[language],
