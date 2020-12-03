@@ -36,15 +36,22 @@ const styles = StyleSheet.create({
   },
 });
 
-const KpiViewer = ({kpi, token = '', count, totalCount, url = ''}) => {
+const KpiViewer = ({
+  kpi,
+  token = '',
+  count,
+  totalCount,
+  url = '',
+  texts = {},
+}) => {
   const [messages] = useMessages();
   const createAlert = () => {
     Alert.alert(
-      messages.kpiviewer.title,
+      texts.title,
       kpi.description,
       [
         {
-          text: messages.kpiviewer.ok,
+          text: texts.ok,
         },
       ],
       {cancelable: false},
@@ -63,7 +70,7 @@ const KpiViewer = ({kpi, token = '', count, totalCount, url = ''}) => {
       <View style={styles.horizontalLayout}>
         <View style={{flex: 1}}>
           <Text style={styles.textInfo}>
-            {count} {messages.kpiviewer.of} {totalCount}
+            {count} {texts.of} {totalCount}
           </Text>
         </View>
         <View style={({flex: 1}, styles.horizontalLayout)}>
@@ -82,6 +89,7 @@ KpiViewer.propTypes = {
   count: PropTypes.number.isRequired,
   totalCount: PropTypes.number.isRequired,
   url: PropTypes.string,
+  texts: PropTypes.object,
 };
 
 export default KpiViewer;
