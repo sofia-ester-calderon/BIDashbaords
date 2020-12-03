@@ -33,9 +33,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const DashboardNavigator = ({onNext, onPrevious, onBack, kpiCount}) => {
-  const [messages] = useMessages();
-  const dashboardMessages = messages.dashboardNavigator;
+const DashboardNavigator = ({
+  onNext,
+  onPrevious,
+  onBack,
+  kpiCount,
+  texts = {},
+}) => {
   return (
     <View
       style={
@@ -51,7 +55,7 @@ const DashboardNavigator = ({onNext, onPrevious, onBack, kpiCount}) => {
         onPress={onBack}
         style={styles.button}
         labelStyle={{color: 'white'}}>
-        {messages.dashboardNavigator.goback}
+        {texts.goback}
       </Button>
       {kpiCount > 1 && (
         <TouchableOpacity onPress={onNext}>
@@ -66,6 +70,7 @@ DashboardNavigator.propTypes = {
   onNext: PropTypes.func.isRequired,
   onPrevious: PropTypes.func.isRequired,
   onBack: PropTypes.func.isRequired,
+  texts: PropTypes.object,
 };
 
 export default DashboardNavigator;

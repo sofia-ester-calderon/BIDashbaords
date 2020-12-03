@@ -28,7 +28,6 @@ const ViewerContainer = ({route}) => {
   const [language] = useLanguage();
   const [company] = useCompany();
   const [messages] = useMessages();
-  const [viewerMessages, setViewerMessages] = useState({});
 
   useFocusEffect(
     React.useCallback(() => {
@@ -40,15 +39,6 @@ const ViewerContainer = ({route}) => {
       };
     }, []),
   );
-
-  useEffect(() => {
-    if (messages) {
-      setViewerMessages({
-        ...messages.viewerContainer,
-        ...messages.subcategoryOverview,
-      });
-    }
-  }, [messages]);
 
   useEffect(() => {
     if (categoryIndex > -1) {
@@ -153,13 +143,13 @@ const ViewerContainer = ({route}) => {
         <SubCateogryOverview
           subCategories={subCategories}
           onChooseSubCategory={handleChooseSubCategory}
-          buttonText={viewerMessages.gotokpis}
+          texts={messages.subcategoryOverview}
         />
       ) : (
         <>
           <Spinner
             visible={showSpinner}
-            textContent={viewerMessages.loading.concat('...')}
+            textContent={messages.viewerContainer.loading.concat('...')}
             textStyle={{
               color: '#FFF',
             }}
@@ -169,6 +159,7 @@ const ViewerContainer = ({route}) => {
             onPrevious={handleShowPrevKpi}
             onBack={handleShowSubCategories}
             kpiCount={kpisOfSubcategory.length}
+            texts={messages.dashboardNavigator}
           />
           {company && (
             <KpiViewer
@@ -177,6 +168,7 @@ const ViewerContainer = ({route}) => {
               count={displayKpiIndex}
               totalCount={kpisOfSubcategory.length}
               url={company.url}
+              texts={messages.kpiviewer}
             />
           )}
         </>

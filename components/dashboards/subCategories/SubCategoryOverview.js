@@ -9,7 +9,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 const SubCateogryOverview = ({
   subCategories,
   onChooseSubCategory,
-  buttonText = '',
+  texts = {},
 }) => {
   return (
     <ScrollView>
@@ -21,7 +21,7 @@ const SubCateogryOverview = ({
             mode="contained"
             style={styles.button}
             onPress={() => onChooseSubCategory(subCategory)}>
-            {buttonText}
+            {texts.gotokpis}
           </Button>
         </View>
       ))}
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 SubCateogryOverview.propTypes = {
   subCategories: PropTypes.array.isRequired,
   onChooseSubCategory: PropTypes.func.isRequired,
-  buttonText: PropTypes.string,
+  texts: PropTypes.object,
 };
 
 export default SubCateogryOverview;
