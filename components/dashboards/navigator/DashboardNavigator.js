@@ -4,7 +4,6 @@ import {StyleSheet, Image, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Button} from 'react-native-paper';
-import {useMessages} from '../../hooks/MessagesProvider';
 
 const backArrow = require('../../assets/back_arrow.png');
 const forwardArrow = require('../../assets/forward_arrow.png');

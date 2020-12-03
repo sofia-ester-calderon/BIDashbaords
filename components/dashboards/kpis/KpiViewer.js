@@ -8,7 +8,6 @@ import {WebView} from 'react-native-webview';
 
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {Text} from 'react-native-paper';
-import {useMessages} from '../../hooks/MessagesProvider';
 
 const infoIcon = require('../../assets/info_icon_2.png');
 
